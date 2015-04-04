@@ -1,9 +1,9 @@
 {
   "locals": {
     "url": "http://localhost:8080",
-    "name": "The Wintersmith's blog",
-    "owner": "Someone",
-    "description": "Ramblings of an immor(t)al demigod"
+    "name": "Josh Brunner",
+    "owner": "Josh Brunner",
+    "description": "Front-End Web Developer"
   },
   "plugins": [
     "./plugins/paginator.coffee"
