@@ -7,7 +7,6 @@
     "description": "Front-End Web Developer"
   },
   "plugins": [
-    "wintersmith-perian",
     "./plugins/paginator.coffee"
   ],
   "require": {
