@@ -9,6 +9,10 @@ One of the largest projects that I completed during my CS degree at UW was build
 
 ---
 
+[GitHub Repository](https://github.com/brunnerjosh/book-store)
+
+---
+
 # Short Overview
 This is a team project for my web development class at the University of Washington.
 
