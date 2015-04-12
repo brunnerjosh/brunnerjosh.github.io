@@ -9,7 +9,7 @@ One of the largest projects that I completed during my CS degree at UW was build
 
 ---
 
-[GitHub Repository](https://github.com/brunnerjosh/book-store)
+* [GitHub Repository](https://github.com/brunnerjosh/book-store)
 
 ---
 
