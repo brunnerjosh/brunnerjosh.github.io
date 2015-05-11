@@ -5,16 +5,396 @@
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
     <description>Front-End Web Developer</description>
-    <pubDate>Mon, 09 Mar 2015 17:00:00 -0700</pubDate>
+    <pubDate>Sat, 25 Apr 2015 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>JavaScript Slideshow</title>
+      <link>http://localhost:8080/articles/js-slideshow/</link>
+      <pubDate>Sat, 25 Apr 2015 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/js-slideshow/</guid>
+      <author></author>
+      <description>&lt;p&gt;After reading an &lt;a href=&quot;http://www.computedstyle.com/2010/12/hiring-front-end-engineers.html&quot;&gt;article&lt;/a&gt; written by Chris Zacharias, a former YouTube employee, I was inspired to begin practicing various JavaScript problems. The goal I have since set for myself is to keep up on these types of problems and to make sure that I know and comprehend solutions to solve them.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;summary&quot;&gt;Summary&lt;/h1&gt;
+&lt;p&gt;In the article, Chris talks a lot about hiring front-end engineers and gave an example problem he would ask to the interviewees. He would mention how candidates tended to rely on jQuery and either couldn’t solve this problem without it or would spend “the next 30 minutes sweating through an often regrettable solution.”&lt;/p&gt;
+&lt;p&gt;Thus, I wanted to prove to myself that I could solve this problem. So, here it goes!&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; A div with an id of &amp;#39;slideshow&amp;#39; contains five images, the first of which
+&amp;gt; is shown and the others are hidden using a display style of none.
+&amp;gt; Using Javascript, create a simple slideshow that cycles through the
+&amp;gt; images, displaying each for three seconds at a time, looping back to the
+&amp;gt; first image when the end is reached.
+&amp;gt;
+&amp;gt; You cannot use jQuery or any other library.
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;html&quot;&gt;HTML&lt;/h2&gt;
+&lt;p&gt;As described in the problem above, here is the described HTML structure that will be used as the basis to build the slideshow. It includes a &lt;code&gt;div&lt;/code&gt; with an id of ‘slideshow’. Inside the &lt;code&gt;div&lt;/code&gt; are five images with the first image shown and the others hidden with a display style of &lt;code&gt;none&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;slideshow&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;picture-1.jpg&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;picture-2.jpg&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;style&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;display: none;&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;picture-3.jpg&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;style&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;display: none;&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;picture-4.jpg&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;style&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;display: none;&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;picture-5.jpg&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;style&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;display: none;&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;javascript&quot;&gt;JavaScript&lt;/h2&gt;
+&lt;p&gt;The code that I built to accomplish the slideshow utilizes a variable to hold an array of the images that are within the ‘slideshow’ &lt;code&gt;div&lt;/code&gt;. There’s a function called &lt;code&gt;runSlideshow&lt;/code&gt; that gets called on page load to begin the image slideshow.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// Grab the div that has the id of 'slideshow'&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; slideshow = document.getElementById(&lt;span class=&quot;string&quot;&gt;'slideshow'&lt;/span&gt;)
+
+&lt;span class=&quot;comment&quot;&gt;// Grab the images within the 'slideshow' div&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; images = slideshow.getElementsByTagName(&lt;span class=&quot;string&quot;&gt;'img'&lt;/span&gt;)
+
+&lt;span class=&quot;comment&quot;&gt;// Initialize the counter&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; index = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;
+
+&lt;span class=&quot;comment&quot;&gt;// Function used to swap images, simulating a slideshow.&lt;/span&gt;
+&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;runSlideshow&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; {&lt;/span&gt;
+
+  &lt;span class=&quot;comment&quot;&gt;// Check if we are within the bounds of the 'images' array&lt;/span&gt;
+  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ((index+&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;) &amp;lt; images.length) {
+
+    &lt;span class=&quot;comment&quot;&gt;// Hide the current image&lt;/span&gt;
+    images[index].style.display = &lt;span class=&quot;string&quot;&gt;'none'&lt;/span&gt;
+
+    &lt;span class=&quot;comment&quot;&gt;// Show the next image&lt;/span&gt;
+    images[index+&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;].style.display = &lt;span class=&quot;string&quot;&gt;'block'&lt;/span&gt;
+
+    &lt;span class=&quot;comment&quot;&gt;// Increment the counter&lt;/span&gt;
+    index++
+
+  } &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; {
+
+    &lt;span class=&quot;comment&quot;&gt;// Hide the current image&lt;/span&gt;
+    images[index].style.display = &lt;span class=&quot;string&quot;&gt;'none'&lt;/span&gt;
+
+    &lt;span class=&quot;comment&quot;&gt;// Reset the index variable&lt;/span&gt;
+    index = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;
+
+    &lt;span class=&quot;comment&quot;&gt;// Start back over from the top&lt;/span&gt;
+    images[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;].style.display = &lt;span class=&quot;string&quot;&gt;'block'&lt;/span&gt;
+  }
+
+  &lt;span class=&quot;comment&quot;&gt;// Wait 3 seconds and call changeImage() again&lt;/span&gt;
+  setTimeout(&lt;span class=&quot;string&quot;&gt;'runSlideshow()'&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3000&lt;/span&gt;)
+}
+
+&lt;span class=&quot;comment&quot;&gt;// Begin the slideshow&lt;/span&gt;
+runSlideshow()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+&lt;p&gt;These are some of my pictures that I’ve taken recently in up here in Washington. Feel free to view more &lt;a href=&quot;https://www.flickr.com/photos/77226941@N04/&quot;&gt;here&lt;/a&gt;. Enjoy the show!&lt;/p&gt;
+&lt;div id=&quot;slideshow&quot;&gt;
+  &lt;img src=&quot;picture-1.jpg&quot;&gt;
+  &lt;img src=&quot;picture-2.jpg&quot; style=&quot;display: none;&quot;&gt;
+  &lt;img src=&quot;picture-3.jpg&quot; style=&quot;display: none;&quot;&gt;
+  &lt;img src=&quot;picture-4.jpg&quot; style=&quot;display: none;&quot;&gt;
+  &lt;img src=&quot;picture-5.jpg&quot; style=&quot;display: none;&quot;&gt;
+&lt;/div&gt;
+
+
+&lt;script&gt;
+// Grab the div that has the id of 'slideshow'
+var slideshow = document.getElementById('slideshow')
+
+// Grab the images within the 'slideshow' div
+var images = slideshow.getElementsByTagName('img')
+
+// Initialize the counter
+var index = 0;
+
+// Function used to swap images, simulating a slideshow.
+function runSlideshow() {
+
+  // Check if we are within the bounds of the 'images' array
+  if ((index+1) &lt; images.length) {
+
+    // Hide the current image
+    images[index].style.display = 'none'
+
+    // Show the next image
+    images[index+1].style.display = 'block'
+
+    // Increment the counter
+    index++
+
+  } else {
+
+    // Hide the current image
+    images[index].style.display = 'none'
+
+    // Reset the index variable
+    index = 0
+
+    // Start back over from the top
+    images[0].style.display = 'block'
+  }
+
+  // Wait 3 seconds and call changeImage() again
+  setTimeout('runSlideshow()', 3000)
+}
+
+// Begin the slideshow
+runSlideshow()
+&lt;/script&gt;
+</description>
+    </item>
     <item>
       <title>Online Bookstore</title>
       <link>http://localhost:8080/articles/online-bookstore/</link>
       <pubDate>Mon, 09 Mar 2015 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://localhost:8080/articles/online-bookstore/</guid>
       <author></author>
-      <description>&lt;p&gt;Information about the bookstore will go here!!!!!&lt;/p&gt;
+      <description>&lt;p&gt;One of the largest projects that I completed during my CS degree at UW was building an online bookstore. I was on a team of three developers tasked with building the system from the ground up.&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/brunnerjosh/book-store&quot;&gt;GitHub Repository&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;short-overview&quot;&gt;Short Overview&lt;/h1&gt;
+&lt;p&gt;This is a team project for my web development class at the University of Washington.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;We’ve implemented a fully functional bookstore according to the specification provided&lt;/li&gt;
+&lt;li&gt;Users may browse, search, view, purchase, and rate books&lt;/li&gt;
+&lt;li&gt;Administrators may alter information on users, books, transactions, and ratings&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;stakeholders&quot;&gt;Stakeholders&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Users - Customers looking to purchase a book&lt;/li&gt;
+&lt;li&gt;Administrators - Users with the ability to make system-level changes to the relation model’s data&lt;/li&gt;
+&lt;li&gt;Investors - People looking to have financial interest in Quest&lt;/li&gt;
+&lt;li&gt;Authors - The people that will write books to be hosted for sale on Quest’s online bookstore&lt;/li&gt;
+&lt;li&gt;Publishers - The “gate-keeper” that makes sure that we are only showing well-written books&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;assumptions&quot;&gt;Assumptions&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;All users have admin-level access to the system&lt;/li&gt;
+&lt;li&gt;No users have malicious intent while using system&lt;/li&gt;
+&lt;li&gt;System has been tested to work on the latest version of Google Chrome running on Mac OS X&lt;/li&gt;
+&lt;li&gt;The system cannot accept actual payments from users&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;data-interactions&quot;&gt;Data Interactions&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Users &amp;amp; Transactions - Each unique user can have zero or many transactions. This type of activity indicates the user purchase of a book and a sale for the book store. The userId is placed into the transaction record.&lt;/li&gt;
+&lt;li&gt;Users &amp;amp; Rating - Each unique user can have zero or many ratings. This type of activity indicates a user rated a book. The userId is placed into the rating record.&lt;/li&gt;
+&lt;li&gt;Books &amp;amp; Transactions - Each unique book can have zero or many transactions for a book. When a user purchases a book, the bookId is placed into the transaction record.&lt;/li&gt;
+&lt;li&gt;Books &amp;amp; Rating - Each unique book can have zero or many ratings. When a user rates a book, the bookId is placed in the rating record.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;graphical-schema&quot;&gt;Graphical Schema&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/schema.png&quot; alt=&quot;Graphical Schema&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;limitations&quot;&gt;Limitations&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;No differentiation between users and administrators&lt;/li&gt;
+&lt;li&gt;Not accessible on devices other than desktop computers&lt;/li&gt;
+&lt;li&gt;System does not take cards for purchases&lt;/li&gt;
+&lt;li&gt;Book covers need to be added after a book is created&lt;/li&gt;
+&lt;li&gt;No password recovery service&lt;/li&gt;
+&lt;li&gt;Users cannot add a profile photo&lt;/li&gt;
+&lt;li&gt;When a user makes changes to their account, the must sign out in order for those changes to take effect&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;improvements&quot;&gt;Improvements&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Implement all changes to address limitations mentioned in previous slide&lt;/li&gt;
+&lt;li&gt;Add graphs to visualize analytics information&lt;/li&gt;
+&lt;li&gt;Add a responsive design allowing users to view and browse Quest on mobile and tablet devices&lt;/li&gt;
+&lt;li&gt;Make the user, books, transactions, and ratings pages look nicer and more helpful&lt;/li&gt;
+&lt;li&gt;An updated styling done in CSS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h1&gt;
+&lt;p&gt;These are some screenshots of the interactions that can be found throughout the book store.&lt;/p&gt;
+&lt;h2 id=&quot;landing-page&quot;&gt;Landing Page&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/welcome.png&quot; alt=&quot;Landing Page&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;browse-books&quot;&gt;Browse Books&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/browse-books.png&quot; alt=&quot;Browse Books&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;book-detail&quot;&gt;Book Detail&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/book-detail.png&quot; alt=&quot;Book Detail&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;checkout-page&quot;&gt;Checkout Page&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/checkout-page.png&quot; alt=&quot;Checkout Page&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;user-profile&quot;&gt;User Profile&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/user-profile.png&quot; alt=&quot;User Profile&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;admin-dashboard&quot;&gt;Admin Dashboard&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/admin-dashboard.png&quot; alt=&quot;Admin Dashboard&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;top-10-best-sellers&quot;&gt;Top 10 Best Sellers&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/top-10.png&quot; alt=&quot;Top 10 Best Sellers&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;top-5-best-sellers-by-category-&quot;&gt;Top 5 Best Sellers (By Category)&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/top-5.png&quot; alt=&quot;Top 5 Best Sellers (By Category)&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;top-20-rated-books&quot;&gt;Top 20 Rated Books&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/top-20.png&quot; alt=&quot;Top 20 Rated Books&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;view-transactions-by-price&quot;&gt;View Transactions By Price&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/transactions-price.png&quot; alt=&quot;View Transactions By Price&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;sales-stats&quot;&gt;Sales Stats&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/sales-stats.png&quot; alt=&quot;Sales Stats&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;direct-market-data-by-category-&quot;&gt;Direct Market Data (By Category)&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/market-data.png&quot; alt=&quot;Direct Market Data (By Category)&quot;&gt;&lt;/p&gt;
+</description>
+    </item>
+    <item>
+      <title>Process Synchronization</title>
+      <link>http://localhost:8080/articles/process-synchronization/</link>
+      <pubDate>Tue, 13 May 2014 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/process-synchronization/</guid>
+      <author></author>
+      <description>&lt;p&gt;This assignment’s purpose was to exercise the implementation of Java monitors. Specifically, the assignment had us preempt threads that were for disk read/write operations and instead allow another thread to execute. This inherently prevents the I/O-bound threads from wastefully using CPU power when other tasks could be getting completed. This was accomplished by using &lt;code&gt;SysLib.wait()&lt;/code&gt; and &lt;code&gt;SysLib.exit()&lt;/code&gt; calls to sleep threads and wake them when their child thread had completed.&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/brunnerjosh/process-synchronization&quot;&gt;GitHub Repository&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://courses.washington.edu/css430/prog/prog3.html&quot;&gt;Project Specification&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;part-1&quot;&gt;Part 1&lt;/h1&gt;
+&lt;p&gt;The first part of the assignment deals with two programs, SyncQueue and QueueNode. Each program works towards the common effort of enabling threads to be able to wait for a child thread to be terminated before further execution is completed. This, in turn, is a form of implementation of Java monitors. The two paragraphs below will discuss each program’s algorithm more specifically.&lt;/p&gt;
+&lt;h2 id=&quot;syncqueue&quot;&gt;SyncQueue&lt;/h2&gt;
+&lt;p&gt;This program is used to prevent threads from busy waiting on disk read and write operations. It accomplishes this by constructing a list (array) of QueueNode objects upon construction. Once created, SyncQueue provides two means of adding and removing from this array. Depending on the condition variable sent into either “enqueueAndSleep()” or “dequeueAndWakeup(),” the QueueNode at the location in the array is slept or woken, using sleep() and wakeup(), respectively.&lt;/p&gt;
+&lt;h2 id=&quot;queuenode&quot;&gt;QueueNode&lt;/h2&gt;
+&lt;p&gt;This short program is used to call the wait() and notify() methods in certain circumstances. When constructed, a new Vector called “queue” is created to hold integers that represent the waiting thread’s ID (tid). Within QueueNode’s two main functions, sleep() and wakeup(), the thread is able to put itself to sleep while in a critical section of code.&lt;/p&gt;
+&lt;h2 id=&quot;part-1-results&quot;&gt;Part 1 Results&lt;/h2&gt;
+&lt;p&gt;The assignment was to:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; Compile your SyncQueue.java and Kernel.java, and thereafter run Test2.java
+&amp;gt; from the Shell.class to confirm:
+&amp;gt; 1. Test2.java waits for the termination of all its five child threads,
+&amp;gt; (i.e., the TestThread2.java threads).
+&amp;gt; 2. Shell.java waits for the termination of Test2.java. Shell.java should
+&amp;gt; not display its prompt until Test2.java has completed its execution.
+&amp;gt; 3. Loader.java waits for the termination of Shell.java. Loader.java should
+&amp;gt; not display its prompt ( --&amp;gt; ) until you type exit from the Shell prompt.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Below is a screenshot of running Test2.java per the expected results:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/process-synchronization/master/images/test2_output.png&quot; alt=&quot;Test 2 Results&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;part-2&quot;&gt;Part 2&lt;/h1&gt;
+&lt;p&gt;The second part of this assignment was to write a user-level test thread called &lt;code&gt;Test3.java&lt;/code&gt; which spawns and waits for the competition of a certain number of threads. These test threads are supposed to do numerical computation (&lt;code&gt;TestThread3a.java&lt;/code&gt;) as well as random read/write operations to the disk (&lt;code&gt;TestThread3b.java&lt;/code&gt;).&lt;/p&gt;
+&lt;h2 id=&quot;test3&quot;&gt;Test3&lt;/h2&gt;
+&lt;p&gt;This program is interesting. It is written in a way that puts the CPU’s processing power to stressful boundaries. Upon creation, the user is expected to have their desired X value loaded into argv[0]. With this number, Test3 spins up X amount of pairs of threads. The threads can be either a numerical computation task or a disk READ/WRITE task. Both of these tasks are completely pointless with respect to getting actual work done, there are simply made to demonstrate how an effective use of sleeping and waking processes is done. Once Test3 has executed these threads, it spins in two different loops so that the threads may join() when they complete.&lt;/p&gt;
+&lt;h2 id=&quot;testthread3a&quot;&gt;TestThread3a&lt;/h2&gt;
+&lt;p&gt;This is one of the threads that Test3 spins up. It invokes very complex mathematical calculations including recursive factorials, square roots, and finding the tangent. It does all this in an n^2 manner with two for loops.&lt;/p&gt;
+&lt;h2 id=&quot;testthread3b&quot;&gt;TestThread3b&lt;/h2&gt;
+&lt;p&gt;As the second of the threads, this thread reads and writes maximum blocks of bytes to the DISK in the folder. Once gain, a complete waste of resources but used to demonstrate how program 3 handles this kind of work.&lt;/p&gt;
+&lt;h2 id=&quot;part-2-results&quot;&gt;Part 2 Results&lt;/h2&gt;
+&lt;p&gt;Below is a screenshot of running Test3.java on kernel_1.java (implemented in Part 1):
+&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/process-synchronization/master/images/kernel_1_output.png&quot; alt=&quot;Kernel 1 Results&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Below is a screenshot of running Test3.java on kernel.java (implemented in Part 2):
+&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/process-synchronization/master/images/kernel_2_output.png&quot; alt=&quot;Kernel 2 Results&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;comparison&quot;&gt;Comparison&lt;/h2&gt;
+&lt;p&gt;As shown in the screenshots above, the later is the clear winner. Completing Test3’s complex tasks more than 4 seconds faster proves the revised kernel.java to be the better kernel program. But of course doing simply one test is not enough to determine a faster program. Therefore, I tested each kernel alongside each other in a head-to-head race with the X variable at different numbers. You can see the results in the diagrams below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/process-synchronization/master/images/performance-results.png&quot; alt=&quot;Kernel 2 Results&quot;&gt;&lt;/p&gt;
+&lt;p&gt;From this data, I learned that there are a lot of factors that can effect the outcome of these tests. It appears that the percentage increase can vary greatly depending on the other CPU tasks and other factors that I might not be aware of. I believe these results might be more prominent had I been working on a dual core CPU. In the end, this data concludes that the kernel.java, which was modified to allow threads to sleep on disk operations, performs better than the kernel.java (kernel_1.java) which does not.&lt;/p&gt;
+</description>
+    </item>
+    <item>
+      <title>Process Scheduling Algorithms</title>
+      <link>http://localhost:8080/articles/scheduling-algorithms/</link>
+      <pubDate>Tue, 29 Apr 2014 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/scheduling-algorithms/</guid>
+      <author></author>
+      <description>&lt;p&gt;In my Operating Systems class (CSS 430), our homework 2 assignment was to implement process scheduling algorithms on top of the school’s ThreadOS. ThreadOS is a emulated operating system based in Java. It was built by the school to help students conceptualize the operations that go on at the OS-level of the computer.&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/brunnerjosh/process-scheduling-algorithms&quot;&gt;GitHub Repository&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;purpose&quot;&gt;Purpose&lt;/h1&gt;
+&lt;p&gt;This assignment implements two process scheduling algorithms on top of ThreadOS. The names of the algorithms are the Round Robin and the Multi-Level Feedback Queue. There are a set of test programs that get called to simulate the variable times that some process take to complete execution. At the end of each algorithm section, I present screenshots of the results so that you can see how long each process took to complete execution, etc.&lt;/p&gt;
+&lt;p&gt;Feel free to read the school’s full spec for this assignment &lt;a href=&quot;http://courses.washington.edu/css430/prog/prog2.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&quot;algorithms&quot;&gt;Algorithms&lt;/h1&gt;
+&lt;p&gt;This section will go over the two scheduling algorithms that we implemented in this assignment. Each section contains a screenshot of the performance results. Take note of the &lt;code&gt;execution time&lt;/code&gt; in each process’s completed results.&lt;/p&gt;
+&lt;h2 id=&quot;round-robin-suspend-resume-&quot;&gt;Round Robin (Suspend/Resume)&lt;/h2&gt;
+&lt;p&gt;Although &lt;code&gt;suspend()&lt;/code&gt; and &lt;code&gt;resume()&lt;/code&gt; are deprecated Java methods, we still learned them so that we could compare the performance of the different scheduling algorithms.&lt;/p&gt;
+&lt;h3 id=&quot;performance-results&quot;&gt;Performance Results&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/process-scheduling-algorithms/master/images/round-robin-output.png&quot; alt=&quot;Performance Results&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;multi-level-feedback-queue-mlfq-&quot;&gt;Multi-Level Feedback Queue (MLFQ)&lt;/h2&gt;
+&lt;p&gt;The MLQS algorithm utilizes three separate queues (queue0, queue1, and queue2). Each queue serves a slightly separate purpose throughout the scheduler’s use.&lt;/p&gt;
+&lt;p&gt;Upon being called by the Thread class, the run() function immediately initializes a Thread object to handle the processing of thread objects throughout the execution of the code. It then enters into an indefinite while loop to capture threads being added to queue0.&lt;/p&gt;
+&lt;p&gt;Queue0 allows threads to execute for timeSlice/2. In this case, timeSlice is defaulted to 1000ms, or 1 second. If the process hasn’t completed execution within the allotted 500ms, the process is moved to queue1.&lt;/p&gt;
+&lt;p&gt;Queue1 allows the process to execute for another 500ms and then checks to see if any new process has been added. If a new process has indeed been added to queue0, it jumps up to process that appropriately. If not, it lets the original process run for another 500ms.&lt;/p&gt;
+&lt;p&gt;If this process still hasn’t completed, it is moved to queue2 where it is allowed to run for a total of 2000ms until it is removed from the top of queue2 and added to the bottom. Queue2 follows similar scenario handling in the event of a new process being added to either queue0 or queue1 after it’s for 500ms are used.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Please see the flowchart section below for a visual description of the multi-level queue scheduling algorithm&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;performance-results&quot;&gt;Performance Results&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/process-scheduling-algorithms/master/images/mlfq-output.png&quot; alt=&quot;Performance Results&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;flowchart&quot;&gt;Flowchart&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/process-scheduling-algorithms/master/images/mlqs-flowchart.jpg&quot; alt=&quot;Flow Chart&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;execution-chart&quot;&gt;Execution Chart&lt;/h1&gt;
+&lt;p&gt;This chart shows a breakdown of the processes (Pa, Pb, Pc, Pd, Pe, Test2, and the Scheduler) over the course of their completion while in the MLFQ.
+&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/process-scheduling-algorithms/master/images/mlfq-algorithm-process.png&quot; alt=&quot;Execution Chart&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;discussion&quot;&gt;Discussion&lt;/h1&gt;
+&lt;p&gt;By utilizing three separate queues with three separate time quantum, the MLQS algorithm appears to have outperformed the Round Robin (suspend/resume) algorithm quite greatly. In the Comparison Results section below, you can see that the green boxes show improvement in processing while red boxes show decreases in processing when the MLQS algorithm is used against Test2.java.&lt;/p&gt;
+&lt;p&gt;The reason the MLQS performs better than the RR (suspend/resume) algorithm is because most of the processes start and finish within 2 queues. The rest get pushed down to the third queue (queue2), where larger timeSlices allow for large chunks of their CPU burst to be processed.&lt;/p&gt;
+&lt;h2 id=&quot;comparison-results&quot;&gt;Comparison Results&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/process-scheduling-algorithms/master/images/comparison-chart.png&quot; alt=&quot;Comparison Results&quot;&gt;&lt;/p&gt;
+</description>
+    </item>
+    <item>
+      <title>Disk Caching</title>
+      <link>http://localhost:8080/articles/disk-caching/</link>
+      <pubDate>Tue, 29 Apr 2014 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/disk-caching/</guid>
+      <author></author>
+      <description>&lt;p&gt;….&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://localhost:8080/articles/disk-caching/&quot;&gt;GitHub Repository&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;purpose&quot;&gt;Purpose&lt;/h1&gt;
+&lt;p&gt;….&lt;/p&gt;
+</description>
+    </item>
+    <item>
+      <title>68k Disassembler</title>
+      <link>http://localhost:8080/articles/68k-disassembler/</link>
+      <pubDate>Tue, 11 Mar 2014 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/68k-disassembler/</guid>
+      <author></author>
+      <description>&lt;p&gt;In CSS 422 (Hardware and Computer Organization), I learned a lot about how the physical parts of the computer work closely together to perform operations and commands from the user. The main project that we were tasked with was to build an inverse assembler (also known as a disassembler) which converts a memory image of instructions and data back to 68k assembly language and outputs the disassembled code to the display.&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/brunnerjosh/68k-disassembler&quot;&gt;GitHub Repository&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;This is a skimmed down version of the &lt;a href=&quot;https://github.com/brunnerjosh/68k-disassembler/raw/master/BitCrunchers_ProjectDeliverable.pdf&quot;&gt;full report&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&quot;summary&quot;&gt;Summary&lt;/h1&gt;
+&lt;p&gt;Our team has been tasked with creating a disassembler for the Motorola MC68000 Microprocessor written in 68K Assembly programming language. Over the past six weeks we’ve been working to produce a quality deliverable that can disassemble a supported instruction set.&lt;/p&gt;
+&lt;h2 id=&quot;design-philosophy&quot;&gt;Design Philosophy&lt;/h2&gt;
+&lt;p&gt;We attempted to design our program using SCRUM software engineering methods. Our team met twice every week and communicated using email, Google Drive, Facebook, and SMS.&lt;/p&gt;
+&lt;p&gt;In a disassembler, there are typically three sub sections that come together to accomplish the disassembling of machine code. The first section is Input and Output. This job deals with inputting the test data into the program and outputting it once it has been decoded. The second job that a disassembler must have is an Operation Decode person. This person deals with reading each instruction from memory and determining what kind of operation it is. Once the operation has been determined, the last job of Effective Addressing can take place. The Effective Address person determines what kind of addressing is taking place and how many more spaces in memory must be read in order to have a complete instruction outputted.&lt;/p&gt;
+&lt;p&gt;After our first meeting, we discussed these jobs and determined who would be best in each role. Along the way, we supported each other throughout the various tasks that were required as we dug further into the instructions.&lt;/p&gt;
+&lt;h3 id=&quot;project-roles&quot;&gt;Project Roles&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Input / Output was completed by Jonathan Mason&lt;/li&gt;
+&lt;li&gt;Operation Decode was completed by Josh Brunner&lt;/li&gt;
+&lt;li&gt;Effective Addressing was completed by Melissa Kjelgaard&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;operation-decode-highlights&quot;&gt;Operation Decode Highlights&lt;/h3&gt;
+&lt;p&gt;The subroutines that were used to narrow down the comparison bits to determine what kind of instruction an operation code was were difficult to create. More specifically, the subroutine “WorL” which was used to determine what the size of an instruction was was the hardest to create. However, once this subroutine was created, the rest for the most part followed suit.&lt;/p&gt;
+&lt;h2 id=&quot;flow-chart&quot;&gt;Flow Chart&lt;/h2&gt;
+&lt;p&gt;We created this flow chart to aid in the envisioning of the final system. This chart was created
+during week two’s progress report and has only been modified slightly since then. Use it to follow the flow of our program’s execution.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/68k-disassembler/master/Flowchart%20v0.jpg&quot; alt=&quot;Flow Chart&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;planning&quot;&gt;Planning&lt;/h1&gt;
+&lt;p&gt;Our team followed a rigid set of coding standards as we did not want to deviate from schedule.
+We were all very busy this quarter and did not want to fall behind in our tasks. Therefore, we met right away and began planning the project and how we needed to communicate and manage the tasks at hand.&lt;/p&gt;
+&lt;p&gt;Week two was a major milestone in our teams progress. We established a method to version control as well as created a flowchart to envision the task at hand. By week three, our team had already finished decoding of MOVE and had begun work on decoding the rest. We established a title page and the main algorithms used throughout the effective addressing by week four.&lt;/p&gt;
+&lt;h2 id=&quot;coding-standards&quot;&gt;Coding Standards&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Comment as if someone else will need to interpret and use your code&lt;/li&gt;
+&lt;li&gt;Increment the file version every time you submit RUNNING code to Google Drive&lt;/li&gt;
+&lt;li&gt;Communicate with the team over Facebook for any questions/problems&lt;/li&gt;
+&lt;li&gt;Show up on time (+-5 mins) to weekly meetings&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;exception-report&quot;&gt;Exception Report&lt;/h1&gt;
+&lt;p&gt;While this project was very difficult to complete and required a lot of debugging and testing, we feel we’ve produced a solid product. At this time, we have no deviations of expected outcomes that we are aware of.&lt;/p&gt;
+&lt;h2 id=&quot;output-results&quot;&gt;Output Results&lt;/h2&gt;
+&lt;p&gt;In the screenshot below, you’ll find proof of our program’s correct output. According to our tests, our program successfully decodes all of the required instructions and addressing modes and outputs them to the screen.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/brunnerjosh/68k-disassembler/master/results-output.png&quot; alt=&quot;Results Output&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;team-assignments&quot;&gt;Team Assignments&lt;/h1&gt;
+&lt;p&gt;As listed in section Project Roles, we had divided the team into the suggested three separate roles to accomplish the parts the comprise a Disassembler. The three roles are Input/Output, Operation Decode, and Effective Addressing.&lt;/p&gt;
+&lt;h2 id=&quot;responsibilities&quot;&gt;Responsibilities&lt;/h2&gt;
+&lt;p&gt;Each member of the team was responsible for producing necessary code to support each
+other’s progress through the assignment. It was crucial for each member to stay on task with the work schedules for that week’s Sprint. The following three sections depict what each role was responsible for and how that person got their job completed.&lt;/p&gt;
+&lt;h3 id=&quot;input-output-responsibilities&quot;&gt;Input/Output Responsibilities&lt;/h3&gt;
+&lt;p&gt;Jonathan setup the assembly code to ask the user for input and then check to make sure all the input is valid. In order to check to make sure it was all valid it had to fall within legal address bounds, have an even address, know when to stop, and convert to hex. From there it was important to output the proper messages to the user to reflect the state of the machine.&lt;/p&gt;
+&lt;h3 id=&quot;operation-decode-responsibilities&quot;&gt;Operation Decode Responsibilities&lt;/h3&gt;
+&lt;p&gt;Josh was responsible for reading in the instructions from a specific location in memory and determining what kind of instruction it was based on the first four bits in the hexadecimal word. This was accomplished using an LSR instruction to perform a logical shift of the bits to the right.&lt;/p&gt;
+&lt;p&gt;Once a code was found to match that of a supported instruction, it branched to it’s appropriate set of instructions to determine if it was a Byte, Word, or a Longword. At this point, the program branches to Effective Addressing to complete the decoding of the addressing modes.&lt;/p&gt;
+&lt;h3 id=&quot;effective-addressing-responsibilities&quot;&gt;Effective Addressing Responsibilities&lt;/h3&gt;
+&lt;p&gt;Melissa was responsible for determining the EA for the decoded instruction, and for storing good data to be printed. The source and destination bits were decoded using subroutine tables after error checking. The data was then stored in the good instruction buffer. If there was an error, this was signaled and then decoding was terminated and the program sent back to IO, where any already stored data would be ignored.&lt;/p&gt;
+&lt;p&gt;Once everything was decoded and there were no errors, the program was sent back to IO to print.&lt;/p&gt;
 </description>
     </item>
     <item>

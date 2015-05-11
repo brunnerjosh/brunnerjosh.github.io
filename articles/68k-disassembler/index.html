@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>68k Disassembler - Josh Brunner
+    </title>
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="Front-End Web Developer">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body class="article-detail">
+    <header class="header">
+      <div class="content-wrap">
+        <h1>68k Disassembler</h1>
+        <p class="author">Written by <span class="author">Josh Brunner</span>
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><p>In <span class="caps">CSS</span> 422 (Hardware and Computer Organization), I learned a lot about how the physical parts of the computer work closely together to perform operations and commands from the user. The main project that we were tasked with was to build an inverse assembler (also known as a disassembler) which converts a memory image of instructions and data back to 68k assembly language and outputs the disassembled code to the&nbsp;display.</p>
+<hr>
+<ul>
+<li><a href="https://github.com/brunnerjosh/68k-disassembler">GitHub&nbsp;Repository</a></li>
+</ul>
+<hr>
+<p><em>This is a skimmed down version of the <a href="https://github.com/brunnerjosh/68k-disassembler/raw/master/BitCrunchers_ProjectDeliverable.pdf">full&nbsp;report</a></em></p>
+<h1 id="summary">Summary</h1>
+<p>Our team has been tasked with creating a disassembler for the Motorola <span class="caps">MC68000</span> Microprocessor written in 68K Assembly programming language. Over the past six weeks we’ve been working to produce a quality deliverable that can disassemble a supported instruction&nbsp;set.</p>
+<h2 id="design-philosophy">Design&nbsp;Philosophy</h2>
+<p>We attempted to design our program using <span class="caps">SCRUM</span> software engineering methods. Our team met twice every week and communicated using email, Google Drive, Facebook, and&nbsp;SMS.</p>
+<p>In a disassembler, there are typically three sub sections that come together to accomplish the disassembling of machine code. The first section is Input and Output. This job deals with inputting the test data into the program and outputting it once it has been decoded. The second job that a disassembler must have is an Operation Decode person. This person deals with reading each instruction from memory and determining what kind of operation it is. Once the operation has been determined, the last job of Effective Addressing can take place. The Effective Address person determines what kind of addressing is taking place and how many more spaces in memory must be read in order to have a complete instruction&nbsp;outputted.</p>
+<p>After our first meeting, we discussed these jobs and determined who would be best in each role. Along the way, we supported each other throughout the various tasks that were required as we dug further into the&nbsp;instructions.</p>
+<h3 id="project-roles">Project&nbsp;Roles</h3>
+<ul>
+<li>Input / Output was completed by Jonathan&nbsp;Mason</li>
+<li>Operation Decode was completed by Josh&nbsp;Brunner</li>
+<li>Effective Addressing was completed by Melissa&nbsp;Kjelgaard</li>
+</ul>
+<h3 id="operation-decode-highlights">Operation Decode&nbsp;Highlights</h3>
+<p>The subroutines that were used to narrow down the comparison bits to determine what kind of instruction an operation code was were difficult to create. More specifically, the subroutine “WorL” which was used to determine what the size of an instruction was was the hardest to create. However, once this subroutine was created, the rest for the most part followed&nbsp;suit.</p>
+<h2 id="flow-chart">Flow&nbsp;Chart</h2>
+<p>We created this flow chart to aid in the envisioning of the final system. This chart was created
+during week two’s progress report and has only been modified slightly since then. Use it to follow the flow of our program’s&nbsp;execution.</p>
+<p><img src="https://raw.githubusercontent.com/brunnerjosh/68k-disassembler/master/Flowchart%20v0.jpg" alt="Flow Chart"></p>
+<h1 id="planning">Planning</h1>
+<p>Our team followed a rigid set of coding standards as we did not want to deviate from schedule.
+We were all very busy this quarter and did not want to fall behind in our tasks. Therefore, we met right away and began planning the project and how we needed to communicate and manage the tasks at&nbsp;hand.</p>
+<p>Week two was a major milestone in our teams progress. We established a method to version control as well as created a flowchart to envision the task at hand. By week three, our team had already finished decoding of <span class="caps">MOVE</span> and had begun work on decoding the rest. We established a title page and the main algorithms used throughout the effective addressing by week&nbsp;four.</p>
+<h2 id="coding-standards">Coding&nbsp;Standards</h2>
+<ul>
+<li>Comment as if someone else will need to interpret and use your&nbsp;code</li>
+<li>Increment the file version every time you submit <span class="caps">RUNNING</span> code to Google&nbsp;Drive</li>
+<li>Communicate with the team over Facebook for any&nbsp;questions/problems</li>
+<li>Show up on time (+-5 mins) to weekly&nbsp;meetings</li>
+</ul>
+<h1 id="exception-report">Exception&nbsp;Report</h1>
+<p>While this project was very difficult to complete and required a lot of debugging and testing, we feel we’ve produced a solid product. At this time, we have no deviations of expected outcomes that we are aware&nbsp;of.</p>
+<h2 id="output-results">Output&nbsp;Results</h2>
+<p>In the screenshot below, you’ll find proof of our program’s correct output. According to our tests, our program successfully decodes all of the required instructions and addressing modes and outputs them to the&nbsp;screen.</p>
+<p><img src="https://raw.githubusercontent.com/brunnerjosh/68k-disassembler/master/results-output.png" alt="Results Output"></p>
+<h1 id="team-assignments">Team&nbsp;Assignments</h1>
+<p>As listed in section Project Roles, we had divided the team into the suggested three separate roles to accomplish the parts the comprise a Disassembler. The three roles are Input/Output, Operation Decode, and Effective&nbsp;Addressing.</p>
+<h2 id="responsibilities">Responsibilities</h2>
+<p>Each member of the team was responsible for producing necessary code to support each
+other’s progress through the assignment. It was crucial for each member to stay on task with the work schedules for that week’s Sprint. The following three sections depict what each role was responsible for and how that person got their job&nbsp;completed.</p>
+<h3 id="input-output-responsibilities">Input/Output&nbsp;Responsibilities</h3>
+<p>Jonathan setup the assembly code to ask the user for input and then check to make sure all the input is valid. In order to check to make sure it was all valid it had to fall within legal address bounds, have an even address, know when to stop, and convert to hex. From there it was important to output the proper messages to the user to reflect the state of the&nbsp;machine.</p>
+<h3 id="operation-decode-responsibilities">Operation Decode&nbsp;Responsibilities</h3>
+<p>Josh was responsible for reading in the instructions from a specific location in memory and determining what kind of instruction it was based on the first four bits in the hexadecimal word. This was accomplished using an <span class="caps">LSR</span> instruction to perform a logical shift of the bits to the&nbsp;right.</p>
+<p>Once a code was found to match that of a supported instruction, it branched to it’s appropriate set of instructions to determine if it was a Byte, Word, or a Longword. At this point, the program branches to Effective Addressing to complete the decoding of the addressing&nbsp;modes.</p>
+<h3 id="effective-addressing-responsibilities">Effective Addressing&nbsp;Responsibilities</h3>
+<p>Melissa was responsible for determining the <span class="caps">EA</span> for the decoded instruction, and for storing good data to be printed. The source and destination bits were decoded using subroutine tables after error checking. The data was then stored in the good instruction buffer. If there was an error, this was signaled and then decoding was terminated and the program sent back to IO, where any already stored data would be&nbsp;ignored.</p>
+<p>Once everything was decoded and there were no errors, the program was sent back to <span class="caps">IO</span> to&nbsp;print.</p>
+</section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/">« Full blog</a></div>
+        <section class="about"><p>Josh holds a CSSE (Computer Science and Software Engineering) degree from The University of Washington. In his spare time, he pursues  photography using his DSLR and posts his favorites on his <a href="https://www.flickr.com/photos/77226941@N04/">Flickr</a> account. Currently, he works for a company located in Seattle called <a href="http://www.helpfulhuman.com/">Helpful Human</a> as a Front-End Web Developer.</p>
+
+        </section>
+        <section class="copy">
+          <p>&copy; 2015 Josh Brunner &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>JavaScript Slideshow - Josh Brunner
+    </title>
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="Front-End Web Developer">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body class="article-detail">
+    <header class="header">
+      <div class="content-wrap">
+        <h1>JavaScript Slideshow</h1>
+        <p class="author">Written by <span class="author">Josh Brunner</span>
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><p>After reading an <a href="http://www.computedstyle.com/2010/12/hiring-front-end-engineers.html">article</a> written by Chris Zacharias, a former YouTube employee, I was inspired to begin practicing various JavaScript problems. The goal I have since set for myself is to keep up on these types of problems and to make sure that I know and comprehend solutions to solve&nbsp;them.</p>
+<hr>
+<h1 id="summary">Summary</h1>
+<p>In the article, Chris talks a lot about hiring front-end engineers and gave an example problem he would ask to the interviewees. He would mention how candidates tended to rely on jQuery and either couldn’t solve this problem without it or would spend “the next 30 minutes sweating through an often regrettable&nbsp;solution.”</p>
+<p>Thus, I wanted to prove to myself that I could solve this problem. So, here it&nbsp;goes!</p>
+<pre><code>&gt; A div with an id of &#39;slideshow&#39; contains five images, the first of which
+&gt; is shown and the others are hidden using a display style of none.
+&gt; Using Javascript, create a simple slideshow that cycles through the
+&gt; images, displaying each for three seconds at a time, looping back to the
+&gt; first image when the end is reached.
+&gt;
+&gt; You cannot use jQuery or any other library.
+</code></pre><h2 id="html"><span class="caps">HTML</span></h2>
+<p>As described in the problem above, here is the described <span class="caps">HTML</span> structure that will be used as the basis to build the slideshow. It includes a <code>div</code> with an id of ‘slideshow’. Inside the <code>div</code> are five images with the first image shown and the others hidden with a display style of <code>none</code>.</p>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"slideshow"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"picture-1.jpg"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"picture-2.jpg"</span> <span class="attribute">style</span>=<span class="value">"display: none;"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"picture-3.jpg"</span> <span class="attribute">style</span>=<span class="value">"display: none;"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"picture-4.jpg"</span> <span class="attribute">style</span>=<span class="value">"display: none;"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"picture-5.jpg"</span> <span class="attribute">style</span>=<span class="value">"display: none;"</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</code></pre>
+<h2 id="javascript">JavaScript</h2>
+<p>The code that I built to accomplish the slideshow utilizes a variable to hold an array of the images that are within the ‘slideshow’ <code>div</code>. There’s a function called <code>runSlideshow</code> that gets called on page load to begin the image&nbsp;slideshow.</p>
+<pre><code class="lang-javascript"><span class="comment">// Grab the div that has the id of 'slideshow'</span>
+<span class="keyword">var</span> slideshow = document.getElementById(<span class="string">'slideshow'</span>)
+
+<span class="comment">// Grab the images within the 'slideshow' div</span>
+<span class="keyword">var</span> images = slideshow.getElementsByTagName(<span class="string">'img'</span>)
+
+<span class="comment">// Initialize the counter</span>
+<span class="keyword">var</span> index = <span class="number">0</span>;
+
+<span class="comment">// Function used to swap images, simulating a slideshow.</span>
+<span class="function"><span class="keyword">function</span> <span class="title">runSlideshow</span><span class="params">()</span> {</span>
+
+  <span class="comment">// Check if we are within the bounds of the 'images' array</span>
+  <span class="keyword">if</span> ((index+<span class="number">1</span>) &lt; images.length) {
+
+    <span class="comment">// Hide the current image</span>
+    images[index].style.display = <span class="string">'none'</span>
+
+    <span class="comment">// Show the next image</span>
+    images[index+<span class="number">1</span>].style.display = <span class="string">'block'</span>
+
+    <span class="comment">// Increment the counter</span>
+    index++
+
+  } <span class="keyword">else</span> {
+
+    <span class="comment">// Hide the current image</span>
+    images[index].style.display = <span class="string">'none'</span>
+
+    <span class="comment">// Reset the index variable</span>
+    index = <span class="number">0</span>
+
+    <span class="comment">// Start back over from the top</span>
+    images[<span class="number">0</span>].style.display = <span class="string">'block'</span>
+  }
+
+  <span class="comment">// Wait 3 seconds and call changeImage() again</span>
+  setTimeout(<span class="string">'runSlideshow()'</span>, <span class="number">3000</span>)
+}
+
+<span class="comment">// Begin the slideshow</span>
+runSlideshow()
+</code></pre>
+<h2 id="results">Results</h2>
+<p>These are some of my pictures that I’ve taken recently in up here in Washington. Feel free to view more <a href="https://www.flickr.com/photos/77226941@N04/">here</a>. Enjoy the&nbsp;show!</p>
+<div id="slideshow">
+  <img src="picture-1.jpg">
+  <img src="picture-2.jpg" style="display: none;">
+  <img src="picture-3.jpg" style="display: none;">
+  <img src="picture-4.jpg" style="display: none;">
+  <img src="picture-5.jpg" style="display: none;">
+</div>
+
+
+<script>
+// Grab the div that has the id of 'slideshow'
+var slideshow = document.getElementById('slideshow')
+
+// Grab the images within the 'slideshow' div
+var images = slideshow.getElementsByTagName('img')
+
+// Initialize the counter
+var index = 0;
+
+// Function used to swap images, simulating a slideshow.
+function runSlideshow() {
+
+  // Check if we are within the bounds of the 'images' array
+  if ((index+1) < images.length) {
+
+    // Hide the current image
+    images[index].style.display = 'none'
+
+    // Show the next image
+    images[index+1].style.display = 'block'
+
+    // Increment the counter
+    index++
+
+  } else {
+
+    // Hide the current image
+    images[index].style.display = 'none'
+
+    // Reset the index variable
+    index = 0
+
+    // Start back over from the top
+    images[0].style.display = 'block'
+  }
+
+  // Wait 3 seconds and call changeImage() again
+  setTimeout('runSlideshow()', 3000)
+}
+
+// Begin the slideshow
+runSlideshow()
+</script>
+</section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/">« Full blog</a></div>
+        <section class="about"><p>Josh holds a CSSE (Computer Science and Software Engineering) degree from The University of Washington. In his spare time, he pursues  photography using his DSLR and posts his favorites on his <a href="https://www.flickr.com/photos/77226941@N04/">Flickr</a> account. Currently, he works for a company located in Seattle called <a href="http://www.helpfulhuman.com/">Helpful Human</a> as a Front-End Web Developer.</p>
+
+        </section>
+        <section class="copy">
+          <p>&copy; 2015 Josh Brunner &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>
