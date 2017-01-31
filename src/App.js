@@ -12,10 +12,14 @@ export default class App extends React.Component {
 
   render () {
     return (
-      <div className="App">
-        <Header />
-        {this.props.children}
-        <Footer />
+      <div className="app">
+        <div className="app__container">
+          <Header />
+          <div className="app__content">
+            {this.props.children}
+          </div>
+          <Footer />
+        </div>
       </div>
     );
   }

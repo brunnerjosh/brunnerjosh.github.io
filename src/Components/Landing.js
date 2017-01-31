@@ -13,6 +13,7 @@ export default class Landing extends React.Component {
       <Button />
       <Button />
       Weeeee!!!
+      <div style={{height: 100, width: 100, background: "red", margin: 10}}>hello</div>
       </div>
     )
   }

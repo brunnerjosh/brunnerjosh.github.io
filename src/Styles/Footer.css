@@ -1,0 +1,8 @@
+.footer {
+  background: blue;
+  padding: 10px;
+}
+
+.footer__container {
+  background: lightblue;
+}
