@@ -1,20 +1,22 @@
 import React from 'react';
-import Button from './Shared/Button';
+import Grid from './Grid/Grid';
 
 export default class Landing extends React.Component {
   render () {
+    const cells = [
+      { label: 'Click me!', onClick: () => { console.log('I was clicked!') } },
+      { label: 'Click me!', onClick: () => { console.log('I was clicked!') } },
+      { label: 'Click me!', onClick: () => { console.log('I was clicked!') } },
+      { label: 'Click me!', onClick: () => { console.log('I was clicked!') } },
+      { label: 'Click me!', onClick: () => { console.log('I was clicked!') } },
+      { label: 'Click me!', onClick: () => { console.log('I was clicked!') } },
+      { label: 'Click me!', onClick: () => { console.log('I was clicked!') } },
+      { label: 'Click me!', onClick: () => { console.log('I was clicked!') } },
+      { label: 'Click me!', onClick: () => { console.log('I was clicked!') } }
+    ]
+
     return (
-      <div>
-      This is the landing page!
-      <button onClick={this.props.addNumber}>Add</button>
-      {this.props.number}
-      <button onClick={this.props.subtractNumber}>Subtract</button>
-      <Button />
-      <Button />
-      <Button />
-      Weeeee!!!
-      <div style={{height: 100, width: 100, background: "red", margin: 10}}>hello</div>
-      </div>
+      <Grid items={cells} />
     )
   }
 }
