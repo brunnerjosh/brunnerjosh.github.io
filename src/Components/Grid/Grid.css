@@ -1,0 +1,17 @@
+.grid {
+  margin: 10px;
+  background: green;
+}
+
+.grid__container {
+  margin: 10px;
+  background: yellow;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+}
+
+.grid__cell {
+  background: blue;
+  margin: 10px;
+}
