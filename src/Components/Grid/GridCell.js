@@ -32,7 +32,7 @@ export default class GridCell extends React.Component {
      */
     if (this.state.isHovered) {
       for (let i = levels; i > 0; i--) {
-        multiplierMap.push(this.fibonacci(i) * .1)
+        multiplierMap.push(this.fibonacci(i) * .1 + .15)
       }
     } else {
       for (let i = 1; i <= levels; i++) {
@@ -86,7 +86,8 @@ export default class GridCell extends React.Component {
         }}
         >
         <div className={'grid__cell-container'}>
-          {this.props.items[index].label}
+          <img className='grid__cell-img' src={'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png'} alt={this.props.items[index].label} />
+          {/*this.props.items[index].label*/}
         </div>
       </div>
     )

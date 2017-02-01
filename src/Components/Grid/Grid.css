@@ -19,5 +19,11 @@
   height: 100%;
   width: 100%;
   text-align: right;
-  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid__cell-img {
+  height: 1em;
+  width: 1em;
 }
