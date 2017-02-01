@@ -1,29 +1,23 @@
 .grid {
-  margin: 10px;
-  background: green;
   display: flex;
   width: 100%;
 }
 
 .grid__container {
   width: 100%;
-  margin: 10px;
-  background: yellow;
   display: flex;
   flex-flow: wrap;
   justify-content: space-around;
 }
 
 .grid__cell {
-  background: blue;
-  /*padding: 10px;*/
+  transition: background-color 500ms ease;
 }
 
 .grid__cell-container {
-  /*padding: 10px;*/
   display: flex;
-  border: 1px solid blue;
   height: 100%;
   width: 100%;
-  /*background: lightblue;*/
+  text-align: right;
+  flex-direction: column-reverse;
 }

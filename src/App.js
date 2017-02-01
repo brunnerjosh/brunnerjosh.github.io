@@ -2,13 +2,9 @@ import React from 'react';
 import './Styles/App.css';
 
 import Header from './Components/Layout/Header';
-import Footer from './Components/Layout/Footer';
+// import Footer from './Components/Layout/Footer';
 
 export default class App extends React.Component {
-
-  componentDidMount () {
-    console.log('We are live!');
-  }
 
   render () {
     return (
@@ -18,7 +14,7 @@ export default class App extends React.Component {
           <div className="app__content">
             {this.props.children}
           </div>
-          <Footer />
+          {/*<Footer />*/}
         </div>
       </div>
     );

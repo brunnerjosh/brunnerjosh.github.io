@@ -1,5 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-size: 18px; /* Base font-size (used for ems) */
+  font-family: 'Nunito', sans-serif;
+  /*font-family: 'Slabo 27px', serif;*/
 }
