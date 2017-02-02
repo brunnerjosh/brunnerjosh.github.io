@@ -1,5 +1,6 @@
 import React from 'react';
 import GridCell from './GridCell';
+import Theme from '../Theme';
 import './Grid.css';
 
 export default class Grid extends React.Component {
@@ -12,7 +13,7 @@ export default class Grid extends React.Component {
 
   render () {
     return (
-      <div className='grid'>
+      <div className='grid' style={{background: Theme.simpleAndFresh.color2.hex}}>
         <div className='grid__container'>
           {this.renderGridCells()}
         </div>

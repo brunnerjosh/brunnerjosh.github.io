@@ -1,29 +1,31 @@
 .grid {
   display: flex;
   width: 100%;
+  justify-content: center;
 }
 
 .grid__container {
   width: 100%;
   display: flex;
+  max-width: 60em;
   flex-flow: wrap;
   justify-content: space-around;
 }
 
 .grid__cell {
   transition: background-color 500ms ease;
+  display: flex;
+  align-items: center;
 }
 
 .grid__cell-container {
   display: flex;
   height: 100%;
   width: 100%;
-  text-align: right;
   align-items: center;
   justify-content: center;
 }
 
-.grid__cell-img {
-  height: 1em;
-  width: 1em;
+.grid__cell-content {
+
 }

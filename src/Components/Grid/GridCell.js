@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from '../Icon/Icon';
 import Theme from '../Theme';
 
 export default class GridCell extends React.Component {
@@ -66,7 +67,7 @@ export default class GridCell extends React.Component {
     }
 
     const { r, g, b } = Theme.simpleAndFresh.color4;
-    return `rgba(${r}, ${g}, ${b}, ${.2 + multiplier})`;
+    return `rgba(${r}, ${g}, ${b}, ${multiplier})`;
   }
 
   render () {
@@ -85,8 +86,10 @@ export default class GridCell extends React.Component {
           backgroundColor: cellBg
         }}
         >
-        <div className={'grid__cell-container'}>
-          <img className='grid__cell-img' src={'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png'} alt={this.props.items[index].label} />
+        <div className={'grid__cell-container'} title={this.props.items[index].label}>
+          <div className={'grid__cell-content'}>
+            <Icon color={Theme.simpleAndFresh.color1.hex} icon={this.props.items[index].img} />
+          </div>
           {/*this.props.items[index].label*/}
         </div>
       </div>
