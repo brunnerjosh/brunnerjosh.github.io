@@ -27,5 +27,28 @@
 }
 
 .grid__cell-content {
+  display: flex;
+}
 
+.grid__cell-content.is-hovered .grid__cell-icon {
+  margin-right: 1em;
+  max-width: 10em;
+}
+
+.grid__cell-content.is-hovered .grid__cell-label {
+  opacity: 1;
+  width: 100%;
+}
+
+.grid__cell-icon {
+  margin: 0;
+  max-width: 0em;
+  transition: all 500ms ease;
+}
+
+.grid__cell-label {
+  margin-top: .5em;
+  width: 0%;
+  opacity: 0;
+  transition: all 500ms ease;
 }

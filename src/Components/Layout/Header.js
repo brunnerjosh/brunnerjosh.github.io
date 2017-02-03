@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
-import '../../Styles/Header.css';
 import Theme from '../Theme';
+import '../../Styles/Header.css';
 
 export default class Header extends React.Component {
   render () {

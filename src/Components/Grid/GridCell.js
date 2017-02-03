@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import Theme from '../Theme';
 
@@ -75,6 +76,10 @@ export default class GridCell extends React.Component {
     const cellWidth = (100 / 3) + '%';
     const cellBg = this.determineCellBackground(index+1);
 
+    const cellContentClasses = classNames('grid__cell-content', {
+      'is-hovered': this.state.isHovered
+    })
+
     return (
       <div
         className={'grid__cell'}
@@ -87,10 +92,14 @@ export default class GridCell extends React.Component {
         }}
         >
         <div className={'grid__cell-container'} title={this.props.items[index].label}>
-          <div className={'grid__cell-content'}>
-            <Icon color={Theme.simpleAndFresh.color1.hex} icon={this.props.items[index].img} />
+          <div className={cellContentClasses}>
+            <div className={'grid__cell-icon'}>
+              <Icon color={Theme.simpleAndFresh.color1.hex} icon={this.props.items[index].img} />
+            </div>
+            <div className={'grid__cell-label'}>
+              {this.props.items[index].label}
+            </div>
           </div>
-          {/*this.props.items[index].label*/}
         </div>
       </div>
     )
