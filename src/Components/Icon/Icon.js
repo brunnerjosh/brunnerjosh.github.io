@@ -8,7 +8,7 @@ class Icon extends React.Component {
     const IconComponent = Icons[icon];
 
     const styles = {
-      width: '4em',
+      width: '3em',
       color: color || 'black'
     }
 
