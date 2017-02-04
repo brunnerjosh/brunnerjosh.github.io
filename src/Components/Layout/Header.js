@@ -7,7 +7,8 @@ export default class Header extends React.Component {
     return (
       <div className="header" style={{ background: Theme.simpleAndFresh.color1.hex }}>
         <div className="header__container">
-          JOSH BRUNNER | SOFTWARE ENGINEER
+          <span className={'+bold'}>JOSH BRUNNER</span>
+          <span className={'+light'}> | SOFTWARE ENGINEER</span>
         </div>
       </div>
     )

@@ -16,6 +16,12 @@
   transition: background-color 500ms ease;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  box-shadow: inset .2em .2em .89em 0em rgba(0,0,0,0.24);
+}
+
+.grid__cell:first-of-type {
+  box-shadow: initial;
 }
 
 .grid__cell-container {
@@ -28,6 +34,9 @@
 
 .grid__cell-content {
   display: flex;
+  /*flex-direction: column;
+  align-items: center;
+  border: 2px solid green;*/
 }
 
 .grid__cell-content.is-hovered .grid__cell-icon {
@@ -40,13 +49,13 @@
 }
 
 .grid__cell-icon {
-  margin: 0;
   transition: all 500ms ease;
 }
 
 .grid__cell-label {
-  margin-top: .5em;
-  max-width: 0em;
   opacity: 0;
+  max-width: 0em;
+  margin-top: .5em;
+  user-select: none;
   transition: all 500ms ease;
 }

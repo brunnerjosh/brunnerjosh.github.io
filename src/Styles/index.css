@@ -11,3 +11,11 @@ body {
   font-family: 'Nunito', sans-serif;
   /*font-family: 'Slabo 27px', serif;*/
 }
+
+.\+bold {
+  font-weight: bold;
+}
+
+.\+light {
+  font-weight: 100;
+}
