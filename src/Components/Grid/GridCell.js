@@ -76,13 +76,17 @@ export default class GridCell extends React.Component {
     const cellWidth = (100 / 3) + '%';
     const cellBg = this.determineCellBackground(index+1);
 
+    const cellClasses = classNames('grid__cell', {
+      'is-active': this.props.activeCell === this.props.items[index].label
+    })
+
     const cellContentClasses = classNames('grid__cell-content', {
       'is-hovered': this.state.isHovered
     })
 
     return (
       <div
-        className={'grid__cell'}
+        className={cellClasses}
         onClick={this.props.items[index].onClick}
         onMouseEnter={() => { this.setState({ isHovered: true }) }}
         onMouseLeave={() => { this.setState({ isHovered: false }) }}

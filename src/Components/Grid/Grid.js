@@ -7,7 +7,13 @@ export default class Grid extends React.Component {
 
   renderGridCells () {
     return this.props.items.map( (item, index) => {
-      return <GridCell key={index} index={index} items={this.props.items} />
+      return (
+        <GridCell
+          key={index}
+          index={index}
+          activeCell={this.props.activeCell}
+          items={this.props.items} />
+      )
     })
   }
 
