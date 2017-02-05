@@ -72,6 +72,22 @@ export function Thoughts () {
   )
 }
 
+export function Clipboard () {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 16">
+      <path fillRule="evenodd" d="M2 13h4v1H2v-1zm5-6H2v1h5V7zm2 3V8l-3 3 3 3v-2h5v-2H9zM4.5 9H2v1h2.5V9zM2 12h2.5v-1H2v1zm9 1h1v2c-.02.28-.11.52-.3.7-.19.18-.42.28-.7.3H1c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h3c0-1.11.89-2 2-2 1.11 0 2 .89 2 2h3c.55 0 1 .45 1 1v5h-1V6H1v9h10v-2zM2 5h8c0-.55-.45-1-1-1H8c-.55 0-1-.45-1-1s-.45-1-1-1-1 .45-1 1-.45 1-1 1H3c-.55 0-1 .45-1 1z"/>
+    </svg>
+  )
+}
+
+export function SendMail () {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 16">
+      <path fillRule="evenodd" d="M6 5H4V4h2v1zm3 1H4v1h5V6zm5-.48V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V5.52c0-.33.16-.63.42-.81L2 3.58V3c0-.55.45-1 1-1h1.2L7 0l2.8 2H11c.55 0 1 .45 1 1v.58l1.58 1.13c.27.19.42.48.42.81zM3 7.5L7 10l4-2.5V3H3v4.5zm-2 6l4.5-3-4.5-3v6zm11 .5l-5-3-5 3h10zm1-6.5l-4.5 3 4.5 3v-6z"/>
+    </svg>
+  )
+}
+
 export function Back () {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 16">
@@ -80,8 +96,19 @@ export function Back () {
   )
 }
 
+export function Close () {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16">
+      <path fillRule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48"/>
+    </svg>
+  )
+}
+
 export default {
   Back,
+  Close,
+  SendMail,
+  Clipboard,
   GitHub,
   LinkedIn,
   Mail,

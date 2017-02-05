@@ -1,0 +1,25 @@
+
+.email-popup__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.email-popup__copy-icon {
+  font-size: .5em;
+  margin-left: 2em;
+  padding: 2em 0em;
+  display: flex;
+  top: -.2em;
+  cursor: pointer;
+  position: relative;
+}
+
+.email-popup__copy-icon:active {
+  top: .1em;
+}
+
+.email-popup input {
+  width: 100%;
+  font-size: 1em;
+}
