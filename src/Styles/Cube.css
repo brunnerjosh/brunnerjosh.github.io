@@ -1,0 +1,9 @@
+.cube {
+  background: pink;
+  padding: 1em;
+}
+
+.cube__container {
+  background: red;
+  padding: 1em;
+}
