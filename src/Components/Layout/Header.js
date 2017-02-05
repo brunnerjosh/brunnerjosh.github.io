@@ -26,8 +26,7 @@ export default class Header extends React.Component {
         {this.renderBackIcon()}
         <div className="header__container">
           <div className={'header__label'}>
-            <span className={'+bold'}>JOSH BRUNNER</span>
-            <span className={'+light'}> | software engineer</span>
+            {this.props.label}
           </div>
         </div>
       </div>
