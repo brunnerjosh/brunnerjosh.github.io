@@ -67,7 +67,7 @@ export default class GridCell extends React.Component {
       multiplier = multiplierMap[4]
     }
 
-    const { r, g, b } = Theme.simpleAndFresh.color4;
+    const { r, g, b } = Theme.quaternary;
     return `rgba(${r}, ${g}, ${b}, ${multiplier})`;
   }
 
@@ -98,7 +98,7 @@ export default class GridCell extends React.Component {
         <div className={'grid__cell-container'} title={this.props.items[index].label}>
           <div className={cellContentClasses}>
             <div className={'grid__cell-icon'}>
-              <Icon color={Theme.simpleAndFresh.color1.hex} icon={this.props.items[index].img} />
+              <Icon color={Theme.primary.hex} icon={this.props.items[index].img} />
             </div>
             <div className={'grid__cell-label'}>
               {this.props.items[index].label}

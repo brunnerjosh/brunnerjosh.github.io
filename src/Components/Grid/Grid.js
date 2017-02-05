@@ -19,7 +19,7 @@ export default class Grid extends React.Component {
 
   render () {
     return (
-      <div className='grid' style={{background: Theme.simpleAndFresh.color2.hex}}>
+      <div className='grid' style={{background: Theme.secondary.hex}}>
         <div className='grid__container'>
           {this.renderGridCells()}
         </div>
