@@ -22,16 +22,8 @@ export default class Landing extends React.Component {
       { label: 'Thoughts', img: 'Thoughts' },
       { label: 'Hobbies', img: 'Hobby' },
       { label: 'Mail', img: 'Mail', onClick: () => {
-        this.setState({
-          activeCell: 'Mail'
-        })
+        this.setState({ activeCell: 'Mail' })
       }},
-      // { label: 'Mail', img: 'Mail', onClick: (this) => {
-      //   // console.log('this', this);
-      //   // const copySuccess = copy('joshuaebrunner@gmail.com');
-      //   // if (copySuccess) { alert('email copied to clipboard');
-      //   // } else { alert('my email is joshuaebrunner@gmail.com'); }
-      // }},
       { label: 'LinkedIn', img: 'LinkedIn', onClick: () => {
         window.open(Constants.linkedin, '_blank');
       }},

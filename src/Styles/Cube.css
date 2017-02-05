@@ -1,9 +1,31 @@
 .cube {
-  background: pink;
-  padding: 1em;
+  display: inline-flex;
+  vertical-align: bottom;
+  width: 200px;
+  height: 1em;
+  position: relative;
+  perspective: 55.555555556em;
 }
 
 .cube__container {
-  background: red;
-  padding: 1em;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform: translateZ( -.6em );
+  transform-style: preserve-3d;
+  transition: transform 1s;
 }
+
+.cube__side {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.cube__side.side-front  { transform: rotateX(   0deg ) translateZ( .6em ); }
+.cube__side.side-top    { transform: rotateX(  90deg ) translateZ( .6em ); }
+.cube__side.side-back   { transform: rotateX( 180deg ) translateZ( .6em ); }
+.cube__side.side-bottom { transform: rotateX( -90deg ) translateZ( .6em ); }
