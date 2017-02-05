@@ -17,6 +17,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  overflow: hidden;
   box-shadow: inset .2em .2em .89em 0em rgba(0,0,0,0.24);
 }
 

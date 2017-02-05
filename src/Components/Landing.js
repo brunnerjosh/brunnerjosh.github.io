@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 import copy from 'copy-to-clipboard';
 import Grid from './Grid/Grid';
 
@@ -34,6 +35,7 @@ export default class Landing extends React.Component {
     this.setState({
       activeCell: this.state.activeCell === label ? '' : label
     })
+    browserHistory.push(`/${label.toLowerCase()}`)
   }
 
   addCellClickHandler (cells) {
@@ -46,7 +48,7 @@ export default class Landing extends React.Component {
   }
 
   render () {
-
+    console.log('landing render', this.props);
     return (
       <Grid items={this.state.cells} activeCell={this.state.activeCell} />
     )

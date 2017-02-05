@@ -1,10 +1,26 @@
 .header {
   display: flex;
-  padding: 1em;
   font-size: 1.3em;
-  justify-content: center;
+  position: relative;
 }
 
 .header__container {
   filter: invert(100%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.header__label {
+  padding: 1em;
+}
+
+.header__back-icon {
+  z-index: 1;
+  font-size: .35em;
+  display: flex;
+  height: 100%;
+  padding: 0em 1.5em;
+  position: absolute;
+  transition: opacity 250ms ease;
 }

@@ -10,7 +10,7 @@ export default class App extends React.Component {
     return (
       <div className="app">
         <div className="app__container">
-          <Header />
+          <Header isAtRoot={this.props.location.pathname === '/'} />
           <div className="app__content">
             {this.props.children}
           </div>
