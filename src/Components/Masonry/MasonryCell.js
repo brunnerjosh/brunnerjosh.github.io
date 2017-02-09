@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import Theme from '../Theme';
 
-export default class GridCell extends React.Component {
+export default class MasonryCell extends React.Component {
 
   constructor (props) {
     super(props);
@@ -76,11 +76,11 @@ export default class GridCell extends React.Component {
     const cellWidth = (100 / 3) + '%';
     const cellBg = this.determineCellBackground(index+1);
 
-    const cellClasses = classNames('grid__cell', {
+    const cellClasses = classNames('masonry__cell', {
       'is-active': this.props.activeCell === this.props.items[index].label
     })
 
-    const cellContentClasses = classNames('grid__cell-content', {
+    const cellContentClasses = classNames('masonry__cell-content', {
       'is-hovered': this.state.isHovered
     })
 
@@ -95,12 +95,12 @@ export default class GridCell extends React.Component {
           backgroundColor: cellBg
         }}
         >
-        <div className={'grid__cell-container'} title={this.props.items[index].label}>
+        <div className={'masonry__cell-container'} title={this.props.items[index].label}>
           <div className={cellContentClasses}>
-            <div className={'grid__cell-icon'}>
+            <div className={'masonry__cell-icon'}>
               <Icon color={Theme.primary.hex} icon={this.props.items[index].img} />
             </div>
-            <div className={'grid__cell-label'}>
+            <div className={'masonry__cell-label'}>
               {this.props.items[index].label}
             </div>
           </div>

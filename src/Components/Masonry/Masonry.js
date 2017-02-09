@@ -1,14 +1,14 @@
 import React from 'react';
-import GridCell from './GridCell';
+import MasonryCell from './MasonryCell';
 import Theme from '../Theme';
-import './Grid.css';
+import '../../Styles/Masonry.css';
 
-export default class Grid extends React.Component {
+export default class Masonry extends React.Component {
 
-  renderGridCells () {
+  renderMasonryCells () {
     return this.props.items.map( (item, index) => {
       return (
-        <GridCell
+        <MasonryCell
           key={index}
           index={index}
           activeCell={this.props.activeCell}
@@ -19,9 +19,9 @@ export default class Grid extends React.Component {
 
   render () {
     return (
-      <div className='grid' style={{background: Theme.secondary.hex}}>
-        <div className='grid__container'>
-          {this.renderGridCells()}
+      <div className='masonry' style={{ background: Theme.secondary.hex }}>
+        <div className='masonry__container'>
+          {this.renderMasonryCells()}
         </div>
       </div>
     )

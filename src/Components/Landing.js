@@ -1,7 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 import copy from 'copy-to-clipboard';
-import Grid from './Grid/Grid';
+import Masonry from './Masonry/Masonry';
 import Icon from './Icon/Icon';
 import Popup from './Popup';
 import Constants from '../Constants';
@@ -103,7 +103,10 @@ export default class Landing extends React.Component {
     return (
       <div className={'landing'}>
         {this.renderMailPopup()}
-        <Grid items={this.state.cells} activeCell={this.state.activeCell} />
+        <Masonry
+          items={this.state.cells}
+          activeCell={this.state.activeCell}
+          />
       </div>
     )
   }
