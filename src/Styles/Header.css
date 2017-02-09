@@ -5,6 +5,13 @@
 }
 
 .header__container {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.header__content {
   filter: invert(100%);
   width: 100%;
   display: flex;

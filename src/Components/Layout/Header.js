@@ -23,10 +23,12 @@ export default class Header extends React.Component {
   render () {
     return (
       <div className="header" style={{ background: Theme.primary.hex }}>
-        {this.renderBackIcon()}
-        <div className="header__container">
-          <div className={'header__label'}>
-            {this.props.label}
+        <div className='header__container'>
+          {this.renderBackIcon()}
+          <div className="header__content">
+            <div className={'header__label'}>
+              {this.props.label}
+            </div>
           </div>
         </div>
       </div>
