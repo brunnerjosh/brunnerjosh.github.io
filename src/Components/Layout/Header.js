@@ -2,6 +2,7 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 import Icon from '../Icon/Icon';
 import Theme from '../Theme';
+import Constants from '../../Constants';
 import '../../Styles/Header.css';
 
 export default class Header extends React.Component {
@@ -22,8 +23,17 @@ export default class Header extends React.Component {
 
   render () {
     return (
-      <div className="header" style={{ background: Theme.primary.hex }}>
-        <div className='header__container'>
+      <div
+        className="header"
+        style={{
+          height: this.props.height,
+          background: Theme.primary.hex
+        }}>
+        <div
+          className='header__container'
+          style={{
+            maxWidth: Constants.screenWidth
+          }}>
           {this.renderBackIcon()}
           <div className="header__content">
             <div className={'header__label'}>

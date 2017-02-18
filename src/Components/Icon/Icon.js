@@ -6,7 +6,7 @@ class Icon extends React.Component {
   render () {
     const { icon, color } = this.props;
     const IconComponent = Icons[icon];
-
+    console.log('colore', color);
     const styles = {
       width: '3em',
       color: color || 'black'

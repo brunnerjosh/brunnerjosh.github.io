@@ -1,6 +1,5 @@
 import React from 'react';
 import MasonryCell from './MasonryCell';
-import Theme from '../Theme';
 import '../../Styles/Masonry.css';
 
 export default class Masonry extends React.Component {
@@ -19,7 +18,7 @@ export default class Masonry extends React.Component {
 
   render () {
     return (
-      <div className='masonry' style={{ background: Theme.secondary.hex }}>
+      <div className='masonry'>
         <div className='masonry__container'>
           {this.renderMasonryCells()}
         </div>
