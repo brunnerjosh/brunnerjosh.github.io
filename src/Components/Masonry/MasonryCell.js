@@ -32,14 +32,19 @@ export default class MasonryCell extends React.Component {
      *
      * Do this for the hovered and non-hovered state of the cell.
      */
-    if (this.state.isHovered) {
-      for (let i = levels; i > 0; i--) {
-        multiplierMap.push(this.fibonacci(i) * .1 + .15)
-      }
-    } else {
-      for (let i = 1; i <= levels; i++) {
-        multiplierMap.push(this.fibonacci(i) * .1)
-      }
+    // if (this.state.isHovered) {
+    //   for (let i = levels; i > 0; i--) {
+    //     multiplierMap.push(this.fibonacci(i) * .1 + .15)
+    //   }
+    // } else {
+    //   for (let i = 1; i <= levels; i++) {
+    //     multiplierMap.push(this.fibonacci(i) * .1)
+    //   }
+    // }
+
+    // NO HOVER STATE
+    for (let i = levels+1; i > 0; i--) {
+      multiplierMap.push(this.fibonacci(i) * .1)
     }
 
     // 1st cell
