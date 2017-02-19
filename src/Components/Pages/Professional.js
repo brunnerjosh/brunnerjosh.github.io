@@ -18,21 +18,11 @@ export default class Professional extends React.Component {
         <div className='page-content__section-body'>
           {paragraph1}
         </div>
-        <div className='page-content__section-body'>
-          {paragraph1}
-        </div>
-        <div className='page-content__section-body'>
-          {paragraph1}
-        </div>
-        <div className='page-content__section-body'>
-          {paragraph1}
-        </div>
       </div>
     )
   }
 
   render () {
-    console.log('Professional this: ', this);
     return (
       <PageContent
         fontSize={20}
