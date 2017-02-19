@@ -12,3 +12,8 @@
   transform: translate(-50%, -50%);
   fill: currentColor;
 }
+
+.icon.\+about { font-size: 0.78em; }
+.icon.\+graduation { font-size: 1.3em; top: .1em; }
+.icon.\+hobby { font-size: 0.9em; }
+.icon.\+mail { font-size: 1.2em; }

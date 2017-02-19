@@ -6,14 +6,14 @@ class Icon extends React.Component {
   render () {
     const { icon, color } = this.props;
     const IconComponent = Icons[icon];
-    console.log('colore', color);
+
     const styles = {
       width: '3em',
       color: color || 'black'
     }
 
     return (
-      <span className={'icon'} style={styles}>
+      <span className={`icon +${icon.toLowerCase()}`} style={styles}>
         {IconComponent && IconComponent()}
       </span>
     );

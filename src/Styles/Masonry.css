@@ -60,3 +60,24 @@
   user-select: none;
   transition: all 500ms ease;
 }
+
+@media only screen and (max-width: 48em) {
+  .masonry__cell {
+    font-size: .8em;
+  }
+
+  .masonry__cell-label {
+    opacity: 1;
+    margin-top: 2em;
+    max-width: initial;
+  }
+
+  .masonry__cell-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .masonry__cell-content.is-hovered .masonry__cell-icon {
+    margin-right: initial;
+  }
+}
