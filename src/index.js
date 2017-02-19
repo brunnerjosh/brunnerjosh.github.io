@@ -10,7 +10,6 @@ import './Styles/index.css';
 
 import App from './App';
 import Landing from './Containers/Landing';
-import About from './Containers/About';
 import Pages from './Containers/Pages';
 
 const store = createStore();
@@ -20,8 +19,12 @@ render(
     <Router history={browserHistory}>
       <Route component={App}>
         <Route path='/' component={Landing} />
-        <Route path='/about' component={About} />
+        <Route path='/about' component={Pages} />
         <Route path='/professional' component={Pages} />
+        <Route path='/education' component={Pages} />
+        <Route path='/personal' component={Pages} />
+        <Route path='/thoughts' component={Pages} />
+        <Route path='/hobbies' component={Pages} />
       </Route>
     </Router>
   </Provider>
