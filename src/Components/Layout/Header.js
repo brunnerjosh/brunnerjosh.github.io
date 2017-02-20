@@ -27,7 +27,8 @@ export default class Header extends React.Component {
         className="header"
         style={{
           height: this.props.height,
-          background: Theme.primary.hex
+          background: Theme.primary.hex,
+          borderBottom: `.3em solid ${Theme.tertiary.hex}`
         }}>
         <div
           className='header__container'
