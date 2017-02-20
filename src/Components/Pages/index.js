@@ -17,7 +17,7 @@ const pages = {
 
 export default class Pages extends React.Component {
   render () {
-    const Page = pages[this.props.route.path.replace('/', '')];
+    const Page = pages[this.props.route.path];
     return <Page />
   }
 }
