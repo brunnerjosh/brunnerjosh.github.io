@@ -2,6 +2,12 @@ import React from 'react';
 import '../../Styles/Cube.css';
 
 const MAX_ROTATIONS = 100;
+const SIDE_MAP = {
+  0: 'front',
+  1: 'top',
+  2: 'back',
+  3: 'bottom'
+}
 
 export default class Cube extends React.Component {
 
@@ -9,7 +15,7 @@ export default class Cube extends React.Component {
     super(props);
     this.state = {
       rotateX: 0,
-      currentSide: 'front'
+      currentSide: 0
     }
   }
 
@@ -30,6 +36,7 @@ export default class Cube extends React.Component {
 
   goToNext () {
     this.setState({
+      currentSide: this.determineNextSideIndex(),
       rotateX: this.hasReachedMaxRotations() ? 0 : this.state.rotateX - 90
     });
   }
@@ -38,20 +45,17 @@ export default class Cube extends React.Component {
     return this.state.rotateX / 90 * -1 === MAX_ROTATIONS;
   }
 
-  mapIndexToSide (index) {
-    const sideMap = {
-      0: 'front',
-      1: 'top',
-      2: 'back',
-      3: 'bottom'
-    }
-    return sideMap[index];
+  determineNextSideIndex () {
+    const { currentSide } = this.state;
+    const numberOfSides = Object.keys(SIDE_MAP).length;
+    return currentSide + 1 === numberOfSides ? 0 : currentSide + 1;
   }
 
   renderCubeSides () {
     return this.props.sides.map( (side, index) => {
+      const isActive = SIDE_MAP[index] === SIDE_MAP[this.state.currentSide];
       return (
-        <div key={index} className={`cube__side side-${this.mapIndexToSide(index)}`}>
+        <div key={index} className={`cube__side side-${SIDE_MAP[index]} ${isActive ? 'is-active' : ''}`}>
         {side}
         </div>
       )
@@ -61,7 +65,8 @@ export default class Cube extends React.Component {
   render () {
     return (
       <div className='cube'>
-        <div className={'cube__container'}
+        <div
+          className={'cube__container'}
           style={this.rotateCube()}>
           {this.renderCubeSides()}
         </div>

@@ -18,11 +18,17 @@
 
 .cube__side {
   margin: 0;
+  opacity: 0;
   width: 100%;
   height: 100%;
   display: block;
   position: absolute;
   backface-visibility: hidden;
+  transition: opacity 500ms ease;
+}
+
+.cube__side.is-active {
+  opacity: 1;
 }
 
 .cube__side.side-front  { transform: rotateX(   0deg ) translateZ( .6em ); }
