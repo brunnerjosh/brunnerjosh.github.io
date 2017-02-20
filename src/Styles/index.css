@@ -12,7 +12,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 18px; /* Base font-size (used for ems) */
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
   font-family: 'Nunito', sans-serif;
   /*font-family: 'Slabo 27px', serif;*/
 }
