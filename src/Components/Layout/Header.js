@@ -15,7 +15,7 @@ export default class Header extends React.Component {
           cursor: this.props.isAtRoot ? 'default' : 'pointer'
         }}
         className={'header__back-icon'}
-        onClick={browserHistory.goBack} >
+        onClick={!this.props.isAtRoot && browserHistory.goBack} >
         <Icon color={'white'} icon={'Back'} />
       </div>
     );
