@@ -9,7 +9,6 @@
   width: 100%;
   display: flex;
   margin: 0 auto;
-  align-items: center;
 }
 
 .header__content {
@@ -17,6 +16,7 @@
   width: 100%;
   display: flex;
   font-size: 1.3em;
+  align-items: center;
   justify-content: center;
 }
 
