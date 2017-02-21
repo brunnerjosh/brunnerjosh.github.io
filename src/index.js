@@ -9,6 +9,7 @@ import './Styles/Reset.css';
 import './Styles/index.css';
 
 import App from './App';
+import SlidePages from './Containers/SlidePages';
 import Landing from './Containers/Landing';
 import Pages from './Containers/Pages';
 
@@ -18,13 +19,15 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path='/' component={App}>
-        <IndexRoute component={Landing} />
-        <Route path='about' component={Pages} />
-        <Route path='professional' component={Pages} />
-        <Route path='education' component={Pages} />
-        <Route path='personal' component={Pages} />
-        <Route path='thoughts' component={Pages} />
-        <Route path='hobbies' component={Pages} />
+        <Route component={SlidePages}>
+          <IndexRoute component={Landing} />
+          <Route path='about' component={Pages} />
+          <Route path='professional' component={Pages} />
+          <Route path='education' component={Pages} />
+          <Route path='personal' component={Pages} />
+          <Route path='thoughts' component={Pages} />
+          <Route path='hobbies' component={Pages} />
+        </Route>
       </Route>
     </Router>
   </Provider>

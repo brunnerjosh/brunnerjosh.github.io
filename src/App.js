@@ -10,13 +10,6 @@ import Header from './Components/Layout/Header';
 
 export default class App extends React.Component {
 
-  constructor (props) {
-    super(props);
-    this.state = {
-      headerHeight: '4em'
-    }
-  }
-
   renderHeaderLabel () {
     return (
       <div>
@@ -43,13 +36,13 @@ export default class App extends React.Component {
         <div className='app__container' >
           <Header
             label={this.renderHeaderLabel()}
-            height={this.state.headerHeight}
+            height={Constants.headerHeight}
             isAtRoot={isAtRoot}
             />
           <div
             className='app__content'
             style={{
-              marginTop: this.state.headerHeight,
+              marginTop: Constants.headerHeight,
               maxWidth: Constants.screenWidth
             }}>
             {this.props.children}
