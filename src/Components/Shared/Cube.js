@@ -25,6 +25,21 @@ export default class Cube extends React.Component {
     }, 2000)
   }
 
+  /**
+   *  TODO: Instead of doing the rotate here in JS, see if you can solve the bug in CSS where the backface visibility doens't work in Firefox.
+   *
+   * .cube__container {
+   *    animation: rotate-cube infinite 6s;
+   * }
+   *
+   * @keyframes rotate-cube {
+   * 0%   { transform: translateZ(-.6em) rotateX(360deg) }
+   * 25%   { transform: translateZ(-.6em) rotateX(270deg) }
+   * 50%   { transform: translateZ(-.6em) rotateX(180deg) }
+   * 75%   { transform: translateZ(-.6em) rotateX(90deg) }
+   * 100%   { transform: translateZ(-.6em) rotateX(0deg) }
+   * }
+   */
   rotateCube () {
     return {
       // Rotate from back to front
