@@ -1,11 +1,15 @@
 .about__profile {
+  display: block;
   margin-top: .8em;
+  transition: all 500ms ease;
 }
 
 @media only screen and (min-width: 64em) {
   .about__profile {
     width: 26%;
     position: fixed;
+    /*top: 0;*/
+    /*margin-top: 4.8em;*/
   }
 }
 

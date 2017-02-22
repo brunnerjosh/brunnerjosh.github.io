@@ -9,17 +9,18 @@ export default class SlidePages extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      duration: '500',
-      bezier: 'ease'
+      duration: '250',
+      bezier: 'ease-in'
     }
   }
 
   render () {
     const { duration, bezier } = this.state;
+    console.log(this.props.location.pathname);
     return (
       <PageTransition timeout={duration}>
         <div
-          className='slide-pages transition-item'
+          className={'slide-pages transition-item'}
           style={{
             height: `calc(100vh - ${Constants.headerHeight})`,
             transition: `transform ${duration}ms ${bezier}, opacity ${duration}ms ${bezier}`
