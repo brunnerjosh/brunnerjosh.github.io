@@ -12,6 +12,7 @@ import App from './App';
 import Landing from './Containers/Landing';
 import Pages from './Containers/Pages';
 import Typography from './Components/Typography';
+import NotFound from './Components/NotFound';
 
 const store = createStore();
 
@@ -28,6 +29,8 @@ render(
         <Route path='hobbies' component={Pages} />
 
         <Route path='typography' component={Typography} />
+
+        <Route path='*' component={NotFound} />
       </Route>
     </Router>
   </Provider>
