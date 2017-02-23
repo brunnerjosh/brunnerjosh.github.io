@@ -1,5 +1,4 @@
 import React from 'react';
-import Constants from '../../Constants';
 import '../../Styles/PageContent.css';
 import '../../Styles/Grid.css';
 
@@ -24,7 +23,6 @@ export default class PageContent extends React.Component {
   }
 
   render () {
-    const { fontSize } = this.props;
     return (
       <div className='page-content'>
         <div className='page-content__container'>

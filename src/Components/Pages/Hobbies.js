@@ -19,7 +19,6 @@ export default class Hobbies extends React.Component {
   render () {
     return (
       <PageContent
-        fontSize={20}
         rightSide={{
           classes: 'col-xs-12',
           content: this.renderPageContent()

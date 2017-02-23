@@ -99,7 +99,6 @@ export default class About extends React.Component {
   render () {
     return (
       <PageContent
-        fontSize={20}
         leftSide={{
           classes: 'col-xs-12 col-md-offset-0 col-md-4 col-lg-4',
           content: this.renderProfileConnect()
