@@ -11,6 +11,7 @@ import './Styles/index.css';
 import App from './App';
 import Landing from './Containers/Landing';
 import Pages from './Containers/Pages';
+import Typography from './Components/Typography';
 
 const store = createStore();
 
@@ -25,6 +26,8 @@ render(
         <Route path='personal' component={Pages} />
         <Route path='thoughts' component={Pages} />
         <Route path='hobbies' component={Pages} />
+
+        <Route path='typography' component={Typography} />
       </Route>
     </Router>
   </Provider>

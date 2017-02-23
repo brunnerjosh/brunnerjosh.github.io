@@ -1,0 +1,46 @@
+.typography {
+  width: 80%;
+}
+
+/* Typography styleguide referenced from MailChimp (http://ux.mailchimp.com/patterns/typography) */
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+  font-weight: 600;
+}
+h1, .h1 {
+  font-size: 2em;
+  line-height: 3.2em;
+  text-transform: capitalize;
+}
+h2, .h2 {
+  font-size: 1.666666667em;
+  line-height: 2.4em;
+}
+h3, .h3 {
+  font-size: 1.4em;
+  line-height: 1.6em;
+  font-style: italic;
+}
+h4, .h4 {
+  font-size: 1.133333333em;
+  line-height: 2em;
+}
+p {
+  font-size: 1em;
+  line-height: 1.666666667em;
+  margin-bottom: .8em;
+}
+b, strong {
+  font-weight: 600;
+}
+i {
+  font-style: italic;
+}
+ul li {
+  line-height: 1.6em;
+  padding: .8em 0 .733333333em;
+  border-bottom: .066666667em dotted #e0e0e0;
+}
+hr {
+  border: none;
+  border-bottom: solid 0.06em #e0e0e0;
+}
