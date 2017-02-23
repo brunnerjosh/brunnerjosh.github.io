@@ -2,7 +2,9 @@
   width: 80%;
 }
 
-/* Typography styleguide referenced from MailChimp (http://ux.mailchimp.com/patterns/typography) */
+/* Typography styleguide referenced from MailChimp:
+ * http://ux.mailchimp.com/patterns/typography
+ */
 h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   font-weight: 600;
 }

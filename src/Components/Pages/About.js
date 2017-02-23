@@ -18,6 +18,7 @@ export default class About extends React.Component {
       socialLinkgs: [
         { icon: 'Twitter', link: Constants.twitter },
         { icon: 'AngelList', link: Constants.angellist },
+        { icon: 'Medium', link: Constants.medium },
         { icon: 'LinkedIn', link: Constants.linkedin },
         { icon: 'GitHub', link: Constants.github }
       ]
