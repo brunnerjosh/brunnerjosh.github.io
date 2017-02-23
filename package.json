@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "http://brunnerjosh.github.io",
+   "bugs": {
+      "url": "https://github.com/brunnerjosh/brunnerjosh.github.io/issues"
+    },
   "devDependencies": {
     "react-scripts": "0.8.5"
   },

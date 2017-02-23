@@ -15,4 +15,18 @@
   align-self: center;
 }
 
+.app__bugs {
+  z-index: 1;
+  right: 1em;
+  width: 4em;
+  height: 4em;
+  bottom: 1em;
+  display: flex;
+  position: fixed;
+  cursor: pointer;
+  font-size: .8em;
+  border-radius: 50%;
+  background: #FC2929;
+  justify-content: center;
+}
 

@@ -128,9 +128,18 @@ export function Close () {
   )
 }
 
+export function Bug () {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+      <path fillRule="evenodd" d="M11 10h3V9h-3V8l3.17-1.03-.34-.94L11 7V6c0-.55-.45-1-1.00000002-1V4c0-.48-.36-.88-.83-.97L10.2 2H12V1H9.79999998l-2 2h-.59l-2.01-2h-2.2v1h1.8l1.03 1.03c-.47.09-.83.48-.83.97v1c-.55 0-1 .45-1 1v1l-2.83-.97-.34.94 3.17 1.03v1h-3v1h3v1l-3.17 1.03.34.94 2.83-.97v1c0 .55.45 1 1 1h1l1-1V6h1v7l1 1h1C10.55 14 11 13.55 11 13v-1l2.83.97.34-.94L11 11v-1zM8.99999998 5h-3V4h3v1z"/>
+    </svg>
+  )
+}
+
 export default {
   Back,
   Close,
+  Bug,
   SendMail,
   Clipboard,
   GitHub,

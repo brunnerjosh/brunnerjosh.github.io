@@ -2,6 +2,7 @@ import React from 'react';
 import className from 'classnames';
 import Cube from './Components/Shared/Cube';
 import Constants from './Constants';
+import Icon from './Components/Icon/Icon';
 import Theme from './Components/Theme';
 import './Styles/App.css';
 
@@ -22,6 +23,14 @@ export default class App extends React.Component {
         </span>
       </div>
     )
+  }
+
+  renderBugLogger () {
+    return process.env.NODE_ENV === 'development' ? (
+      <div className='app__bugs' onClick={() => window.open(Constants.bugs, '_blank')}>
+        <Icon color={'#fafafa'} icon={'Bug'} />
+      </div>
+    ) : null;
   }
 
   render () {
@@ -47,6 +56,7 @@ export default class App extends React.Component {
             }}>
             {this.props.children}
           </div>
+          {this.renderBugLogger()}
         </div>
       </div>
     );

@@ -7,6 +7,7 @@ export default {
     'product developer',
     'husband'
   ],
+  bugs: 'https://github.com/brunnerjosh/brunnerjosh.github.io/issues',
   email: 'joshuaebrunner@gmail.com',
   twitter: 'https://twitter.com/brunnerjosh',
   angellist: 'https://angel.co/brunnerjosh',
