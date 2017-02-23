@@ -8,16 +8,10 @@ export default class Professional extends React.Component {
 
   renderPageContent () {
     return (
-      <div className='page-content__section'>
-        <div className='page-content__section-header'>
-          Professional
-        </div>
-        <div className='page-content__section-body'>
-          {paragraph1}
-        </div>
-        <div className='page-content__section-body'>
-          {paragraph1}
-        </div>
+      <div>
+        <h1>Professional</h1>
+        <p>{paragraph1}</p>
+        <p>{paragraph1}</p>
       </div>
     )
   }

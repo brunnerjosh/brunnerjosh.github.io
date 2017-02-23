@@ -8,16 +8,10 @@ export default class Education extends React.Component {
 
   renderPageContent () {
     return (
-      <div className='page-content__section'>
-        <div className='page-content__section-header'>
-          Education
-        </div>
-        <div className='page-content__section-body'>
-          {paragraph1}
-        </div>
-        <div className='page-content__section-body'>
-          {paragraph1}
-        </div>
+      <div>
+        <h1>Education</h1>
+        <p>{paragraph1}</p>
+        <p>{paragraph1}</p>
       </div>
     )
   }

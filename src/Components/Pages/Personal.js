@@ -8,16 +8,10 @@ export default class Personal extends React.Component {
 
   renderPageContent () {
     return (
-      <div className='page-content__section'>
-        <div className='page-content__section-header'>
-          Personal
-        </div>
-        <div className='page-content__section-body'>
-          {paragraph1}
-        </div>
-        <div className='page-content__section-body'>
-          {paragraph1}
-        </div>
+      <div>
+        <h1>Personal</h1>
+        <p>{paragraph1}</p>
+        <p>{paragraph1}</p>
       </div>
     )
   }

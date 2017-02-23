@@ -7,14 +7,3 @@
 .page-content__container {
   width: 100%;
 }
-
-.page-content__section-header {
-  font-size: 1.6em;
-  margin-top: 1.5em;
-  margin-bottom: 1em;
-}
-
-.page-content__section-body {
-  line-height: 1.5;
-  margin-bottom: 1.5em;
-}
