@@ -26,9 +26,7 @@ export default class PageContent extends React.Component {
   render () {
     const { fontSize } = this.props;
     return (
-      <div
-        className='page-content'
-        style={{ fontSize: (fontSize / Constants.fontSize.base) + 'em' }}>
+      <div className='page-content'>
         <div className='page-content__container'>
           <div className='row'>
             {this.renderLeftSide()}

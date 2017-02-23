@@ -2,20 +2,6 @@
   margin-top: .8em;
 }
 
-@media only screen and (min-width: 64em) {
-  .about__profile {
-    width: 26%;
-    position: fixed;
-  }
-}
-
-@media only screen and (min-width: 75em) {
-  .about__profile {
-    width: 20%;
-    max-width: 12em;
-  }
-}
-
 .about__profile-img{
   width: 100%;
   padding: 1em;

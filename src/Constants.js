@@ -15,5 +15,6 @@ export default {
   fontSize: {
     base: 18
   },
+  headerHeight: '4em',
   screenWidth: '60em'
 }

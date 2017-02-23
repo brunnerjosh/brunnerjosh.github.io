@@ -14,6 +14,7 @@ export default class About extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      screenWidth: window.innerWidth,
       socialLinkgs: [
         { icon: 'Twitter', link: Constants.twitter },
         { icon: 'AngelList', link: Constants.angellist },
@@ -21,6 +22,19 @@ export default class About extends React.Component {
         { icon: 'GitHub', link: Constants.github }
       ]
     }
+    this.setCurrentScreenWidth = this.setCurrentScreenWidth.bind(this);
+  }
+
+  componentDidMount () {
+    window.addEventListener('resize', this.setCurrentScreenWidth);
+}
+
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.setCurrentScreenWidth);
+  }
+
+  setCurrentScreenWidth () {
+    this.setState({ screenWidth: window.innerWidth });
   }
 
   generateGravatar (email, size) {
@@ -66,8 +80,12 @@ export default class About extends React.Component {
   }
 
   renderPageContent () {
+    const aboutContentStyles = this.state.screenWidth > 1024 ? {
+      overflow: 'auto',
+      height: `calc(100vh - ${Constants.headerHeight})`
+    } : {};
     return (
-      <div>
+      <div className='about__content' style={aboutContentStyles}>
         <h1>About</h1>
         <p>{paragraph1}</p>
         <p>{paragraph1}</p>
