@@ -1,23 +1,15 @@
 import React from 'react';
-import about from './About';
-import professional from './Professional';
-import education from './Education';
-import hobbies from './Hobbies';
-import thoughts from './Thoughts';
-import personal from './Personal';
-
-const pages = {
-  about,
-  professional,
-  education,
-  hobbies,
-  thoughts,
-  personal
-}
+import renders from './components';
+import contentList from './_content';
 
 export default class Pages extends React.Component {
   render () {
-    const Page = pages[this.props.route.path];
-    return <Page />
+    const currentPath = this.props.route.path;
+
+    // TODO: combine these two object so that we can just make one call to the object and use its properties
+    const PageComponent = renders[currentPath];
+    const pageMarkdown = contentList[currentPath];
+
+    return <PageComponent pageMarkdown={pageMarkdown} />
   }
 }

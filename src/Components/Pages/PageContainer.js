@@ -1,8 +1,8 @@
 import React from 'react';
-import '../../Styles/PageContent.css';
+import '../../Styles/PageContainer.css';
 import '../../Styles/Grid.css';
 
-export default class PageContent extends React.Component {
+export default class PageContainer extends React.Component {
 
   renderLeftSide () {
     const { leftSide } = this.props;
@@ -24,8 +24,8 @@ export default class PageContent extends React.Component {
 
   render () {
     return (
-      <div className='page-content'>
-        <div className='page-content__container'>
+      <div className='page'>
+        <div className='page__container'>
           <div className='row'>
             {this.renderLeftSide()}
             {this.renderRightSide()}

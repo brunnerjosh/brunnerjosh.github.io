@@ -1,13 +1,11 @@
 import React from 'react';
 import md5 from 'js-md5';
-import Constants from '../../Constants';
-import Icon from '../Icon/Icon';
-import Theme from '../Theme';
-import PageContent from '../PageContent/PageContent';
+import Constants from '../../../Constants';
+import Icon from '../../Icon/Icon';
+import Theme from '../../Theme';
+import PageContent from '../PageContainer';
 
-import '../../Styles/About.css';
-
-const paragraph1 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+import '../../../Styles/About.css';
 
 export default class About extends React.Component {
 
@@ -87,11 +85,7 @@ export default class About extends React.Component {
     } : {};
     return (
       <div className='about__content' style={aboutContentStyles}>
-        <h1>About</h1>
-        <p>{paragraph1}</p>
-        <p>{paragraph1}</p>
-        <p>{paragraph1}</p>
-        <p>{paragraph1}</p>
+        {this.props.pageMarkdown()}
       </div>
     )
   }

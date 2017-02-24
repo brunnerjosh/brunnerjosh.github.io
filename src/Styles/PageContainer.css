@@ -1,9 +1,9 @@
-.page-content {
+.page {
   display: flex;
   width: 80%;
   justify-content: center;
 }
 
-.page-content__container {
+.page__container {
   width: 100%;
 }
