@@ -1,25 +1,8 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-
-// import app from './app';
-function number (state = { value: 0 }, action) {
-  const newState = Object.assign({}, state);
-
-  switch (action.type) {
-    case 'ADD_NUMBER':
-      newState.value++;
-      break;
-    case 'SUBTRACT_NUMBER':
-      --newState.value;
-      break;
-    default:
-      return state;
-  }
-
-  return newState;
-}
+import medium from './medium';
 
 export default combineReducers({
-  number,
+  medium,
   routing: routerReducer
 });
