@@ -1,15 +1,22 @@
-import Feed from 'rss-to-json';
+import http from 'http';
+import FeedMe from 'feedme';
 
 export function fetchMediumFeed (userId) {
   return dispatch => {
-    console.log('userId', userId);
-    dispatch({ type: 'FETCHING_MEDIUM_STORIES' });
-    Feed.load(`https://medium.com/feed/@${userId}`, (err, rss) => {
-      if (err) {
-        dispatch({ type: 'MEDIUM_STORIES_FETCH_ERROR' });
+
+    dispatch({ type: 'FETCHING_MEDIUM_STORIES', for: userId });
+
+    http.get(`https://medium.com/feed/@${userId}`, res => {
+      if (res) {
+        const parser = new FeedMe(true);
+        res.pipe(parser);
+        parser.on('end', () => {
+          dispatch({ type: 'FETCHED_MEDIUM_STORIES', data: parser.done() });
+        });
       } else {
-        dispatch({ type: 'FETCHED_MEDIUM_STORIES', data: rss });
+        dispatch({ type: 'MEDIUM_STORIES_FETCH_ERROR', for: userId });
       }
     });
+
   }
 }

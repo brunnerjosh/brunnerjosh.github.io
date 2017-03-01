@@ -1,5 +1,6 @@
 import React from 'react';
 import PageContent from '../PageContainer';
+import '../../../Styles/Medium.css';
 
 const MEDIUM_USERNAME = 'dourvaris'
 
@@ -13,14 +14,15 @@ export default class Thoughts extends React.Component {
   }
 
   renderMediumArticle (articles) {
+    // Only return if the post has categories (meaning it's an actual post)
     return articles.map( (article, index) => {
-      return (
+      return article.category ? (
         <div key={index}>
           <div>{article.title}</div>
           <div>Created: {article.created}</div>
           <div dangerouslySetInnerHTML={{ __html: article.description }} />
         </div>
-      )
+      ) : null;
     })
   }
 
