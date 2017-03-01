@@ -1,8 +1,7 @@
 import React from 'react';
-import PageContent from '../PageContainer';
+import PageContent from './PageContainer';
 
-export default class Education extends React.Component {
-
+export default class Article extends React.Component {
   render () {
     return (
       <PageContent

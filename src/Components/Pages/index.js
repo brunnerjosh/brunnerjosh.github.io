@@ -1,15 +1,22 @@
 import React from 'react';
-import renders from './components';
-import contentList from './_content';
+import NotFound from '../NotFound';
+import Article from './Article';
+import views from './views';
+import contentList from './_sections';
 
 export default class Pages extends React.Component {
   render () {
     const currentPath = this.props.route.path;
+    const { articleId } = this.props.params;
 
     // TODO: combine these two object so that we can just make one call to the object and use its properties
-    const PageComponent = renders[currentPath];
-    const pageMarkdown = contentList[currentPath];
+    const PageComponent = articleId ? Article : views[currentPath];
+    const pageMarkdown = articleId ? contentList.articles[articleId] : contentList[currentPath];
 
-    return <PageComponent pageMarkdown={pageMarkdown} />
+    return pageMarkdown ? (
+      <PageComponent
+        pageMarkdown={pageMarkdown}
+        {...this.props} />
+      ) : <NotFound />
   }
 }

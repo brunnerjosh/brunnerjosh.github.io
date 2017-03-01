@@ -10,6 +10,9 @@ import professional from './professional.md';
 import thoughts from './thoughts.md';
 import hobbies from './hobbies.md';
 
+/* ARTICLES */
+import js_slideshow from '../_articles/js_slideshow.md';
+
 function base64ToString (base64) {
   return Base64.decode(base64.split(',')[1]);
 }
@@ -25,5 +28,8 @@ export default {
   personal: () => returnJSXMarkdown(personal),
   professional: () => returnJSXMarkdown(professional),
   thoughts: () => returnJSXMarkdown(thoughts),
-  hobbies: () => returnJSXMarkdown(hobbies)
+  hobbies: () => returnJSXMarkdown(hobbies),
+  articles: {
+    js_slideshow: () => returnJSXMarkdown(js_slideshow)
+  }
 }

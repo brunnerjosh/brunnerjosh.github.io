@@ -28,6 +28,9 @@ render(
         <Route path='thoughts' component={Pages} />
         <Route path='hobbies' component={Pages} />
 
+        <Route path='articles/:articleId' component={Pages} />
+
+        {/* HIDDEN ROUTES */}
         <Route path='typography' component={Typography} />
 
         <Route path='*' component={NotFound} />
