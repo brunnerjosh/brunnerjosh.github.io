@@ -34,7 +34,7 @@ p {
 b, strong {
   font-weight: 600;
 }
-i {
+i, em {
   font-style: italic;
 }
 ul li {
