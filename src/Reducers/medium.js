@@ -1,5 +1,6 @@
 const defaultState = {
-  stories: null
+  stories: null,
+  error: false
 }
 
 export default function (state = defaultState, action) {
@@ -10,7 +11,7 @@ export default function (state = defaultState, action) {
       newState.stories = action.data;
       break;
     case 'MEDIUM_STORIES_FETCH_ERROR':
-      console.log('Error retrieving Medium posts...')
+      newState.error = true;
       break;
     default:
       return state;

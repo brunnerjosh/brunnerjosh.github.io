@@ -5,6 +5,7 @@ https://help.medium.com/hc/en-us/articles/225170228-Setting-full-and-partial-RSS
 import React from 'react';
 import moment from 'moment';
 import Constants from '../../../Constants';
+import Loading from '../../Shared/Loading';
 import PageContent from '../PageContainer';
 import '../../../Styles/Medium.css';
 
@@ -80,9 +81,14 @@ export default class Thoughts extends React.Component {
 
   renderPageContent () {
 
-    const content = this.props.medium.stories ? this.renderMediumArticles(this.props.medium.stories.items) : (
-      <h2>Loading...</h2>
-    );
+    const content = this.props.medium.stories ?
+      this.renderMediumArticles(this.props.medium.stories.items) : this.props.medium.error ? (
+        <div>
+        Error fetching thoughts :(
+        </div>
+      ) : (
+        <Loading />
+      );
 
     return (
       <div>
