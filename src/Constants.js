@@ -14,6 +14,7 @@ export default {
   linkedin: 'https://www.linkedin.com/in/joshbrunner/',
   github: 'https://github.com/brunnerjosh',
   medium: 'https://medium.com/@brunnerjosh',
+  handle: 'brunnerjosh',
   fontSize: {
     base: 18
   },
