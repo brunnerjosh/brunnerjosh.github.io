@@ -4,10 +4,14 @@ https://help.medium.com/hc/en-us/articles/225170228-Setting-full-and-partial-RSS
 */
 import React from 'react';
 import moment from 'moment';
+import className from 'classnames';
+import Theme from '../../Theme';
+import Icon from '../../Icon/Icon';
 import Constants from '../../../Constants';
 import Loading from '../../Shared/Loading';
 import PageContent from '../PageContainer';
 import '../../../Styles/Medium.css';
+import '../../../Styles/Error.css';
 
 const MEDIUM_DATE_FORMAT = 'ddd, D MMM YYYY HH:mm:ss Z';
 
@@ -81,10 +85,18 @@ export default class Thoughts extends React.Component {
 
   renderPageContent () {
 
+    const errorClasses = className('error__action', {
+      'is-spinning': this.props.medium.isLoading
+    });
+
     const content = this.props.medium.stories ?
       this.renderMediumArticles(this.props.medium.stories.items) : this.props.medium.error ? (
-        <div>
-        Error fetching thoughts :(
+        <div className='error'>
+          <h3>Error fetching Medium posts</h3>
+          <p>Click the refresh icon to try again.</p>
+          <div className={errorClasses} onClick={this.props.fetchMediumFeed.bind(null, Constants.handle)}>
+            <Icon icon='Sync' color={Theme.primary.hex} />
+          </div>
         </div>
       ) : (
         <Loading />
@@ -94,7 +106,6 @@ export default class Thoughts extends React.Component {
       <div>
         <h1>Thoughts</h1>
         <p>I use Medium to write down the majority of my thoughts. Here are my most recent posts:</p>
-        <button onClick={this.props.fetchMediumFeed.bind(null, Constants.handle)}>Reload posts</button>
         {content}
       </div>
     )

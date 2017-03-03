@@ -136,10 +136,19 @@ export function Bug () {
   )
 }
 
+export function Sync () {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16">
+      <path fillRule="evenodd" d="M10.24 7.4c.19 1.28-.2 2.62-1.2 3.6-1.47 1.45-3.74 1.63-5.41.54L4.8 10.4.5 9.8l.6 4.2 1.31-1.26c2.36 1.74 5.7 1.57 7.84-.54 1.24-1.23 1.81-2.85 1.74-4.46l-1.75-.34zM2.96 5c1.47-1.45 3.74-1.63 5.41-.54L7.2 5.6l4.3.6-.6-4.2-1.31 1.26c-2.36-1.74-5.7-1.57-7.85.54C.5 5.03-.06 6.65.01 8.26l1.75.35c-.19-1.28.2-2.63 1.2-3.61z"/>
+    </svg>
+  )
+}
+
 export default {
   Back,
   Close,
   Bug,
+  Sync,
   SendMail,
   Clipboard,
   GitHub,
