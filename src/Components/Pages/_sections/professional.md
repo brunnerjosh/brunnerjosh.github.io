@@ -41,7 +41,9 @@ participated in daily standups, weekly retrospectives, etc. compfortable with th
 - created React Native component that shared a data layer (Redux) with its React counterpart
 
 ## Technologies
-- Angular
+[TODO: RENDER THESE AS TAGS and/or a "cloud" based upon skill level?]
+Some of the technologies I work with currently or have worked with in the past include:
+<!--- Angular
 - React
 - Redux
 - React Native
@@ -51,9 +53,11 @@ participated in daily standups, weekly retrospectives, etc. compfortable with th
 - jQuery
 - JavaScript
 - Java
+- Git
+- Perforce
 - C++
 - HTML
 - CSS
-- Assembly 68k
+- Assembly 68k-->
 
 

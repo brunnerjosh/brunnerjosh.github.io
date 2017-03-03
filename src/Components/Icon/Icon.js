@@ -12,6 +12,8 @@ class Icon extends React.Component {
       color: color || 'black'
     }
 
+    if (!IconComponent) console.warn(`Unable to load ${icon} icon :(`);
+
     return (
       <span className={`icon +${icon.toLowerCase()}`} style={styles}>
         {IconComponent && IconComponent()}
