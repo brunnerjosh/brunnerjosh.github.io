@@ -8,6 +8,12 @@
 
 .accordion__item-label {
   padding: 0 1em;
+  cursor: pointer;
+  transition: color 100ms ease;
+}
+
+.accordion__item-label:hover {
+  color: rgba(0, 0, 0, .4);
 }
 
 .accordion__item-content-container {
