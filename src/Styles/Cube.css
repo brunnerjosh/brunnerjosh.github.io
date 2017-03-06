@@ -1,7 +1,7 @@
 .cube {
   display: inline-flex;
   vertical-align: bottom;
-  width: 8.4em;
+  width: 9em;
   height: 1em;
   position: relative;
   perspective: 55.555555556em;
