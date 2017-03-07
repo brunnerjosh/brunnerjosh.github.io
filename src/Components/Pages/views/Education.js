@@ -85,7 +85,7 @@ export default class Education extends React.Component {
     return (
       <div>
         <h1>Education</h1>
-        <p>University of Washington, Computer Science and Software Engineering</p>
+        <p>I have a Bachelor of Science in Computer Science and Software Engineering (CSSE) from the University of Washington.</p>
         <h2>Class List</h2>
         <p>...</p>
         <h2>Class Projects</h2>
