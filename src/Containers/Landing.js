@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import Landing from '../Components/Landing';
 
 function mapStateToProps (state) {
-  return {};
+  return { ...state };
 }
 
 function mapDispatchToProps (dispatch) {

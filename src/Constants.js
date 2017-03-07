@@ -15,6 +15,7 @@ export default {
   github: 'https://github.com/brunnerjosh',
   medium: 'https://medium.com/@brunnerjosh',
   handle: 'brunnerjosh',
+  flickrHandle: '77226941@N04',
   fontSize: {
     base: 18
   },
