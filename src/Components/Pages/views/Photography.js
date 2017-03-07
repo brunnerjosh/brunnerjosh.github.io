@@ -1,6 +1,7 @@
 import React from 'react';
 import PageContent from '../PageContainer';
 import Constants from '../../../Constants';
+import Loading from '../../Shared/Loading';
 
 import '../../../Styles/Photos.css';
 
@@ -49,7 +50,7 @@ export default class Photography extends React.Component {
     return (
       <div>
       {this.props.pageMarkdown()}
-      {this.renderFlickrImages()}
+      {this.props.flickr.isLoading ? <Loading /> : this.renderFlickrImages()}
       </div>
     )
   }
