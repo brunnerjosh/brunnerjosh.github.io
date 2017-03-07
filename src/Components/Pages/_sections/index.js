@@ -8,7 +8,7 @@ import education from './education.md';
 import personal from './personal.md';
 import professional from './professional.md';
 import thoughts from './thoughts.md';
-import hobbies from './hobbies.md';
+import photography from './photography.md';
 
 /* ARTICLES */
 import js_slideshow from '../_articles/js_slideshow.md';
@@ -28,7 +28,7 @@ export default {
   personal: () => returnJSXMarkdown(personal),
   professional: () => returnJSXMarkdown(professional),
   thoughts: () => returnJSXMarkdown(thoughts),
-  hobbies: () => returnJSXMarkdown(hobbies),
+  photography: () => returnJSXMarkdown(photography),
   articles: {
     js_slideshow: () => returnJSXMarkdown(js_slideshow)
   }

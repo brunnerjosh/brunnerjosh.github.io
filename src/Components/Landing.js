@@ -20,7 +20,7 @@ export default class Landing extends React.Component {
       { label: 'Education', img: 'Graduation' },
       { label: 'Personal', img: 'Personal' },
       { label: 'Thoughts', img: 'Thoughts' },
-      { label: 'Hobbies', img: 'Hobby' },
+      { label: 'Photography', img: 'Camera' },
       { label: 'Mail', img: 'Mail', onClick: () => {
         this.setState({ activeCell: 'Mail' })
       }},

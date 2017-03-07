@@ -4,7 +4,7 @@ import Constants from '../../../Constants';
 
 import '../../../Styles/Photos.css';
 
-export default class Hobbies extends React.Component {
+export default class Photography extends React.Component {
 
   componentWillMount () {
     if (this.props.flickr && !this.props.flickr.photos) {

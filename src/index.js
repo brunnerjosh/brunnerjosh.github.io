@@ -26,7 +26,7 @@ render(
         <Route path='education' component={Pages} />
         <Route path='personal' component={Pages} />
         <Route path='thoughts' component={Pages} />
-        <Route path='hobbies' component={Pages} />
+        <Route path='photography' component={Pages} />
 
         <Route path='articles/:articleId' component={Pages} />
 
