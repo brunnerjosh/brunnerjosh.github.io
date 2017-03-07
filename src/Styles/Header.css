@@ -22,6 +22,7 @@
 
 .header__label {
   padding: 1em;
+  cursor: pointer;
   transition: padding 300ms ease;
 }
 

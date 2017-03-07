@@ -37,7 +37,7 @@ export default class Header extends React.Component {
           }}>
           {this.renderBackIcon()}
           <div className="header__content">
-            <div className={'header__label'}>
+            <div className={'header__label'} onClick={ () => browserHistory.push('/') }>
               {this.props.label}
             </div>
           </div>
