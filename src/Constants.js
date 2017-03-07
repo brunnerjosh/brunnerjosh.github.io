@@ -19,6 +19,7 @@ export default {
   fontSize: {
     base: 18
   },
+  googleAnalytics: 'UA-93148344-1',
   headerHeight: '4em',
   screenWidth: '60em'
 }

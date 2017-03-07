@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { browserHistory, Router, Route, IndexRoute } from 'react-router';
 
 import createStore from './Services/Store';
+import logPageView from './Services/GoogleAnalytics';
 
 import './Styles/Reset.css';
 import './Styles/index.css';
@@ -18,7 +19,7 @@ const store = createStore();
 
 render(
   <Provider store={store}>
-    <Router history={browserHistory}>
+    <Router history={browserHistory} onUpdate={logPageView}>
       <Route path='/' component={App}>
         <IndexRoute component={Landing} />
         <Route path='about' component={Pages} />
