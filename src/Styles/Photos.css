@@ -8,6 +8,8 @@
   column-count: 1;
   column-gap: 0em;
   padding: .5em;
+  height: 100%;
+  width: 100%;
   background: black;
 }
 
