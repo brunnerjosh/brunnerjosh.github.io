@@ -7,12 +7,15 @@
   line-height: 0;
   column-count: 1;
   column-gap: 0em;
+  padding: .5em;
+  background: black;
 }
 
 .photos img {
   /* Just in case there are inline attributes */
   width: 100% !important;
   height: auto !important;
+  border: .5em solid transparent;
 }
 
 @media (min-width: 33.33333em) {
