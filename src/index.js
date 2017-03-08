@@ -7,6 +7,7 @@ import createStore from './Services/Store';
 import logPageView from './Services/GoogleAnalytics';
 
 import './Styles/Reset.css';
+import './Styles/Font.css';
 import './Styles/index.css';
 
 import App from './App';
