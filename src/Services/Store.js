@@ -10,7 +10,7 @@ export default function () {
     reducers,
     applyMiddleware(
       thunk,
-      createLogger(),
+      createLogger({ collapsed: true }),
       routerMiddleware(browserHistory)
     )
   );
