@@ -10,7 +10,7 @@ import './Styles/Reset.css';
 import './Styles/Font.css';
 import './Styles/index.css';
 
-import App from './App';
+import App from './Containers/App';
 import Landing from './Containers/Landing';
 import Pages from './Containers/Pages';
 import Typography from './Components/Typography';

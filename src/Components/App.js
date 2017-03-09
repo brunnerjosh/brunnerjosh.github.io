@@ -1,13 +1,13 @@
 import React from 'react';
 import className from 'classnames';
-import Cube from './Components/Shared/Cube';
-import Constants from './Constants';
-import Icon from './Components/Icon/Icon';
-import Theme from './Components/Theme';
-import './Styles/App.css';
+import Cube from '../Components/Shared/Cube';
+import Constants from '../Constants';
+import Icon from '../Components/Icon/Icon';
+import Theme from '../Components/Theme';
+import '../Styles/App.css';
 
-import Header from './Components/Layout/Header';
-// import Footer from './Components/Layout/Footer';
+import Header from '../Components/Layout/Header';
+// import Footer from '../Components/Layout/Footer';
 
 export default class App extends React.Component {
 
@@ -47,13 +47,11 @@ export default class App extends React.Component {
             label={this.renderHeaderLabel()}
             height={Constants.headerHeight}
             isAtRoot={isAtRoot}
+            {...this.props}
             />
           <div
             className='app__content'
-            style={{
-              marginTop: Constants.headerHeight,
-              maxWidth: Constants.screenWidth
-            }}>
+            style={{ marginTop: Constants.headerHeight }}>
             {this.props.children}
           </div>
           {this.renderBugLogger()}
