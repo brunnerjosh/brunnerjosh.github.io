@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { browserHistory, Router, Route, IndexRoute } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 
 import createStore from './Services/Store';
 import logPageView from './Services/GoogleAnalytics';
@@ -17,10 +18,11 @@ import Typography from './Components/Typography';
 import NotFound from './Components/NotFound';
 
 const store = createStore();
+const history = syncHistoryWithStore(browserHistory, store);
 
 render(
   <Provider store={store}>
-    <Router history={browserHistory} onUpdate={logPageView}>
+    <Router history={history} onUpdate={logPageView}>
       <Route path='/' component={App}>
         <IndexRoute component={Landing} />
         <Route path='about' component={Pages} />

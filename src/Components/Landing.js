@@ -1,5 +1,4 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
 import copy from 'copy-to-clipboard';
 import Masonry from './Masonry/Masonry';
 import Icon from './Icon/Icon';
@@ -46,7 +45,7 @@ export default class Landing extends React.Component {
     this.setState({
       activeCell: this.state.activeCell === label ? '' : label
     })
-    browserHistory.push(`/${label.toLowerCase()}`)
+    this.props.push(`/${label.toLowerCase()}`)
   }
 
   handleDismissPopup () {

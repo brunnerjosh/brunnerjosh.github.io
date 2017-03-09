@@ -26,7 +26,7 @@ export default class About extends React.Component {
 
   componentDidMount () {
     window.addEventListener('resize', this.setCurrentScreenWidth);
-}
+  }
 
   componentWillUnmount () {
     window.removeEventListener('resize', this.setCurrentScreenWidth);
