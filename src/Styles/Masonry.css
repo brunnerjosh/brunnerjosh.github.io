@@ -7,7 +7,6 @@
 .masonry__container {
   width: 100%;
   display: flex;
-  max-width: 60em;
   flex-flow: wrap;
   justify-content: space-around;
 }
