@@ -14,7 +14,7 @@ export default class Cube extends React.Component {
   componentDidMount () {
     setInterval( () => {
       this.goToNext();
-    }, 2000)
+    }, 4000)
   }
 
   goToNext () {
