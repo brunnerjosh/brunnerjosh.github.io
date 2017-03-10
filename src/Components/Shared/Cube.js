@@ -2,14 +2,6 @@ import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import '../../Styles/Cube.css';
 
-const MAX_ROTATIONS = 100;
-const SIDE_MAP = {
-  0: 'front',
-  1: 'top',
-  2: 'back',
-  3: 'bottom'
-}
-
 export default class Cube extends React.Component {
 
   constructor (props) {
@@ -32,31 +24,32 @@ export default class Cube extends React.Component {
   }
 
   determineNextSideIndex () {
+    const { sides } = this.props;
     const { currentSide } = this.state;
-    const numberOfSides = Object.keys(SIDE_MAP).length;
-    return currentSide + 1 === numberOfSides ? 0 : currentSide + 1;
+    return currentSide + 1 === sides.length ? 0 : currentSide + 1;
   }
 
-  renderCubeSides () {
-    return this.props.sides.map( (side, index) => {
-      const isActive = SIDE_MAP[index] === SIDE_MAP[this.state.currentSide];
-      if (isActive) {
-        return <div key={index} className='cube__side'>{side}</div>
-      }
-    })
+  renderCubeSide () {
+    const { sides } = this.props;
+    const { currentSide } = this.state;
+    return (
+      <div
+        key={currentSide}
+        className='cube__side'>
+        {sides[currentSide]}
+      </div>
+    )
   }
 
   render () {
     return (
       <div className='cube'>
-        <div className={'cube__container'}>
-          <ReactCSSTransitionGroup
-            transitionName='cube__rotation'
-            transitionEnterTimeout={1000}
-            transitionLeaveTimeout={1000}>
-          {this.renderCubeSides()}
-          </ReactCSSTransitionGroup>
-        </div>
+        <ReactCSSTransitionGroup
+          transitionName='cube__rotation'
+          transitionEnterTimeout={1000}
+          transitionLeaveTimeout={1000}>
+        {this.renderCubeSide()}
+        </ReactCSSTransitionGroup>
       </div>
     )
   }
