@@ -29,5 +29,9 @@
   border-radius: 50%;
   background: #C80000;
   justify-content: center;
+  transition: all 200ms ease;
 }
 
+.app__bugs:hover {
+  bottom: .5em;
+}
