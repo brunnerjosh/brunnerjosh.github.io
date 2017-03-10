@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import '../../Styles/Cube.css';
 
 const MAX_ROTATIONS = 100;
@@ -14,7 +15,6 @@ export default class Cube extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      rotateX: 0,
       currentSide: 0
     }
   }
@@ -25,39 +25,10 @@ export default class Cube extends React.Component {
     }, 2000)
   }
 
-  /**
-   *  TODO: Instead of doing the rotate here in JS, see if you can solve the bug in CSS where the backface visibility doens't work in Firefox.
-   *
-   * .cube__container {
-   *    animation: rotate-cube infinite 6s;
-   * }
-   *
-   * @keyframes rotate-cube {
-   * 0%   { transform: translateZ(-.6em) rotateX(360deg) }
-   * 25%   { transform: translateZ(-.6em) rotateX(270deg) }
-   * 50%   { transform: translateZ(-.6em) rotateX(180deg) }
-   * 75%   { transform: translateZ(-.6em) rotateX(90deg) }
-   * 100%   { transform: translateZ(-.6em) rotateX(0deg) }
-   * }
-   */
-  rotateCube () {
-    return {
-      // Rotate from back to front
-      transform: `translateZ(-.6em) rotateX(${this.state.rotateX}deg)`,
-      // If we are one away from reaching the MAX, turn transition off
-      transition: this.state.rotateX === 0 ? 'initial' : ''
-    }
-  }
-
   goToNext () {
     this.setState({
-      currentSide: this.determineNextSideIndex(),
-      rotateX: this.hasReachedMaxRotations() ? 0 : this.state.rotateX - 90
+      currentSide: this.determineNextSideIndex()
     });
-  }
-
-  hasReachedMaxRotations () {
-    return this.state.rotateX / 90 * -1 === MAX_ROTATIONS;
   }
 
   determineNextSideIndex () {
@@ -69,21 +40,22 @@ export default class Cube extends React.Component {
   renderCubeSides () {
     return this.props.sides.map( (side, index) => {
       const isActive = SIDE_MAP[index] === SIDE_MAP[this.state.currentSide];
-      return (
-        <div key={index} className={`cube__side side-${SIDE_MAP[index]} ${isActive ? 'is-active' : ''}`}>
-        {side}
-        </div>
-      )
+      if (isActive) {
+        return <div key={index} className='cube__side'>{side}</div>
+      }
     })
   }
 
   render () {
     return (
       <div className='cube'>
-        <div
-          className={'cube__container'}
-          style={this.rotateCube()}>
+        <div className={'cube__container'}>
+          <ReactCSSTransitionGroup
+            transitionName='cube__rotation'
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={1000}>
           {this.renderCubeSides()}
+          </ReactCSSTransitionGroup>
         </div>
       </div>
     )
