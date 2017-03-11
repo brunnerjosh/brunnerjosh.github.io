@@ -11,7 +11,7 @@ import '../Styles/index.css';
 import '../Styles/App.css';
 
 import Header from '../Components/Layout/Header';
-// import Footer from '../Components/Layout/Footer';
+import Footer from '../Components/Layout/Footer';
 
 export default class App extends React.Component {
 
@@ -59,6 +59,7 @@ export default class App extends React.Component {
             {this.props.children}
           </div>
           {this.renderBugLogger()}
+          <Footer />
         </div>
       </div>
     );
