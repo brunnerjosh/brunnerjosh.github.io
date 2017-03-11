@@ -1,4 +1,3 @@
-
 html {
   height: 100%;
   width: 100%;
@@ -24,4 +23,9 @@ body {
 
 .\+light {
   font-weight: 100;
+}
+
+.\+disabled {
+  color: #d3d3d3;
+  cursor: default;
 }

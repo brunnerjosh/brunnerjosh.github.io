@@ -9,6 +9,7 @@ import '../Styles/Reset.css';
 import '../Styles/Font.css';
 import '../Styles/index.css';
 import '../Styles/App.css';
+import '../Styles/Content.css';
 
 import Header from '../Components/Layout/Header';
 import Footer from '../Components/Layout/Footer';

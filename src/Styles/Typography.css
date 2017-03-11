@@ -1,3 +1,4 @@
+/* Typography page specific style */
 .typography {
   width: 80%;
 }
@@ -51,4 +52,9 @@ hr {
 blockquote, q {
   border-left: 0.5em solid #EEEEEE;
   padding-left: 1em;
+}
+
+a {
+  color: #56E39F;
+  text-decoration: none;
 }

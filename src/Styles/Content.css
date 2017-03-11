@@ -1,0 +1,19 @@
+.content__section-spacer {
+  margin: 2em 0em;
+  display: flex;
+  font-weight: lighter;
+  justify-content: center;
+  text-transform: uppercase;
+  align-items: center;
+}
+
+.content__section-spacer:before,
+.content__section-spacer:after {
+  flex: 1;
+  content: '-';
+  color: transparent;
+  width: 100%;
+  height: .1em;
+  margin: 0em 1em;
+  background: #00A4DB;
+}
