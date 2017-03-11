@@ -13,10 +13,10 @@ export default class Pages extends React.Component {
     const PageComponent = articleId ? Article : views[currentPath];
     const pageMarkdown = articleId ? contentList.articles[articleId] : contentList[currentPath];
 
-    return pageMarkdown ? (
+    return (pageMarkdown || PageComponent) ? (
       <PageComponent
         pageMarkdown={pageMarkdown}
         {...this.props} />
-      ) : <NotFound />
+    ) : <NotFound />
   }
 }

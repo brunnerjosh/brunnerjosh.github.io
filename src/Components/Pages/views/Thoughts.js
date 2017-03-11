@@ -42,11 +42,9 @@ export default class Thoughts extends React.Component {
       const currentArticle = (
         <div key={index}>
           <div className='medium-feed__container'>
-            <h2
-              className={'medium-feed-title'}
-              onClick={() => window.open(article.link, '_blank')}>
-              {article.title}
-            </h2>
+            <a href={article.link} target='_blank'>
+              <h2>{article.title}</h2>
+            </a>
             <div dangerouslySetInnerHTML={{ __html: article.description }} />
           </div>
         </div>
@@ -72,7 +70,7 @@ export default class Thoughts extends React.Component {
     return chunkededByMonth.length ? chunkededByMonth.map( (month, index) => {
       return (
         <div key={index}>
-          <div className='medium-feed-spacer'>{month.date}</div>
+          <div className='content__section-spacer'>{month.date}</div>
           {month.items}
         </div>
       )

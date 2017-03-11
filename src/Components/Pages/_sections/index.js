@@ -4,11 +4,8 @@ import ReactMarkdown from 'react-markdown';
 
 /* PAGES */
 import about from './about.md';
-import education from './education.md';
-import personal from './personal.md';
-import professional from './professional.md';
-import thoughts from './thoughts.md';
 import photography from './photography.md';
+import professional from './professional.md';
 
 /* ARTICLES */
 import js_slideshow from '../_articles/js_slideshow.md';
@@ -24,10 +21,7 @@ function returnJSXMarkdown (markdownString) {
 // TODO: optimize this to be more dynamic
 export default {
   about: () => returnJSXMarkdown(about),
-  education: () => returnJSXMarkdown(education),
-  personal: () => returnJSXMarkdown(personal),
   professional: () => returnJSXMarkdown(professional),
-  thoughts: () => returnJSXMarkdown(thoughts),
   photography: () => returnJSXMarkdown(photography),
   articles: {
     js_slideshow: () => returnJSXMarkdown(js_slideshow)
