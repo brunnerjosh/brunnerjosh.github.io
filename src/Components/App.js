@@ -4,6 +4,10 @@ import Cube from '../Components/Shared/Cube';
 import Constants from '../Constants';
 import Icon from '../Components/Icon/Icon';
 import Theme from '../Components/Theme';
+
+import '../Styles/Reset.css';
+import '../Styles/Font.css';
+import '../Styles/index.css';
 import '../Styles/App.css';
 
 import Header from '../Components/Layout/Header';
