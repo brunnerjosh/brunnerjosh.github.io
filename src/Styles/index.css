@@ -15,6 +15,7 @@ body {
   font-size: 18px; /* Base font-size (used for ems) */
   overflow-y: scroll;
   font-family: 'OpenSans', sans-serif;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .\+bold {
