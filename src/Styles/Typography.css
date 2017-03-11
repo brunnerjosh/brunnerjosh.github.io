@@ -41,15 +41,14 @@ i, em {
 ul li {
   line-height: 1.6em;
   padding: .8em 0 .733333333em;
-  border-bottom: .066666667em dotted #e0e0e0;
+  border-bottom: .066666667em dotted #EEEEEE;
 }
 hr {
   border: none;
-  border-bottom: solid 0.06em #e0e0e0;
+  border-bottom: solid 0.06em #EEEEEE;
 }
 
 blockquote, q {
-  border-left: 0.8em solid #F0F0F0;
+  border-left: 0.5em solid #EEEEEE;
   padding-left: 1em;
-  margin-left: 1em;
 }
