@@ -79,3 +79,4 @@ function runSlideshow() {
   // Wait 3 seconds and call changeImage() again
   setTimeout('runSlideshow()', 3000)
 }
+```
