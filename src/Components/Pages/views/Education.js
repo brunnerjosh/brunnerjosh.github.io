@@ -1,96 +1,203 @@
 import React from 'react';
+import Icon from '../../Icon/Icon';
+import Theme from '../../Theme';
 import PageContent from '../PageContainer';
 import Accordion from '../../Shared/Accordion/Accordion';
+import '../../../Styles/Education.css';
+
+/**
+ * Image Assets
+ */
+import graduationPortrait from '../../../Assets/Grad_Portrait_Full.jpg';
+import joshDianeCole from '../../../Assets/josh-cole-diane.jpg';
+import ceremony from '../../../Assets/ceremony.jpg';
 
 const schoolProjects = [
   {
-    label: <h4>Capstone Presentation</h4>,
-    content: (
-      <div>
-        <p>TODO: make sure to mention the final report presentation (maybe include the posterboard and picture with Cole?)</p>
-      </div>
-    )
+    label: 'Capstone Presentation',
+    content: {
+      date: '',
+      desc: 'TODO: make sure to mention the final report presentation (maybe include the posterboard and picture with Cole?)',
+      links: []
+    }
   },
   {
-    label: <h4>Online Book Store</h4>,
-    content: (
-      <div>
-        <p>One of the largest projects that I completed during my CS degree at UW was building an online bookstore. I was on a team of three developers tasked with building the system from the ground up.</p>
-        <em>March 10, 2015</em>
-        <a href='https://github.com/brunnerjosh/book-store'>Repo</a>
-        <a href=''></a>
-      </div>
-    )
+    label: 'Online Book Store',
+    content: {
+      date: 'March 10, 2015',
+      desc: 'One of the largest projects that I completed during my CS degree at UW was building an online bookstore. I was on a team of three developers tasked with building the system from the ground up.',
+      links: [
+        { label: 'Repo', icon: 'Repo', url: 'https://github.com/brunnerjosh/book-store' }
+      ]
+    }
   },
   {
-    label: <h4>Disk Caching</h4>,
-    content: (
-      <div>
-        <p>The fourth homework assignment in my Operating Systems class at UW was to implement disk caching based on the algorithm known as the Second Chance Algorithm (SCA). After completing the assignment, I measured the performance and provided screenshots to view the results.</p>
-        <em>May 29, 2014</em>
-        <a href='https://github.com/brunnerjosh/disk-caching'>Repo</a>
-        <a href='http://courses.washington.edu/css430/prog/prog4.html'>Project Spec</a>
-      </div>
-    )
+    label: 'Disk Caching',
+    content: {
+      date: 'May 29, 2014',
+      desc: 'The fourth homework assignment in my Operating Systems class at UW was to implement disk caching based on the algorithm known as the Second Chance Algorithm (SCA). After completing the assignment, I measured the performance and provided screenshots to view the results.',
+      links: [
+        { label: 'Repo', icon: 'Repo', url: 'https://github.com/brunnerjosh/disk-caching' },
+        { label: 'Project Spec', icon: 'FilePDF', url: 'http://courses.washington.edu/css430/prog/prog4.html' }
+      ]
+    }
   },
   {
-    label: <h4>File System</h4>,
-    content: (
-      <div>
-        <p>The final project in my Operating Systems class at UW was to implement a complete Unix-like file system. I was on a team of five other students and I was responsible for implementing the directory which managed the actual files. For this project, a file was just a string of characters that spelled some word. See each section in the repo's README to learn about the specific functions that came together to build the file system.</p>
-        <em>May 5, 2014</em>
-        <a href='https://github.com/brunnerjosh/file-system'>Repo</a>
-        <a href='http://courses.washington.edu/css430/prog/project.html'>Project Spec</a>
-      </div>
-    )
+    label: 'File System',
+    content: {
+      date: 'May 5, 2014',
+      desc: 'The final project in my Operating Systems class at UW was to implement a complete Unix-like file system. I was on a team of five other students and I was responsible for implementing the directory which managed the actual files. For this project, a file was just a string of characters that spelled some word. See each section in the repo\'s README to learn about the specific functions that came together to build the file system.',
+      links: [
+        { label: 'Repo', icon: 'Repo', url: 'https://github.com/brunnerjosh/file-system' },
+        { label: 'Project Spec', icon: 'FilePDF', url: 'http://courses.washington.edu/css430/prog/project.html' }
+      ]
+    }
   },
   {
-    label: <h4>Process Synchronization</h4>,
-    content: (
-      <div>
-        <p>This assignment’s purpose was to exercise the implementation of Java Monitors. Specifically, the assignment had us preempt threads that were for disk read/write operations and instead allow another thread to execute. This inherently prevents the I/O-bound threads from wastefully using CPU power when other tasks could be getting completed. This was accomplished by using SysLib.wait() and SysLib.exit() calls to sleep threads and wake them when their child thread had completed.</p>
-        <em>May 14, 2014</em>
-        <a href='https://github.com/brunnerjosh/process-synchronization'>Repo</a>
-        <a href='http://courses.washington.edu/css430/prog/prog3.html'>Project Spec</a>
-      </div>
-    )
+    label: 'Process Synchronization',
+    content: {
+      date: 'May 14, 2014',
+      desc: 'This assignment’s purpose was to exercise the implementation of Java Monitors. Specifically, the assignment had us preempt threads that were for disk read/write operations and instead allow another thread to execute. This inherently prevents the I/O-bound threads from wastefully using CPU power when other tasks could be getting completed. This was accomplished by using SysLib.wait() and SysLib.exit() calls to sleep threads and wake them when their child thread had completed.',
+      links: [
+        { label: 'Repo', icon: 'Repo', url: 'https://github.com/brunnerjosh/process-synchronization' },
+        { label: 'Project Spec', icon: 'FilePDF', url: 'http://courses.washington.edu/css430/prog/prog3.html' }
+      ]
+    }
   },
   {
-    label: <h4>Process Scheduling Algorithms</h4>,
-    content: (
-      <div>
-        <p>In my Operating Systems class (CSS 430), our homework 2 assignment was to implement process scheduling algorithms on top of the school’s ThreadOS. ThreadOS is an emulated operating system based in Java. It was built by the school to help students conceptualize the operations that go on at the OS-level of the computer.</p>
-        <em>April 30, 2014</em>
-        <a href='https://github.com/brunnerjosh/process-scheduling-algorithms'>Repo</a>
-        <a href='http://courses.washington.edu/css430/prog/prog2.html'>Project Spec</a>
-      </div>
-    )
+    label: 'Process Scheduling Algorithms',
+    content: {
+      date: 'April 30, 2014',
+      desc: 'In my Operating Systems class (CSS 430), our homework 2 assignment was to implement process scheduling algorithms on top of the school’s ThreadOS. ThreadOS is an emulated operating system based in Java. It was built by the school to help students conceptualize the operations that go on at the OS-level of the computer.',
+      links: [
+        { label: 'Repo', icon: 'Repo', url: 'https://github.com/brunnerjosh/process-scheduling-algorithms' },
+        { label: 'Project Spec', icon: 'FilePDF', url: 'http://courses.washington.edu/css430/prog/prog2.html' }
+      ]
+    }
   },
   {
-    label: <h4>68k Disassembler</h4>,
-    content: (
-      <div>
-        <p>In CSS 422 (Hardware and Computer Organization), I learned a lot about how the physical parts of the computer work closely together to perform operations and commands from the user. The main project that we were tasked with was to build an inverse assembler (also known as a disassembler) which converts a memory image of instructions and data back to 68k assembly language and outputs the disassembled code to the display.</p>
-        <em>March 12, 2014</em>
-        <a href='https://github.com/brunnerjosh/68k-disassembler'>Repo</a>
-        <a href='https://github.com/brunnerjosh/68k-disassembler/raw/master/BitCrunchers_ProjectDeliverable.pdf'>Full Report</a>
-      </div>
-    )
+    label: '68k Disassembler',
+    content: {
+      date: 'March 12, 2014',
+      desc: 'In CSS 422 (Hardware and Computer Organization), I learned a lot about how the physical parts of the computer work closely together to perform operations and commands from the user. The main project that we were tasked with was to build an inverse assembler (also known as a disassembler) which converts a memory image of instructions and data back to 68k assembly language and outputs the disassembled code to the display.',
+      links: [
+        { label: 'Repo', icon: 'Repo', url: 'https://github.com/brunnerjosh/68k-disassembler' },
+        { label: 'Full Report', icon: 'FilePDF', url: 'https://github.com/brunnerjosh/68k-disassembler/raw/master/BitCrunchers_ProjectDeliverable.pdf' }
+      ]
+    }
   }
 ];
 
+const courseList = [
+  { label: 'CSS 301: Technical Writing for Computing Professionals' },
+  { label: 'CSS 342: Data Structures, Algorithms, and Discrete Mathematics I' },
+  { label: 'CSS 343: Data Structures, Algorithms, and Discrete Mathematics II' },
+  { label: 'CSS 350: Management Principles for Computing Professionals' },
+  { label: 'CSS 360: Software Engineering' },
+  { label: 'CSS 370: Analysis and Design' },
+  { label: 'CSS 422: Hardware and Computer Organization' },
+  { label: 'CSS 430: Operating Systems' },
+  { label: 'CSS 310: Information Assurance and Cyber Security' },
+  { label: 'CSS 383: Bioinformatics' },
+  { label: 'CSS 480: Principles of Human-Computer Interaction' },
+  { label: 'CSS 475: Database Systems' }
+]
+
 export default class Education extends React.Component {
+
+  renderSectionLinks (links) {
+    return links.map( (link, index) => {
+      return (
+        <li
+          key={index}
+          style={{
+            display: 'flex',
+            alignItems: 'center'
+          }}>
+          <Icon
+            icon={link.icon}
+            color={Theme.primary.hex}
+            style={{
+              fontSize: '.5em',
+              marginRight: '2em'
+            }}/>
+          <a target='_blank' href={link.url}>{link.label}</a>
+        </li>
+      )
+    })
+  }
+
+  formatEducationProjects (items) {
+    return items.map( item => {
+      return {
+        label: <h4>{item.label}</h4>,
+        content: (
+          <div>
+            <p><em>{item.content.date}</em></p>
+            <p>{item.content.desc}</p>
+            <ul>{this.renderSectionLinks(item.content.links)}</ul>
+          </div>
+        )
+      }
+    })
+  }
+
+  renderCourseList () {
+    const list = courseList.map( (course, index) => {
+      return (
+        <li key={index}>
+        {course.label}
+        </li>
+      )
+    });
+    return (
+      <div className='row'>
+        <div className='col-xs-12 col-sm-8'>
+          <ul style={{ columnCount: 1}}>
+          {list}
+          </ul>
+        </div>
+      </div>
+    )
+  }
+
+  renderUWSection () {
+    return (
+      <div className='education__uw'>
+        <div className='row'>
+          <div className='col-xs-4'>
+            <img src={graduationPortrait} alt="graduation-portrait" />
+          </div>
+          <div className='col-xs-8'>
+            <div className='row'>
+              <div className='col-xs-6'>
+                <img src={joshDianeCole} alt='josh-diane-cole' />
+              </div>
+              <div className='col-xs-6'>
+                <img src={ceremony} alt='josh-diane-cole' />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className='education__uw-logo'>
+          <Icon icon='UWBSTEM' />
+        </div>
+      </div>
+    )
+  }
 
   renderPageContent () {
     return (
       <div>
         <h1>Education</h1>
         <p>I have a Bachelor of Science in Computer Science and Software Engineering (CSSE) from the University of Washington.</p>
-        <h2>Class List</h2>
-        <p>...</p>
-        <h2>Class Projects</h2>
+        {this.renderUWSection()}
+        <h2>Course List</h2>
+        <p>Here are the courses I took once I was in my degree. Learn more about the CSSE degree <a href='https://www.uwb.edu/bscsse' target='_blank'>here</a>.</p>
+        {this.renderCourseList()}
+        <h2>Course Projects</h2>
         <p>While working towards my Computer Science degree from the University of Washington, my course work required that I produce projects while working alongside my colleagues. Instead of letting those projects get forgotten in time, I wanted to share my favorites here.</p>
-        <Accordion items={schoolProjects} />
+        <Accordion items={this.formatEducationProjects(schoolProjects)} />
       </div>
     )
   }

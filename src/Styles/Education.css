@@ -1,0 +1,22 @@
+.education__uw {
+  margin: 2em 0;
+}
+
+.education__uw img {
+  width: 100%;
+  margin: 0.4em 0;
+  border: .6rem solid #4B2E83;
+}
+
+.education__uw-logo {
+  right: 0;
+  width: 66%;
+  bottom: 3em;
+  float: right;
+  display: flex;
+  margin-top: -12%;
+}
+
+.education__uw-logo .icon {
+  width: 100% !important;
+}
