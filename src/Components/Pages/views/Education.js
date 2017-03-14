@@ -6,19 +6,24 @@ import Accordion from '../../Shared/Accordion/Accordion';
 import '../../../Styles/Education.css';
 
 /**
- * Image Assets
+ * Assets
  */
 import graduationPortrait from '../../../Assets/Grad_Portrait_Full.jpg';
 import joshDianeCole from '../../../Assets/josh-cole-diane.jpg';
 import ceremony from '../../../Assets/ceremony.jpg';
+import css497Abstract from '../../../Assets/CSS497-Abstract.pdf';
+import capstonePoster from '../../../Assets/capstone-poster.pdf';
 
 const schoolProjects = [
   {
     label: 'Capstone Presentation',
     content: {
-      date: '',
-      desc: 'TODO: make sure to mention the final report presentation (maybe include the posterboard and picture with Cole?)',
-      links: []
+      date: 'March 13, 2015',
+      desc: 'As a student in the University of Washington Bothell\'s (UWB) Computer Science and Software Engineering (CSSE) Department, the last requirement I had to fulfill in order to receive my degree was complete a 400-hour internship at a company of my choice. At the end of the internship, I put together a capstone presentation in front of my peers and professors.',
+      links: [
+        { label: 'Abstract', icon: 'FilePDF', url: css497Abstract, download: true },
+        { label: 'Capstone Poster', icon: 'FilePDF', url: capstonePoster, download: true }
+      ]
     }
   },
   {
@@ -121,7 +126,7 @@ export default class Education extends React.Component {
               fontSize: '.5em',
               marginRight: '2em'
             }}/>
-          <a target='_blank' href={link.url}>{link.label}</a>
+          <a target='_blank' href={link.url} download={link.download}>{link.label}</a>
         </li>
       )
     })
