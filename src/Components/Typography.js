@@ -10,16 +10,32 @@ export default class Typography extends React.Component {
         <hr />
         <div className='row'>
           <div className='col-xs-12 col-sm-6'>
-            <ul>
-              <li><h1>Main Heading</h1></li>
-              <li><h2>Subpage title</h2></li>
-              <li><h3>Section header</h3></li>
-              <li><h4>Sub section heading</h4></li>
-              <li><p><strong>Bolded body content</strong></p></li>
-              <li><p><i>Italic body content</i></p></li>
-              <li><p>Regular body content</p></li>
-              <li><a href='#'>Link</a></li>
-            </ul>
+            <div><h1>Main Heading</h1></div>
+            <div><h2>Subpage title</h2></div>
+            <div><h3>Section header</h3></div>
+            <div><h4>Sub section heading</h4></div>
+            <div><p><strong>Bolded body content</strong></p></div>
+            <div><p><i>Italic body content</i></p></div>
+            <div><p>Regular body content</p></div>
+            <div><a href='#'>Link</a></div>
+            <div>
+              <br />
+              <p><strong>List Style (interactable)</strong></p>
+              <ul className='is-interactable'>
+                <li>List item 1</li>
+                <li>List item 2</li>
+                <li>List item 3</li>
+                <li>List item 4</li>
+              </ul>
+              <br />
+              <p><strong>List Style (non-interactable)</strong></p>
+              <ul>
+                <li>consectetur adipiscing</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing</li>
+                <li>laboris nisi ut aliquip</li>
+                <li>a aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labori</li>
+              </ul>
+            </div>
           </div>
           <div className='col-xs-12 col-sm-6'>
             <h3>Example</h3>
