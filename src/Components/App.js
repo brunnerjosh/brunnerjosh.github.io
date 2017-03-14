@@ -39,10 +39,10 @@ export default class App extends React.Component {
   }
 
   render () {
-    const isAtRoot = this.props.location.pathname === '/'
+    const isAtRoot = this.props.location.pathname === '/';
     const baseAppClasses = className('app', {
       'at-root': isAtRoot
-    })
+    });
     return (
       <div
         className={baseAppClasses}

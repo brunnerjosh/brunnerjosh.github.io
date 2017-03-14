@@ -6,7 +6,10 @@ export function fetchMediumFeed (userId) {
 
     dispatch({ type: 'FETCHING_MEDIUM_STORIES', for: userId });
 
-    http.get(`https://medium.com/feed/@${userId}`, res => {
+    http.get({
+      uri: `https://medium.com/feed/@${userId}`
+    }, res => {
+      console.log('res', res);
       const parser = new FeedMe(true);
       res.pipe(parser);
       parser.on('end', () => {

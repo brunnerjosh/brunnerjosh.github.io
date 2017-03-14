@@ -11,7 +11,7 @@ export default function (state = defaultState, action) {
       newState.isLoading = true;
       break;
     case 'FETCH_FLICKR_ERROR':
-      console.error('Flickr Error :(');
+      console.error('Flickr Error: ', action.err);
       newState.isLoading = false;
       break;
     case 'FETCH_FLICKR_SUCCESS':
