@@ -5,13 +5,16 @@ import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import reducers from '../Reducers';
 
+let middleware = [ thunk, routerMiddleware(browserHistory) ];
+
+if (process.env.NODE_ENV !== 'production') {
+  const logger = createLogger({ collapsed: true });
+  middleware = [ ...middleware, logger ];
+}
+
 export default function () {
   return createStore(
     reducers,
-    applyMiddleware(
-      thunk,
-      createLogger({ collapsed: true }),
-      routerMiddleware(browserHistory)
-    )
+    applyMiddleware(...middleware)
   );
 }
