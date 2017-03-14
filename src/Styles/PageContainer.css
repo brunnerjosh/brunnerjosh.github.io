@@ -1,6 +1,6 @@
 .page {
   display: flex;
-  width: 80%;
+  padding: 0 1em;
   justify-content: center;
 }
 

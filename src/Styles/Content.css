@@ -10,10 +10,9 @@
 .content__section-spacer:before,
 .content__section-spacer:after {
   flex: 1;
-  content: '-';
+  content: '';
   color: transparent;
   width: 100%;
-  height: .1em;
   margin: 0em 1em;
-  background: #00A4DB;
+  border-top: .1em dashed #00A4DB;
 }
