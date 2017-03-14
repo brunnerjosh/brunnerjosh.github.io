@@ -41,7 +41,7 @@ i, em {
 }
 ul li {
   line-height: 1.67em;
-  padding: 0.4em .5em;
+  padding: 0.5em 0.8em;
   transition: all 250ms ease;
   border-bottom: .066666667em dashed #CED3DC;
 }

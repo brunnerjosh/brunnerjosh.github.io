@@ -151,13 +151,9 @@ export default class Education extends React.Component {
       )
     });
     return (
-      <div className='row'>
-        <div className='col-xs-12 col-sm-8'>
-          <ul style={{ columnCount: 1}}>
-          {list}
-          </ul>
-        </div>
-      </div>
+      <ul>
+      {list}
+      </ul>
     )
   }
 
@@ -196,7 +192,7 @@ export default class Education extends React.Component {
         <p>Here are the courses I took once I was in my degree. Learn more about the CSSE degree <a href='https://www.uwb.edu/bscsse' target='_blank'>here</a>.</p>
         {this.renderCourseList()}
         <h2>Course Projects</h2>
-        <p>While working towards my Computer Science degree from the University of Washington, my course work required that I produce projects while working alongside my colleagues. Instead of letting those projects get forgotten in time, I wanted to share my favorites here.</p>
+        <p>While working towards my Computer Science degree from the University of Washington, my course work required that I produce projects while collaborating alongside my colleagues. Instead of letting those projects get forgotten in time, I wanted to share my favorites here.</p>
         <Accordion items={this.formatEducationProjects(schoolProjects)} />
       </div>
     )
