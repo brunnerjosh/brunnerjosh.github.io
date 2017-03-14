@@ -17,8 +17,7 @@ const logos = [
   { label: 'Perforce', logo: 'Perforce' , link: 'https://www.perforce.com/' },
   { label: 'C++', logo: 'CPlusPlus' , link: 'https://en.wikipedia.org/wiki/C%2B%2B' },
   { label: 'HTML', logo: 'HTML' , link: 'https://en.wikipedia.org/wiki/HTML' },
-  { label: 'CSS', logo: 'CSS' , link: 'https://en.wikipedia.org/wiki/Cascading_Style_Sheets' },
-  { label: 'Assembly 68k', logo: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSZKUjHInXydkP7CocVvyOVtV_pDFCD5mYav0J_37YdUpnbFlNA7-1mHjdB8g' , link: '' }
+  { label: 'CSS', logo: 'CSS' , link: 'https://en.wikipedia.org/wiki/Cascading_Style_Sheets' }
 ];
 
 export default class Professional extends React.Component {
