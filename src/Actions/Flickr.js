@@ -1,5 +1,6 @@
 import Flickr from 'node-flickr';
 
+console.log('process.env.REACT_APP_FLICKR_KEY', process.env.REACT_APP_FLICKR_KEY);
 const flickr = new Flickr({
   api_key: process.env.REACT_APP_FLICKR_KEY
 });
