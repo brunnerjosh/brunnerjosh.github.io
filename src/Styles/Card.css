@@ -1,0 +1,58 @@
+.card {
+  position: relative;
+  display: flex;
+  background: white;
+  cursor: pointer;
+  overflow: hidden;
+  transition: box-shadow 350ms ease;
+  box-shadow: 0 0.2em .4em -0.2em rgba(0, 0, 0, 0.3)
+}
+
+.card:hover {
+  box-shadow: 0 0.2em 0.4em 0em rgba(0, 0, 0, .3);
+}
+
+.card:hover .card__photo:after {
+  transform: translateX(-10%) skewX(-5deg);
+}
+
+.card + .card {
+  margin-top: 1em;
+}
+
+.card__photo {
+  flex-basis: 20%;
+  background-color: #56E39F;
+  background-size: cover;
+  background-position: 50% 50%;
+  position: relative;
+}
+.card__photo:after {
+  content: '';
+  width: 110%;
+  height: 100%;
+  display: block;
+  position: absolute; /* Adding this caused a flicker on the card text in Safari */
+  background: rgba(0,0,0,.3);
+  transform: translateX(-110%) skewX(-5deg);
+  transition: transform 500ms ease;
+}
+
+.card__content {
+  flex-basis: 80%;
+  position: relative;
+  z-index: 0;
+  padding: 1em;
+}
+
+.card__content:before {
+  transform: skewX(-5deg);
+  content: '';
+  background: #fff;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  left: -15px;
+  top: 0;
+  bottom: 0;
+}
