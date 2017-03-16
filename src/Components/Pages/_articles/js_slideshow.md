@@ -1,10 +1,10 @@
-# Vanilla JavaScript Slideshow
+# JavaScript Slideshow
 
 _April 26, 2015_
 
 After reading an [article](http://www.computedstyle.com/2010/12/hiring-front-end-engineers.html) written by Chris Zacharias, a former YouTube employee, I was inspired to begin practicing various JavaScript problems. The goal I have since set for myself is to keep up on these types of problems and to make sure that I know and comprehend solutions to solve them.
 
-# Summary
+## Summary
 In the article, Chris talks a lot about hiring front-end engineers and gave an example problem he would ask to the interviewees. He would mention how candidates tended to rely on jQuery and either couldn't solve this problem without it or would spend "the next 30 minutes sweating through an often regrettable solution."
 
 Thus, I wanted to prove to myself that I could solve this problem. So, here it goes!
