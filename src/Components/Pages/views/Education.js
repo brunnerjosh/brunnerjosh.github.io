@@ -13,6 +13,7 @@ import joshDianeCole from '../../../Assets/josh-cole-diane.jpg';
 import ceremony from '../../../Assets/ceremony.jpg';
 import css497Abstract from '../../../Assets/CSS497-Abstract.pdf';
 import capstonePoster from '../../../Assets/capstone-poster.pdf';
+import courseList from '../../../Assets/course_list.json';
 
 const schoolProjects = [
   {
@@ -93,21 +94,6 @@ const schoolProjects = [
   }
 ];
 
-const courseList = [
-  { label: 'CSS 301: Technical Writing for Computing Professionals' },
-  { label: 'CSS 342: Data Structures, Algorithms, and Discrete Mathematics I' },
-  { label: 'CSS 343: Data Structures, Algorithms, and Discrete Mathematics II' },
-  { label: 'CSS 350: Management Principles for Computing Professionals' },
-  { label: 'CSS 360: Software Engineering' },
-  { label: 'CSS 370: Analysis and Design' },
-  { label: 'CSS 422: Hardware and Computer Organization' },
-  { label: 'CSS 430: Operating Systems' },
-  { label: 'CSS 310: Information Assurance and Cyber Security' },
-  { label: 'CSS 383: Bioinformatics' },
-  { label: 'CSS 480: Principles of Human-Computer Interaction' },
-  { label: 'CSS 475: Database Systems' }
-]
-
 export default class Education extends React.Component {
 
   renderSectionLinks (links) {
@@ -126,7 +112,9 @@ export default class Education extends React.Component {
               fontSize: '.5em',
               marginRight: '2em'
             }}/>
-          <a target='_blank' href={link.url} download={link.download}>{link.label}</a>
+          <a target='_blank' href={link.url} download={link.download}>
+          {link.label}
+          </a>
         </li>
       )
     })
