@@ -7,6 +7,7 @@ import moment from 'moment';
 import className from 'classnames';
 import Theme from '../../Theme';
 import Icon from '../../Icon/Icon';
+import Card from '../../Shared/Card';
 import Constants from '../../../Constants';
 import PageContent from '../PageContainer';
 import '../../../Styles/Medium.css';
@@ -32,24 +33,16 @@ export default class Thoughts extends React.Component {
      */
     articles.forEach( (article, index) => {
 
-      // Prevent adding "Medium comments" to final array
-      // if (!article.category) return;
-
-      const articleDate = moment(article.pubdate, MEDIUM_DATE_FORMAT)
-                          .format('MMMM, YYYY');
+      const articleDate = moment(article.pubdate, MEDIUM_DATE_FORMAT).format('MMMM, YYYY');
 
       const currentArticle = (
-        <div key={index}>
-          <a href={article.link} target='_blank'>
-            <div className='medium-feed__container'>
-              <h2>{article.title}</h2>
-              <div className='medium-feed-image' style={{ backgroundImage: `url(${article.img})`}}>
-                {/*<img src="https://cdn-images-1.medium.com/max/1000/1*reqzxN6y8YoDeEQLLq2cJQ.png" alt=""/>*/}
-                <div className='medium-feed-snippet'>{article.description}</div>
-              </div>
-            </div>
-          </a>
-        </div>
+        <Card
+          key={index}
+          onClick={() => window.open(article.link, '_blank')}
+          imgUrl={article.img}
+          header={article.title}
+          description={article.description}
+          />
       )
 
       // See if we can find an existing array to push this next article to
