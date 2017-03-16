@@ -8,7 +8,6 @@ import className from 'classnames';
 import Theme from '../../Theme';
 import Icon from '../../Icon/Icon';
 import Constants from '../../../Constants';
-import Loading from '../../Shared/Loading';
 import PageContent from '../PageContainer';
 import '../../../Styles/Medium.css';
 import '../../../Styles/Error.css';
@@ -34,19 +33,22 @@ export default class Thoughts extends React.Component {
     articles.forEach( (article, index) => {
 
       // Prevent adding "Medium comments" to final array
-      if (!article.category) return;
+      // if (!article.category) return;
 
       const articleDate = moment(article.pubdate, MEDIUM_DATE_FORMAT)
                           .format('MMMM, YYYY');
 
       const currentArticle = (
         <div key={index}>
-          <div className='medium-feed__container'>
-            <a href={article.link} target='_blank'>
+          <a href={article.link} target='_blank'>
+            <div className='medium-feed__container'>
               <h2>{article.title}</h2>
-            </a>
-            <div dangerouslySetInnerHTML={{ __html: article.description }} />
-          </div>
+              <div className='medium-feed-image' style={{ backgroundImage: `url(${article.img})`}}>
+                {/*<img src="https://cdn-images-1.medium.com/max/1000/1*reqzxN6y8YoDeEQLLq2cJQ.png" alt=""/>*/}
+                <div className='medium-feed-snippet'>{article.description}</div>
+              </div>
+            </div>
+          </a>
         </div>
       )
 
@@ -96,9 +98,7 @@ export default class Thoughts extends React.Component {
             <Icon icon='Sync' color={Theme.primary.hex} />
           </div>
         </div>
-      ) : (
-        <Loading />
-      );
+      ) : null;
 
     return (
       <div>
