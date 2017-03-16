@@ -2,22 +2,26 @@
   position: relative;
   display: flex;
   background: white;
-  cursor: pointer;
   overflow: hidden;
   transition: box-shadow 350ms ease;
   box-shadow: 0 0.2em .4em -0.2em rgba(0, 0, 0, 0.3)
 }
 
-.card:hover {
+.card:not(.is-disabled):hover {
+  cursor: pointer;
   box-shadow: 0 0.2em 0.4em 0em rgba(0, 0, 0, .3);
 }
 
-.card:hover .card__photo:after {
-  transform: translateX(-10%) skewX(-5deg);
+.card:not(.is-disabled):hover .card__photo:after {
+  transform: translateX(0%);
 }
 
 .card + .card {
   margin-top: 1em;
+}
+
+.card.is-disabled .card__photo {
+  background: #cccccc
 }
 
 .card__photo {
@@ -29,12 +33,12 @@
 }
 .card__photo:after {
   content: '';
-  width: 110%;
+  width: 100%;
   height: 100%;
   display: block;
   position: absolute; /* Adding this caused a flicker on the card text in Safari */
-  background: rgba(0,0,0,.3);
-  transform: translateX(-110%) skewX(-5deg);
+  background: rgba(0,0,0,.1);
+  transform: translateX(-100%);
   transition: transform 500ms ease;
 }
 

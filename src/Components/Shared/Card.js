@@ -1,11 +1,15 @@
 import React from 'react';
+import className from 'classnames';
 import '../../Styles/Card.css';
 
 export default class Card extends React.Component {
   render () {
+    const cardClasses = className('card', {
+      'is-disabled': this.props.disabled
+    })
     return (
       <div
-        className='card'
+        className={cardClasses}
         onClick={this.props.onClick}>
         <div
           className='card__photo'
