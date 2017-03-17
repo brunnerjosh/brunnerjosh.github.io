@@ -16,11 +16,11 @@ app.use(express.static(__dirname + `/${config.root}`));
 
 app.get('*', (req, res) => res.sendFile( path.resolve(__dirname, config.root, config.routes["/**"])) );
 
-app.listen(port, 'localhost', function (err) {
+app.listen(port, function (err) {
   if (err) {
     console.error(err);
     return;
   }
 
-  console.log('Listening at http://localhost:' + port);
+  console.log('Express server listening on %d, in %s mode', port, app.get('env'));
 });
