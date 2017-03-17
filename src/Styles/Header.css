@@ -38,11 +38,12 @@
 
 .header__back-icon {
   z-index: 1;
-  font-size: .35em;
-  display: flex;
   height: 100%;
+  display: flex;
+  font-size: .35em;
   padding: 0em 3em;
   margin: 0em -3em;
   position: absolute;
+  align-items: center;
   transition: opacity 250ms ease;
 }

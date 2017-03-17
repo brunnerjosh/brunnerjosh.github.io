@@ -169,7 +169,7 @@ export default class Education extends React.Component {
           </div>
         </div>
         <div className='education__uw-logo'>
-          <Icon icon='UWBSTEM' />
+          <Icon icon='UWBSTEM' style={{ height: 'auto' }} />
         </div>
       </div>
     )

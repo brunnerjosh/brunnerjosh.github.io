@@ -34,13 +34,7 @@
 
 .masonry__cell-content {
   display: flex;
-  /*flex-direction: column;
   align-items: center;
-  border: 2px solid green;*/
-}
-
-.masonry__cell-content.is-hovered .masonry__cell-icon {
-  margin-right: 1em;
 }
 
 .masonry__cell-content.is-hovered .masonry__cell-label {
@@ -48,16 +42,14 @@
   max-width: 10em;
 }
 
-.masonry__cell-icon {
-  transition: all 500ms ease;
-}
-
 .masonry__cell-label {
   opacity: 0;
   max-width: 0em;
-  margin-top: .5em;
   user-select: none;
-  transition: all 500ms ease;
+  padding-left: 1em;
+  margin-right: -2em;
+  transition: opacity 500ms ease,
+              max-width 500ms ease;
 }
 
 @media only screen and (max-width: 48em) {
@@ -67,16 +59,13 @@
 
   .masonry__cell-label {
     opacity: 1;
-    margin-top: 2em;
+    margin: 2em auto 0 auto;
+    padding-left: 0;
     max-width: initial;
   }
 
   .masonry__cell-content {
     flex-direction: column;
     align-items: center;
-  }
-
-  .masonry__cell-content.is-hovered .masonry__cell-icon {
-    margin-right: initial;
   }
 }

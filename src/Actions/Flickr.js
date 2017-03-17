@@ -7,7 +7,7 @@ const flickr = new Flickr({
 
 export function fetchFlickrPhotos (opts) {
   return dispatch => {
-    dispatch({ type: 'FETCHING_FLICKR' });
+    dispatch({ type: 'FETCHING_FLICKR', opts });
     flickr.get('people.getPublicPhotos', opts, (err, result) => {
       if (err) {
         dispatch({ type: 'FETCH_FLICKR_ERROR', err });

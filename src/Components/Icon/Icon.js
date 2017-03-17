@@ -9,6 +9,7 @@ class Icon extends React.Component {
 
     const styles = {
       width: '3em',
+      height: '3em',
       color: color || 'black'
     }
 
