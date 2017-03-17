@@ -2,9 +2,7 @@ import '../../node_modules/flickrapi/browser/flickrapi.js';
 
 const { Flickr } = window;
 
-var flickr = new Flickr({
-  endpoint: "/api/flickr"
-});
+var flickr = new Flickr({ endpoint: "/api/flickr" });
 
 export function fetchFlickrPhotos (opts) {
   return dispatch => {
