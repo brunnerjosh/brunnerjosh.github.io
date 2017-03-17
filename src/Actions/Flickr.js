@@ -3,7 +3,7 @@ import '../../node_modules/flickrapi/browser/flickrapi.js';
 const { Flickr } = window;
 
 var flickr = new Flickr({
-  endpoint: "http://localhost:8080/api/flickr"
+  endpoint: "/api/flickr"
 });
 
 export function fetchFlickrPhotos (opts) {

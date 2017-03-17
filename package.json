@@ -2,6 +2,7 @@
   "name": "personal-site",
   "version": "0.1.0",
   "private": true,
+  "main": "server.js",
   "homepage": "http://brunnerjosh.github.io",
   "bugs": {
     "url": "https://github.com/brunnerjosh/brunnerjosh.github.io/issues"
