@@ -12,9 +12,11 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 app.use('/api', routes);
 
+console.log('__dirname: ', __dirname);
+
 app.use(express.static(__dirname + `/build`));
 
-app.get('*', (req, res) => res.sendFile( path.join(__dirname, 'build', 'index.html')) );
+app.get('*', (req, res) => res.sendFile( path.join( '/build', '/index.html' )) );
 
 app.listen(port, function (err) {
   if (err) {
