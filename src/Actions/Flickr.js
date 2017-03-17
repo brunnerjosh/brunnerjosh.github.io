@@ -1,19 +1,20 @@
-import Flickr from 'node-flickr';
+import '../../node_modules/flickrapi/browser/flickrapi.js';
 
-console.log('process.env.REACT_APP_FLICKR_KEY', process.env.REACT_APP_FLICKR_KEY);
-const flickr = new Flickr({
-  api_key: process.env.REACT_APP_FLICKR_KEY
+const { Flickr } = window;
+
+var flickr = new Flickr({
+  endpoint: "http://localhost:8080/api/flickr"
 });
 
 export function fetchFlickrPhotos (opts) {
   return dispatch => {
     dispatch({ type: 'FETCHING_FLICKR', opts });
-    flickr.get('people.getPublicPhotos', opts, (err, result) => {
+    flickr.people.getPublicPhotos(opts, (err, result) => {
       if (err) {
         dispatch({ type: 'FETCH_FLICKR_ERROR', err });
       } else {
-        dispatch({ type: 'FETCH_FLICKR_SUCCESS', photos: result.photos });
+        dispatch({ type: 'FETCH_FLICKR_SUCCESS', photos: result.photos })
       }
-    })
+    });
   }
 }
