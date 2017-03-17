@@ -14,9 +14,9 @@ app.use('/api', routes);
 
 console.log('__dirname: ', __dirname);
 
-app.use(express.static(__dirname + `/build`));
+app.use(express.static('build'));
 
-app.get('*', (req, res) => res.sendFile( path.join( '/build', '/index.html' )) );
+app.get('*', (req, res) => res.sendFile('index.html') );
 
 app.listen(port, function (err) {
   if (err) {
