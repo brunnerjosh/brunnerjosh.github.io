@@ -15,6 +15,10 @@ app.use('/api', routes);
 console.log('__dirname: ', __dirname);
 
 app.use(express.static(__dirname + '/build'));
+app.get('*', function (req, res) {
+  console.log('hit here!');
+  res.sendFile('index.html');
+});
 // app.use(__dirname, express.static('/build'))
 
 // app.get('*', (req, res) => res.sendFile('index.html') );
