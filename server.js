@@ -12,9 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 app.use('/api', routes);
 
-app.use(express.static(__dirname + `/${config.root}`));
+app.use(express.static(__dirname + `/build`));
 
-app.get('*', (req, res) => res.sendFile( path.resolve(__dirname, config.root, config.routes["/**"])) );
+app.get('*', (req, res) => res.sendFile( path.resolve(__dirname, 'build', 'index.html')) );
 
 app.listen(port, function (err) {
   if (err) {
