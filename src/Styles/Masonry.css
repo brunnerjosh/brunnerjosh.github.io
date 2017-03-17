@@ -35,6 +35,7 @@
 .masonry__cell-content {
   display: flex;
   align-items: center;
+  margin-left: -1em; /* TODO: Get rid of this. It's bad and cheating! */
 }
 
 .masonry__cell-content.is-hovered .masonry__cell-label {
