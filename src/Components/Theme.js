@@ -8,7 +8,7 @@ const themes = {
   },
   coolMint: {
     primary: { hex: '#2A2D34', r: 42, g: 245, b: 52 },
-    secondary: { hex: '#fafafa', r: 250, g: 250, b: 250 },
+    secondary: { hex: '#EFEFF0', r: 239, g: 239, b: 240 },
     tertiary: { hex: '#00A4DB', r: 0, g: 164, b: 219 },
     quaternary: { hex: '#56E39F', r: 86, g: 227, b: 159 }
   }
