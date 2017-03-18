@@ -12,12 +12,13 @@ router.get('/', function(req, res) {
 });
 
 Flickr.tokenOnly(flickrOptions, function(error, flickr) {
-  if (error) console.error(error);
+  if (error) console.error('Flickr error: ', error);
   flickr.proxy(router, '/flickr')
 });
 
 router.get('/*', function(req, res) {
-  res.send(404);
+  console.log('req', req);
+  res.sendStatus(404);
 });
 
 module.exports = router;
