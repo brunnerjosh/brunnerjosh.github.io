@@ -79,12 +79,8 @@ export default class About extends React.Component {
   }
 
   renderPageContent () {
-    const aboutContentStyles = this.state.screenWidth > 1024 ? {
-      overflow: 'auto',
-      height: `calc(100vh - ${Constants.headerHeight})`
-    } : {};
     return (
-      <div className='about__content' style={aboutContentStyles}>
+      <div className='about__content'>
         {this.props.pageMarkdown()}
       </div>
     )
