@@ -1,1 +1,0 @@
-var temp1="Hello world!";console.log(temp1);
