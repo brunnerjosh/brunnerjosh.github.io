@@ -17,7 +17,6 @@ Flickr.tokenOnly(flickrOptions, function(error, flickr) {
 });
 
 router.get('/*', function(req, res) {
-  console.log('req', req);
   res.sendStatus(404);
 });
 

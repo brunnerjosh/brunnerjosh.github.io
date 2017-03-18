@@ -9,9 +9,7 @@ const routes = require('./routes/api-router');
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
 app.use('/api', routes);
-
 app.use(express.static(__dirname + `/${config.root}`));
 
 app.get('*', (req, res) => res.sendFile( path.resolve(__dirname, config.root, config.routes["/**"])) );
