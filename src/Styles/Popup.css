@@ -13,15 +13,15 @@
 }
 
 .popup__container {
-  display: flex;
   z-index: 1;
-  justify-content: center;
-  flex-direction: column;
+  padding: 1em;
+  display: flex;
   border-radius: 0.4em;
-  padding: 2em;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 300ms ease;
   border: 0.4em solid white;
   background: rgba(255,255,255,0.6);
-  transition: all 300ms ease;
 }
 
 .popup__container.is-success {
