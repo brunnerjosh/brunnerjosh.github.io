@@ -1,5 +1,6 @@
 import React from 'react';
 import copy from 'copy-to-clipboard';
+import Bouncefix from './Shared/Bouncefix';
 import Masonry from './Masonry/Masonry';
 import Icon from './Icon/Icon';
 import Popup from './Popup';
@@ -102,10 +103,12 @@ export default class Landing extends React.Component {
     return (
       <div className={'landing'}>
         {this.renderMailPopup()}
-        <Masonry
-          items={this.state.cells}
-          activeCell={this.state.activeCell}
-          />
+        <Bouncefix className='bouncefix'>
+          <Masonry
+            items={this.state.cells}
+            activeCell={this.state.activeCell}
+            />
+        </Bouncefix>
       </div>
     )
   }
