@@ -7,11 +7,7 @@ export default class Footer extends React.Component {
     return (
       <div
         className='footer'
-        style={{
-          height: this.props.height,
-          background: Theme.primary.hex,
-          borderTop: `.3em solid ${Theme.tertiary.hex}`
-        }}
+        style={{ borderTop: `.3em solid ${Theme.tertiary.hex}` }}
         />
     )
   }

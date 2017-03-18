@@ -47,16 +47,16 @@ export default class App extends React.Component {
       <div
         className={baseAppClasses}
         style={{ background: Theme.secondary.hex }}>
-        <div className='app__container' >
+        <div
+          className='app__container'
+          style={{ minHeight: `calc(100vh - ${Constants.headerHeight} * 2)` }}>
           <Header
             label={this.renderHeaderLabel()}
             height={Constants.headerHeight}
             isAtRoot={isAtRoot}
             {...this.props}
             />
-          <div
-            className='app__content'
-            style={{ marginTop: Constants.headerHeight }}>
+          <div className='app__content'>
             {this.props.children}
           </div>
           {this.renderBugLogger()}
