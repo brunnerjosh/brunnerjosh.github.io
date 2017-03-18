@@ -60,7 +60,7 @@ export default class App extends React.Component {
             {this.props.children}
           </div>
           {this.renderBugLogger()}
-          <Footer />
+          <Footer height={Constants.headerHeight}/>
         </div>
       </div>
     );
