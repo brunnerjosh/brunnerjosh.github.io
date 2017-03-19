@@ -49,7 +49,7 @@ export default class App extends React.Component {
         style={{ background: Theme.secondary.hex }}>
         <div
           className='app__container'
-          style={{ minHeight: `calc(100vh - ${Constants.headerHeight} * 2)` }}>
+          style={{ minHeight: `calc(100vh - (${Constants.headerHeight} + 2em))` }}>
           <Header
             label={this.renderHeaderLabel()}
             height={Constants.headerHeight}

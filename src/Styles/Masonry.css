@@ -57,9 +57,13 @@
     font-size: .8em;
   }
 
+  .masonry__cell-icon {
+    font-size: .8em
+  }
+
   .masonry__cell-label {
     opacity: 1;
-    margin: 2em auto 0 auto;
+    margin: 1em auto 0 auto;
     padding-left: 0;
     max-width: initial;
   }
