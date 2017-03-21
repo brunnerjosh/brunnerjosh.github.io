@@ -26,7 +26,7 @@ export default class Thoughts extends React.Component {
 
   renderMediumArticles (articles) {
 
-    const chunkededByMonth = [];
+    const chunkedByMonth = [];
 
     /**
      * Loops through the given articles and adds them to a sorted array by publish date
@@ -46,7 +46,7 @@ export default class Thoughts extends React.Component {
       )
 
       // See if we can find an existing array to push this next article to
-      for (let month of chunkededByMonth) {
+      for (let month of chunkedByMonth) {
         if (month.date === articleDate) {
           month.items.push(currentArticle);
           return;
@@ -54,7 +54,7 @@ export default class Thoughts extends React.Component {
       }
 
       // Didn't find an array, create a new entry and add it there
-      chunkededByMonth.push({
+      chunkedByMonth.push({
         date: articleDate,
         items: [currentArticle]
       });
@@ -62,7 +62,7 @@ export default class Thoughts extends React.Component {
     });
 
     // Now that we have sorted the articles, render them with the date spacer
-    return chunkededByMonth.length ? chunkededByMonth.map( (month, index) => {
+    return chunkedByMonth.length ? chunkedByMonth.map( (month, index) => {
       return (
         <div key={index}>
           <div className='content__section-spacer'>{month.date}</div>

@@ -13,7 +13,7 @@ export default class About extends React.Component {
     super(props);
     this.state = {
       screenWidth: window.innerWidth,
-      socialLinkgs: [
+      socialLinks: [
         { icon: 'Twitter', link: Constants.twitter },
         { icon: 'AngelList', link: Constants.angellist },
         { icon: 'Medium', link: Constants.medium },
@@ -42,7 +42,7 @@ export default class About extends React.Component {
   }
 
   renderIconLink () {
-    return this.state.socialLinkgs.map( (social, index) => {
+    return this.state.socialLinks.map( (social, index) => {
       return (
         <div
           key={index}
