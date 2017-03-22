@@ -6,8 +6,9 @@ export default class Accordion extends React.Component {
 
   constructor (props) {
     super(props);
+    const { items } = this.props;
     this.state = {
-      activeKey: this.props.items[0].label
+      activeKey: items && items[0].label
     }
     this.handleAccordionClick = this.handleAccordionClick.bind(this);
   }
@@ -20,7 +21,8 @@ export default class Accordion extends React.Component {
 
   renderAccordionItems () {
     const { activeKey } = this.state;
-    return this.props.items.map( (item, index) => {
+    const { items } = this.props;
+    return items && items.map( (item, index) => {
       const isActive = activeKey === item.label;
       return <AccordionItem
                 key={index}
