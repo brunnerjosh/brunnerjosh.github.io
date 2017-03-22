@@ -25,6 +25,16 @@ export default class Personal extends React.Component {
           onClick={null}
           disabled={true}
           description={'Coming soon...'}/>
+        <Card
+          header={'Arduino Projects'}
+          onClick={null}
+          disabled={true}
+          description={'Coming soon...'}/>
+        <Card
+          header={'Alexa Skills'}
+          onClick={null}
+          disabled={true}
+          description={'Coming soon...'}/>
       </div>
     )
   }
