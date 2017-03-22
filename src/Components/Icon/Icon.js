@@ -16,7 +16,7 @@ class Icon extends React.Component {
     if (!IconComponent) console.warn(`Unable to load ${icon} icon :(`);
 
     return (
-      <span className={`icon +${icon.toLowerCase()}`} style={Object.assign(styles, this.props.style)}>
+      <span className={`icon +${icon && icon.toLowerCase()}`} style={Object.assign(styles, this.props.style)}>
         {IconComponent && IconComponent()}
       </span>
     );
