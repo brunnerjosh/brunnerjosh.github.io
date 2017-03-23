@@ -6,24 +6,25 @@ import Accordion from '../../Shared/Accordion/Accordion';
 const logos = [
   { label: 'React', logo: 'ReactIcon' , link: 'https://facebook.github.io/react/' },
   { label: 'Redux', logo: 'Redux' , link: 'http://redux.js.org/' },
+  { label: 'Unity', logo: 'Unity' , link: 'https://unity3d.com/' },
   { label: 'Angular', logo: 'Angular' , link: 'https://angular.io/' },
   { label: 'jQuery', logo: 'jQuery' , link: 'https://jquery.com/' },
-  { label: 'WebRTC', logo: 'WebRTC' , link: 'https://webrtc.org/' },
-  { label: 'XMPP', logo: 'XMPP' , link: 'https://xmpp.org/' },
   { label: 'JavaScript', logo: 'JavaScript' , link: 'https://www.javascript.com/' },
-  { label: 'C#', logo: 'CSharp' , link: 'https://en.wikipedia.org/wiki/C_Sharp_(programming_language)' },
-  { label: 'Unity', logo: 'Unity' , link: 'https://unity3d.com/' },
-  { label: 'Java', logo: 'Java' , link: 'https://en.wikipedia.org/wiki/Java_(programming_language)' },
-  { label: 'Git', logo: 'Git' , link: 'https://git-scm.com/' },
-  { label: 'Perforce', logo: 'Perforce' , link: 'https://www.perforce.com/' },
-  { label: 'C++', logo: 'CPlusPlus' , link: 'https://en.wikipedia.org/wiki/C%2B%2B' },
+  { label: 'Backbone', logo: 'Backbone', link: 'http://backbonejs.org/' },
+  { label: 'Jest', logo: 'Jest', link: 'https://facebook.github.io/jest/' },
+  { label: 'Mocha', logo: 'Mocha', link: 'http://mochajs.org/' },
+  { label: 'NPM', logo: 'NPM', link: 'https://www.npmjs.com/' },
+  { label: 'Node', logo: 'Node', link: 'https://nodejs.org/' },
   { label: 'HTML', logo: 'HTML' , link: 'https://en.wikipedia.org/wiki/HTML' },
   { label: 'CSS', logo: 'CSS' , link: 'https://en.wikipedia.org/wiki/Cascading_Style_Sheets' },
-  { label: 'Backbone' },
-  { label: 'Jest' },
-  { label: 'Mocha' },
-  { label: 'NPM' },
-  { label: 'Node' }
+  { label: 'WebRTC', logo: 'WebRTC' , link: 'https://webrtc.org/' },
+  { label: 'XMPP', logo: 'XMPP' , link: 'https://xmpp.org/' },
+  { label: 'C#', logo: 'CSharp' , link: 'https://en.wikipedia.org/wiki/C_Sharp_(programming_language)' },
+  { label: 'Java', logo: 'Java' , link: 'https://en.wikipedia.org/wiki/Java_(programming_language)' },
+  { label: 'C++', logo: 'CPlusPlus' , link: 'https://en.wikipedia.org/wiki/C%2B%2B' },
+  { label: 'Git', logo: 'Git' , link: 'https://git-scm.com/' },
+  { label: 'Perforce', logo: 'Perforce' , link: 'https://www.perforce.com/' },
+  { label: 'Arduino', logo: 'Arduino', link: 'https://www.arduino.cc/' }
 ];
 
 const projects = [
@@ -48,18 +49,18 @@ const projects = [
     label: 'Project 3',
     content: [
       "For this project I worked closely with a design team to implement a living style guide for a medical services company in Oregon. This style guide included web UI components like buttons, forms, input fields, boxes, panels, etc",
-      "Once the style guide was getting updated less frequently, we began to build templates for various pages to later be implemented in [Backbone](http://backbonejs.org/) with a .Net backend. These templates needed to be responsive as well as run on browsers down to IE 10 which furthered my experience with browser compatibility through polyfills and helped me build creative solutions to various bugs that would come up",
-      "This project taught me the importance of creating components in an [Atomic](http://bradfrost.com/blog/post/atomic-web-design/) fashion so as to not allow for unintended side effects. I also learned through this project was the importance of communication to all stakeholders. This was done through quick daily standups as well as weekly retrospectives and planning sessions."
+      "Once the style guide was getting updated less frequently, we began to build templates for various pages to later be implemented in <a href='http://backbonejs.org/' target='_blank'>Backbone</a> with a .Net backend. These templates needed to be responsive as well as run on browsers down to IE 10 which furthered my experience with browser compatibility through polyfills and helped me build creative solutions to various bugs that would come up",
+      "This project taught me the importance of creating components in an <a href='http://bradfrost.com/blog/post/atomic-web-design/' target='_blank'>Atomic</a> fashion so as to not allow for unintended side effects. I also learned through this project was the importance of communication to all stakeholders. This was done through quick daily standups as well as weekly retrospectives and planning sessions."
     ],
-    tldr: 'Built UI templates through the creation of a living style guide. I learned the importance of building in an [Atomic](http://bradfrost.com/blog/post/atomic-web-design/) fashion. My biggest takeaway from this project was how good management can foster an environment of productive creativity.'
+    tldr: "Built UI templates through the creation of a living style guide. I learned the importance of building in an <a href='http://bradfrost.com/blog/post/atomic-web-design/' target='_blank'>Atomic</a> fashion. My biggest takeaway from this project was how good management can foster an environment of productive creativity."
   },
   {
     label: 'Project 2',
     content: [
       "Helpful Human's longest standing product development effort has seen multiple refactors and changes in its technology stack. I've been working off and on on this product since 2014. More recently, we've been making a larger push towards the finish line of releasing the product to the market",
-      "My involvement on this project included building its UI in [Angular](https://angularjs.org/) and then in [React](https://facebook.github.io/react/). I've also been a part of developing an abstraction layer to its backend infrastructure which is currently built on [Firebase](https://firebase.google.com/). The long term goal with this abstraction layer is to switch out Firebase for a custom tailored solution once the MVC has proved its feasibility."
+      "My involvement on this project included building its UI in <a href='https://angularjs.org/' target='_blank'>Angular</a> and then in <a href='https://facebook.github.io/react/' target='_blank'>React</a>. I've also been a part of developing an abstraction layer to its backend infrastructure which is currently built on <a href='https://firebase.google.com/' target='_blank'>Firebase</a>. The long term goal with this abstraction layer is to switch out Firebase for a custom tailored solution once the MVC has proved its feasibility."
     ],
-    tldr: 'I played a significant role in building and refactoring a long standing Helpful Human product (in [Angular](https://angularjs.org/) and [React](https://facebook.github.io/react/)). This included developing an abstraction layer for its [Firebase](https://firebase.google.com/) backend allowing us to one day replace it with a custom tailored solution.'
+    tldr: "I played a significant role in building and refactoring a long standing Helpful Human product (in <a href='https://angularjs.org/' target='_blank'>Angular</a> and <a href='https://facebook.github.io/react/' target='_blank'>React</a>). This included developing an abstraction layer for its <a href='https://firebase.google.com/' target='_blank'>Firebase</a> backend allowing us to one day replace it with a custom tailored solution."
   },
   {
     label: 'Project 1',
@@ -68,7 +69,7 @@ const projects = [
       "Since this project was to be run primarily on older web browsers (IE 8) yet still respond to modern devices (phones, tablets, desktop, touch screens, etc.), it provided the perfect opportunity for me to learn responsive web development while accommodating older technologies",
       "I worked closely with another developer that acted as a mentor to me and I learned the ropes. We were responsible for implementing pixel-perfect designs for the web and print versions of the application."
     ],
-    tldr: 'I used Angular to build front-end UI. I learned about browser compatibility, CSS, and the importance of implementing pixel perfect designs.'
+    tldr: "I used Angular to build front-end UI. I learned about browser compatibility, CSS, and the importance of implementing pixel perfect designs."
   }
 ]
 
