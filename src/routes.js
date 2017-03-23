@@ -22,6 +22,9 @@ export default (
     {/* HIDDEN ROUTES */}
     <Route path='typography' component={Typography} />
 
+    {/* EXTERNAL REDIRECTS */}
+    <Route path='flickr' onEnter={() => { window.location = 'https://www.flickr.com/photos/77226941@N04/'; }} />
+
     <Route path='*' component={NotFound} />
   </Route>
 );
