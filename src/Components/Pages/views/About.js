@@ -1,5 +1,4 @@
 import React from 'react';
-import md5 from 'js-md5';
 import Constants from '../../../Constants';
 import Icon from '../../Icon/Icon';
 import Theme from '../../Theme';
@@ -36,11 +35,6 @@ export default class About extends React.Component {
     this.setState({ screenWidth: window.innerWidth });
   }
 
-  generateGravatar (email, size) {
-    const emailHash = md5(email.trim().toLowerCase());
-    return `https://www.gravatar.com/avatar/${emailHash}?s=${size}`
-  }
-
   renderIconLink () {
     return this.state.socialLinks.map( (social, index) => {
       return (
@@ -61,7 +55,7 @@ export default class About extends React.Component {
           <div className='col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-4 col-md-offset-0 col-md-12'>
             <img
               className={'about__profile-img'}
-              src={this.generateGravatar(Constants.email, 512)}
+              src={`${process.env.PUBLIC_URL}/profile-compressed.png`}
               alt={Constants.firstName + ' ' + Constants.lastName}
               />
           </div>
