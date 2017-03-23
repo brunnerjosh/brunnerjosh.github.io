@@ -16,7 +16,8 @@ export default class Accordion extends React.Component {
   handleAccordionClick (item) {
     this.setState({
       activeKey: this.state.activeKey === item.label ? '' : item.label
-    })
+    });
+    this._accordion.scrollIntoView()
   }
 
   renderAccordionItems () {
@@ -34,7 +35,7 @@ export default class Accordion extends React.Component {
 
   render () {
     return (
-      <div className='accordion'>
+      <div ref={(c) => {this._accordion = c}} className='accordion'>
         <div className='accordion__container'>
           {this.renderAccordionItems()}
         </div>

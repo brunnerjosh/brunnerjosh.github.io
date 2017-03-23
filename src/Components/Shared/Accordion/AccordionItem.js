@@ -6,6 +6,7 @@ export default class AccordionItem extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      staticHeight: 0,
       contentHeight: null
     }
   }
