@@ -8,7 +8,12 @@ import Typography from './Components/Typography';
 import NotFound from './Components/NotFound';
 
 export default (
-  <Route path='/' component={App}>
+  <Route
+    path='/'
+    component={App}
+    onChange={(prevState, nextState) => {
+      if (nextState.location.action !== 'POP') window.scrollTo(0, 0);
+    }}>
     <IndexRoute component={Landing} />
     <Route path='about' component={Pages} />
     <Route path='professional' component={Pages} />
