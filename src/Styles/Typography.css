@@ -70,6 +70,13 @@ blockquote, q {
 }
 
 a {
-  color: #56E39F;
+  cursor: pointer;
+  color: #47BA83; /* TODO: Make this a variable  */
   text-decoration: none;
+  transition: color 200ms ease, background 200ms ease;
+}
+
+a:hover {
+  background: #47BA83; /* TODO: Make this a variable  */
+  color: #EFEFF0; /* TODO: Make this a variable  */
 }
