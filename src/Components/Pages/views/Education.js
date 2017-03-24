@@ -52,7 +52,7 @@ const schoolProjects = [
     label: 'File System',
     content: {
       date: 'May 5, 2014',
-      desc: 'The final project in my Operating Systems class at UW was to implement a complete Unix-like file system. I was on a team of five other students and I was responsible for implementing the directory which managed the actual files. For this project, a file was just a string of characters that spelled some word. See each section in the repo\'s README to learn about the specific functions that came together to build the file system.',
+      desc: 'The final project in my Operating Systems class at UW was to implement a complete Unix-like file system. I was on a team of five other students, and I was responsible for implementing the directory which managed the actual files. For this project, a file was just a string of characters that spelled some word. See each section in the repo\'s README to learn about the specific functions that came together to build the file system.',
       links: [
         { label: 'Repo', icon: 'Repo', url: 'https://github.com/brunnerjosh/file-system' },
         { label: 'Project Spec', icon: 'FilePDF', url: 'http://courses.washington.edu/css430/prog/project.html' }
@@ -185,7 +185,7 @@ export default class Education extends React.Component {
         <p>Here are the courses I took once I was in my degree. Learn more about the CSSE degree <a href='https://www.uwb.edu/bscsse' target='_blank'>here</a>.</p>
         {this.renderCourseList()}
         <h2>Course Projects</h2>
-        <p>While working towards my Computer Science degree from the University of Washington, my course work required that I produce projects while collaborating alongside my colleagues. Instead of letting those projects get forgotten in time, I wanted to share my favorites here.</p>
+        <p>While working toward my Computer Science degree, my course work often required that I produce projects while collaborating alongside my colleagues. Instead of letting those projects get forgotten in time, I wanted to share my favorites here.</p>
         <Accordion items={this.formatEducationProjects(schoolProjects)} />
       </div>
     )

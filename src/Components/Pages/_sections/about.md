@@ -5,4 +5,4 @@ Before joining Helpful Human, I worked at [Apple](http://apple.com) as a sales S
 
 I absolutely enjoy the work I do and love the challenges that I get to solve. From a project’s inception to handing over the keys, I appreciate every step in the process and work hard to make sure that our clients feel supported and empowered along the way. One of my favorite parts of this process is seeing how the iterations of a product shape and mold the end result. I admire watching how these iterations come about by creative and skilled minds collaborating to ever improve upon an original idea, and I am honored when I can be a part of that kind of team.
 
-If I’ve worked with you in the past, or if you’d like to connect, feel free to contact me.
+If you’d like to connect, please feel free to contact me” sounds more el naturel.
