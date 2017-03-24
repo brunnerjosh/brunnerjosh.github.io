@@ -40,7 +40,7 @@ export default class Header extends React.Component {
   render () {
     return (
       <div
-        className="header"
+        className='header'
         style={{
           height: this.props.height,
           background: Theme.primary.hex,
@@ -48,7 +48,7 @@ export default class Header extends React.Component {
         }}>
         <div className='header__container'>
           {this.renderBackIcon()}
-          <div className="header__content">
+          <div className='header__content'>
             <div className={'header__label'} onClick={this.props.push.bind(null, '/')}>
               {this.props.label}
             </div>

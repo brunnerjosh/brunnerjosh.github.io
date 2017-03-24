@@ -6,7 +6,6 @@ import Icon from '../Components/Icon/Icon';
 import Theme from '../Components/Theme';
 
 import '../Styles/Reset.css';
-import '../Styles/Font.css';
 import '../Styles/index.css';
 import '../Styles/App.css';
 import '../Styles/Content.css';
@@ -19,9 +18,7 @@ export default class App extends React.Component {
   renderHeaderLabel () {
     return (
       <div>
-        <span className={'+bold'}>
-          {(Constants.firstName + ' ' + Constants.lastName).toUpperCase()}
-        </span>
+        <strong>{(Constants.firstName + ' ' + Constants.lastName).toUpperCase()}</strong>
         <span className={'+light'}>
           &nbsp;|&nbsp;
           <Cube sides={Constants.adjectives} />
