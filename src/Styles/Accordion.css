@@ -19,5 +19,5 @@
 .accordion__item-content {
   overflow-y: auto;
   transform: translate3d(0,0,0);
-  transition: height 200ms ease-out,
+  transition: height 200ms ease-out, opacity 200ms ease;
 }
