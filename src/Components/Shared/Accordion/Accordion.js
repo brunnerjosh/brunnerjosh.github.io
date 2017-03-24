@@ -17,7 +17,7 @@ export default class Accordion extends React.Component {
   handleAccordionClick (item) {
     this.setState({
       activeKey: this.state.activeKey === item.label ? '' : item.label,
-      activeKeys: this.state.activeKeys.includes(item.label)
+      activeKeys: this.state.activeKeys.indexOf(item.label) > -1
                   ? this.state.activeKeys.filter(key => key !== item.label)
                   : this.state.activeKeys.concat(item.label)
     });
@@ -27,7 +27,7 @@ export default class Accordion extends React.Component {
     const { activeKey } = this.state;
     const { items, collapse } = this.props;
     return items && items.map( (item, index) => {
-      const isActive = collapse ? activeKey === item.label : this.state.activeKeys.includes(item.label);
+      const isActive = collapse ? activeKey === item.label : this.state.activeKeys.indexOf(item.label) > -1;
       return <AccordionItem
                 key={index}
                 isActive={isActive}
