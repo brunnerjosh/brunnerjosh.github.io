@@ -186,7 +186,7 @@ export default class Education extends React.Component {
         {this.renderCourseList()}
         <h2>Course Projects</h2>
         <p>While working toward my CSSE degree, my course work often required that I produce projects while collaborating alongside my colleagues. Instead of letting those projects get forgotten in time, I wanted to share my favorites here.</p>
-        <Accordion items={this.formatEducationProjects(schoolProjects)} />
+        <Accordion collapse={false} items={this.formatEducationProjects(schoolProjects)} />
       </div>
     )
   }

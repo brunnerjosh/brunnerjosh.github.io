@@ -123,7 +123,7 @@ export default class Professional extends React.Component {
         {this.props.pageMarkdown()}
         <h2>Projects</h2>
         <p>Here is a high level overview of several projects I've worked on at Helpful Human (sorted by most recent).</p>
-        <Accordion items={this.formatProjects(projects)} />
+        <Accordion collapse={false} items={this.formatProjects(projects)} />
         <h2>Technologies</h2>
         <p>Some of the technologies I work with currently or have worked with in the past include:</p>
         {this.renderLogoList()}
