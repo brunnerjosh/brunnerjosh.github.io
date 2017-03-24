@@ -6,6 +6,7 @@ export default class AccordionItem extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      opacity: 0,
       staticHeight: 0,
       contentHeight: null
     }
@@ -14,10 +15,11 @@ export default class AccordionItem extends React.Component {
   componentDidMount () {
     setTimeout( () => {
       this.setState({
+        opacity: 1,
         staticHeight: this._content.offsetHeight,
         contentHeight: this.props.isActive ? this._content.offsetHeight : 0
       });
-    }, 1);
+    }, 50);
   }
 
   componentWillReceiveProps (nextProps) {
@@ -30,6 +32,7 @@ export default class AccordionItem extends React.Component {
 
   renderContent () {
     const contentStyles = {
+      opacity: this.state.opacity,
       height: this.state.contentHeight,
       background: `rgba(${Theme.quaternary.r}, ${Theme.quaternary.g}, ${Theme.quaternary.b}, .2)`
     };
