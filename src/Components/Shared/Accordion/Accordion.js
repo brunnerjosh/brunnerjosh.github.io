@@ -8,28 +8,31 @@ export default class Accordion extends React.Component {
     super(props);
     const { items } = this.props;
     this.state = {
-      activeKey: items && items[0].label
+      activeKey: items && items[0].label,
+      activeKeys: [ items && items[0].label ]
     }
     this.handleAccordionClick = this.handleAccordionClick.bind(this);
   }
 
   handleAccordionClick (item) {
     this.setState({
-      activeKey: this.state.activeKey === item.label ? '' : item.label
+      activeKey: this.state.activeKey === item.label ? '' : item.label,
+      activeKeys: this.state.activeKeys.includes(item.label)
+                  ? this.state.activeKeys.filter(key => key !== item.label)
+                  : this.state.activeKeys.concat(item.label)
     });
-    this._accordion.scrollIntoView()
   }
 
   renderAccordionItems () {
     const { activeKey } = this.state;
-    const { items } = this.props;
+    const { items, collapse } = this.props;
     return items && items.map( (item, index) => {
-      const isActive = activeKey === item.label;
+      const isActive = collapse ? activeKey === item.label : this.state.activeKeys.includes(item.label);
       return <AccordionItem
                 key={index}
                 isActive={isActive}
                 onClick={this.handleAccordionClick.bind(null, item)}
-                {...item}/>
+                {...item} />
     })
   }
 
@@ -42,4 +45,8 @@ export default class Accordion extends React.Component {
       </div>
     )
   }
+}
+
+Accordion.defaultProps = {
+  collapse: true
 }
