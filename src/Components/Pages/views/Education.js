@@ -85,7 +85,7 @@ const schoolProjects = [
     label: '68k Disassembler',
     content: {
       date: 'March 12, 2014',
-      desc: 'In CSS 422 (Hardware and Computer Organization), I learned a lot about how the physical parts of the computer work closely together to perform operations and commands from the user. The main project that we were tasked with was to build an inverse assembler (also known as a disassembler) which converts a memory image of instructions and data back to 68k assembly language and outputs the disassembled code to the display.',
+      desc: 'In CSS 422 (Hardware and Computer Organization), I learned a lot about how the physical parts of the computer work closely together to perform operations and commands from the user. The main project that we were tasked with was to build an inverse assembler (also known as a disassembler), which converts a memory image of instructions and data back to 68k assembly language and outputs the disassembled code to the display.',
       links: [
         { label: 'Repo', icon: 'Repo', url: 'https://github.com/brunnerjosh/68k-disassembler' },
         { label: 'Full Report', icon: 'FilePDF', url: 'https://github.com/brunnerjosh/68k-disassembler/raw/master/BitCrunchers_ProjectDeliverable.pdf' }
