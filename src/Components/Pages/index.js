@@ -15,6 +15,6 @@ export default class Pages extends React.Component {
 
     return (pageContent || PageComponent) ? (
       <PageComponent pageContent={pageContent} {...this.props} />
-    ) : <NotFound />
+    ) : <NotFound {...this.props}/>
   }
 }
