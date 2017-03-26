@@ -2,7 +2,7 @@ import React from 'react';
 import NotFound from '../NotFound';
 import Article from './Article';
 import views from './views';
-import contentList from './_sections';
+import articles from './articles';
 
 export default class Pages extends React.Component {
   render () {
@@ -11,12 +11,10 @@ export default class Pages extends React.Component {
 
     // TODO: combine these two object so that we can just make one call to the object and use its properties
     const PageComponent = articleId ? Article : views[currentPath];
-    const pageMarkdown = articleId ? contentList.articles[articleId] : contentList[currentPath];
+    const pageContent = articleId ? articles[articleId] : false;
 
-    return (pageMarkdown || PageComponent) ? (
-      <PageComponent
-        pageMarkdown={pageMarkdown}
-        {...this.props} />
+    return (pageContent || PageComponent) ? (
+      <PageComponent pageContent={pageContent} {...this.props} />
     ) : <NotFound />
   }
 }

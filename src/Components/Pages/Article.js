@@ -7,7 +7,7 @@ export default class Article extends React.Component {
       <PageContent
         rightSide={{
           classes: 'col-xs-12',
-          content: this.props.pageMarkdown()
+          content: this.props.pageContent()
         }}
         />
     )
