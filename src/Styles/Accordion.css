@@ -1,0 +1,23 @@
+.accordion__item {
+  border: .055555556em solid;
+}
+
+.accordion__item + .accordion__item {
+  border-top: none;
+}
+
+.accordion__item-label {
+  padding: 0 1em;
+  cursor: pointer;
+  transition: color 100ms ease;
+}
+
+.accordion__item-content-container {
+  padding: 1em;
+}
+
+.accordion__item-content {
+  overflow-y: auto;
+  transform: translate3d(0,0,0);
+  transition: height 200ms ease-out, opacity 200ms ease;
+}
