@@ -40,6 +40,10 @@ In order to deploy the app to GCP, either set up the SDK locally, or push the co
 
 `npm run deploy`
 
+To view server logs, make sure you're connected into a Google Cloud Shell instance and run
+
+`gcloud app logs tail`
+
 ---
 BEGINE CREATE REACT APP README
 ---
