@@ -5,6 +5,8 @@ const flickrOptions = {
   secret: process.env.FLICKR_SECRET
 };
 
+console.log('process.env.FLICKR_KEY', process.env.FLICKR_KEY);
+
 const router = express.Router();
 
 router.get('/', function(req, res) {
