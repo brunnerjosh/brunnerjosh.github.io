@@ -1,0 +1,30 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  transition: opacity 300ms ease;
+}
+
+.loading__spinner {
+  border-radius: 50%;
+  background: currentColor;
+  border-top-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  animation: spin 2s linear infinite;
+}
+
+.loading__spinner:before {
+  content: '';
+  width: inherit;
+  height: inherit;
+  display: block;
+  border-radius: 50%;
+  background: inherit;
+  border-top-right-radius: 100%;
+  border-bottom-left-radius: 100%;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

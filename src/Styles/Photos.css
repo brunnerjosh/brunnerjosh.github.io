@@ -1,0 +1,25 @@
+/* Taken from: https://css-tricks.com/seamless-responsive-photo-grid/ */
+.photos {
+  left: 0;
+  margin: 2em 0em;
+  position: absolute;
+  /* Prevent vertical gaps */
+  line-height: 0;
+  column-count: 1;
+  column-gap: 0em;
+  padding: .5em;
+  min-height: 100%;
+  width: 100%;
+  background: black;
+}
+
+.photos img {
+  /* Just in case there are inline attributes */
+  width: 100% !important;
+  height: auto !important;
+  border: .5em solid transparent;
+}
+
+@media (min-width: 33.33333em) {
+  .photos { column-count: 2; }
+}

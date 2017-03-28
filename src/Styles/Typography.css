@@ -1,0 +1,82 @@
+/* Typography page specific style */
+.typography {
+  width: 80%;
+}
+
+/* Typography styleguide referenced from MailChimp:
+ * http://ux.mailchimp.com/patterns/typography
+ */
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+  font-family: 'Roboto Slab', serif;
+}
+h1, .h1 {
+  font-size: 2em;
+  margin: 1em 0em;
+  line-height: 1.5;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+h2, .h2 {
+  font-size: 1.666666667em;
+  line-height: 1.25;
+  margin-top: 1em;
+  margin-bottom: .25em;
+}
+h3, .h3 {
+  font-size: 1.4em;
+  line-height: 1.6em;
+  font-style: italic;
+}
+h4, .h4 {
+  font-size: 1.133333333em;
+  line-height: 2em;
+}
+p {
+  font-size: 1em;
+  line-height: 1.666666667em;
+  margin-bottom: .8em;
+}
+b, strong {
+  font-weight: 600;
+}
+i, em {
+  font-style: italic;
+}
+ul li {
+  line-height: 1.67em;
+  padding: 0.5em 0.8em;
+  transition: all 250ms ease;
+  border-bottom: .066666667em dashed #CED3DC;
+}
+ul.is-interactable,
+ul.is-interactable li:hover {
+  cursor: pointer;
+}
+ul.is-interactable li:hover {
+  background: #DBDFE5;
+}
+ul li:last-of-type {
+  border-bottom: none;
+}
+
+hr {
+  border: none;
+  border-bottom: solid 0.06em #CED3DC;
+}
+
+blockquote, q {
+  border-left: 0.5em solid #CED3DC;
+  padding-left: 1em;
+}
+
+a {
+  cursor: pointer;
+  color: #47BA83; /* TODO: Make this a variable  */
+  text-decoration: none;
+  transition: color 200ms ease, background 200ms ease;
+}
+
+a:hover {
+  background: #47BA83; /* TODO: Make this a variable  */
+  color: #EFEFF0; /* TODO: Make this a variable  */
+}

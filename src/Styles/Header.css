@@ -1,0 +1,50 @@
+.header {
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  position: fixed;
+}
+
+.header__container {
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  padding: 0 1em;
+  max-width: calc(100vmin * 1.3);
+}
+
+.header__content {
+  filter: invert(100%);
+  width: 100%;
+  display: flex;
+  font-size: 1.3em;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__label {
+  cursor: pointer;
+  transition: padding 300ms ease;
+}
+
+@media only screen and (max-width: 48em) {
+  .header__label {
+    font-size: .7em;
+  }
+  .app:not(.at-root) .header__label {
+    padding-left: 2em;
+  }
+}
+
+.header__back-icon {
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  font-size: .35em;
+  padding: 0em 3em;
+  margin: 0em -3em;
+  position: absolute;
+  align-items: center;
+  transition: opacity 250ms ease;
+}

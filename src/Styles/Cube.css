@@ -1,0 +1,39 @@
+.cube {
+  height: 1em;
+  width: 8.8em;
+  position: relative;
+  display: inline-flex;
+  vertical-align: bottom;
+}
+
+.cube__side {
+  display: block;
+  position: absolute;
+  transition: all 1s ease;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.cube__rotation-enter {
+  opacity:    0.01;
+  transform:  rotateX( 100deg )
+              translateZ( .8em );
+}
+
+.cube__rotation-enter.cube__rotation-enter-active {
+  opacity:    1;
+  transform:  rotateX( 0deg )
+              translateZ( .8em );
+}
+
+.cube__rotation-leave {
+  opacity:    1;
+  transform:  rotateX( 0deg )
+              translateZ( .8em );
+}
+
+.cube__rotation-leave.cube__rotation-leave-active {
+  opacity:    0.01;
+  transform:  rotateX( -100deg )
+              translateZ( .8em );
+}

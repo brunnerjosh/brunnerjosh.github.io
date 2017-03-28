@@ -1,0 +1,15 @@
+.icon {
+  position: relative;
+  display: inline-block;
+  background: transparent;
+  pointer-events: none;
+}
+
+.icon svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  fill: currentColor;
+}
