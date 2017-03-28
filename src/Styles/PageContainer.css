@@ -1,0 +1,9 @@
+.page {
+  display: flex;
+  padding: 0 1em;
+  justify-content: center;
+}
+
+.page__container {
+  width: 100%;
+}

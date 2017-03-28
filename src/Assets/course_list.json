@@ -1,0 +1,14 @@
+[
+  { "label": "CSS 301: Technical Writing for Computing Professionals" },
+  { "label": "CSS 310: Information Assurance and Cyber Security" },
+  { "label": "CSS 342: Data Structures, Algorithms, and Discrete Mathematics I" },
+  { "label": "CSS 343: Data Structures, Algorithms, and Discrete Mathematics II" },
+  { "label": "CSS 350: Management Principles for Computing Professionals" },
+  { "label": "CSS 360: Software Engineering" },
+  { "label": "CSS 370: Analysis and Design" },
+  { "label": "CSS 383: Bioinformatics" },
+  { "label": "CSS 422: Hardware and Computer Organization" },
+  { "label": "CSS 430: Operating Systems" },
+  { "label": "CSS 480: Principles of Human-Computer Interaction" },
+  { "label": "CSS 475: Database Systems" }
+]
