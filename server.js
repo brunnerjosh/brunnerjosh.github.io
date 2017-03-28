@@ -2,6 +2,7 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
+const packageJson = require('./package.json');
 const routes = require('./routes/api-router');
 
 const app = express();
@@ -24,5 +25,5 @@ app.listen(port, function (err) {
     return;
   }
 
-  console.log('Express server listening on %d, in %s mode', port, app.get('env'));
+  console.log('Express server listening on %d, in %s mode', port, app.get('env'), packageJson.version);
 });
