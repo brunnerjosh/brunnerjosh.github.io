@@ -1,4 +1,49 @@
-TODO: mention about updating the sitemap with any new urls
+# Portfolio Project
+This is the portfolio site project for Josh Brunner. [Create React App](https://github.com/facebookincubator/create-react-app) was used to kickstart the development effort of the site.
+
+## Development
+In order to do development on this site, `clone` the repo and run:
+
+`npm install`
+
+After that is complete, you should be able to run
+
+`npm start`
+
+to get up and running.
+
+
+## Production
+Creact React App (CRA) does all of the production compression and optimizations necessary leaving you with only needing to run
+
+`npm run build`
+
+to produce a clean build within the `build` folder.
+
+_**Note:** CRA will take all of the content within the `public` folder and copy it into the production `build` folder._
+
+In order to test how the app runs when served up by `server.js` run
+
+`npm run start:production`
+
+which will start up a server running the app from the `build` folder.
+
+## Deployment
+The site is currently hosted through Google Cloud Platform (GCP). The main reason for this is to provide a proxy API to load the Flickr photos on the `/photography` page. However, this is a strategy moving forward to allow for future server side development needs listed out on the `/personal` page.
+
+### Pre-deployment checklist:
+- Update `sitemap.txt` file with any new routes
+- Make sure to lock `package.json` versions by removing `^` from the version number
+
+### Google Cloud Platform
+In order to deploy the app to GCP, either set up the SDK locally, or push the code up to the repo's `master` branch in GitHub (which is mirrored to GCP) and log in through Google Cloud Shell and run
+
+`npm run deploy`
+
+---
+BEGINE CREATE REACT APP README
+---
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
