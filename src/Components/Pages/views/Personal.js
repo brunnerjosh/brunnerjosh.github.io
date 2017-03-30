@@ -1,6 +1,7 @@
 import React from 'react';
 import PageContent from '../PageContainer';
 import Card from '../../Shared/Card';
+import introWebAssembly from '../../../Assets/intro-webassembly.png';
 
 export default class Personal extends React.Component {
 
@@ -9,6 +10,12 @@ export default class Personal extends React.Component {
       <div>
         <h1>Personal Projects</h1>
         <p>When I'm not hiking in the mountains, I'm probably behind a computer screen learning new technologies or practicing something I may need to learn for work. Here are a few of the projects that have actually seen the light of day.</p>
+        <div className='content__section-spacer'>March, 2017</div>
+        <Card
+          header={'Introduction to WebAssembly'}
+          imgUrl={introWebAssembly}
+          onClick={ () => window.location = 'https://youtu.be/EJWcBpWGC9g' }
+          description={'I gave a presentation at work (helpfulhuman.com) on an introduction to WebAssembly as it pertains to modern web development...'}/>
         <div className='content__section-spacer'>April, 2015</div>
         <Card
           header={'JavaScript Slideshow'}
