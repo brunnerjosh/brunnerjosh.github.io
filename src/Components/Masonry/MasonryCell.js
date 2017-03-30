@@ -5,13 +5,6 @@ import Theme from '../Theme';
 
 export default class MasonryCell extends React.Component {
 
-  constructor (props) {
-    super(props);
-    this.state = {
-      isHovered: false
-    }
-  }
-
   fibonacci (number) {
     if (number <= 1) {
       return 1;
@@ -90,24 +83,19 @@ export default class MasonryCell extends React.Component {
       'is-active': this.props.activeCell === this.props.items[index].label
     })
 
-    const cellContentClasses = classNames('masonry__cell-content', {
-      'is-hovered': this.state.isHovered
-    })
-
     return (
       <div
         className={cellClasses}
         onClick={this.props.items[index].onClick}
-        onMouseEnter={() => { this.setState({ isHovered: true }) }}
-        onMouseLeave={() => { this.setState({ isHovered: false }) }}
         style={{
           flexBasis: cellWidth,
           backgroundColor: `rgba(${r}, ${g}, ${b}, ${cellMultiplier})`,
-          boxShadow: `inset 0.35em 0.35em 0.6em 0em rgba(0, 0, 0, ${cellInsetShadow})`
+          // TODO: the rgba here: 64, 170, 119 is a 25% shade of the Theme.quaternary.hex value. This needs refactor
+          boxShadow: `inset 0.3em 0.3em 0.6em 0em rgba(64, 170, 119, ${cellInsetShadow})`
         }}
         >
         <div className={'masonry__cell-container'} title={this.props.items[index].label}>
-          <div className={cellContentClasses}>
+          <div className={'masonry__cell-content'}>
             <div className={'masonry__cell-icon'}>
               <Icon color={Theme.primary.hex} icon={this.props.items[index].img} />
             </div>
