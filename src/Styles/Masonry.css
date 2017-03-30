@@ -20,7 +20,7 @@
 }
 
 .masonry__cell:first-of-type {
-  box-shadow: initial;
+  box-shadow: initial !important;
 }
 
 .masonry__cell-container {

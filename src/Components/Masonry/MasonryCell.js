@@ -69,16 +69,11 @@ export default class MasonryCell extends React.Component {
     return multiplier;
   }
 
-  determineInsetShadow (cellBgMultiplier) {
-    return cellBgMultiplier > .69 ? .5 : cellBgMultiplier - .15
-  }
-
   render () {
     const { index } = this.props;
     const cellWidth = (100 / 3) + '%';
     const { r, g, b } = Theme.quaternary;
     const cellMultiplier = this.determineCellMultiplier(index+1);
-    const cellInsetShadow = this.determineInsetShadow(cellMultiplier);
     const cellClasses = classNames('masonry__cell', {
       'is-active': this.props.activeCell === this.props.items[index].label
     })
@@ -91,7 +86,7 @@ export default class MasonryCell extends React.Component {
           flexBasis: cellWidth,
           backgroundColor: `rgba(${r}, ${g}, ${b}, ${cellMultiplier})`,
           // TODO: the rgba here: 64, 170, 119 is a 25% shade of the Theme.quaternary.hex value. This needs refactor
-          boxShadow: `inset 0.3em 0.3em 0.6em 0em rgba(64, 170, 119, ${cellInsetShadow})`
+          boxShadow: `inset 0.4em 0.4em 0.6em 0em rgba(64, 170, 119, ${cellMultiplier})`
         }}
         >
         <div className={'masonry__cell-container'} title={this.props.items[index].label}>
