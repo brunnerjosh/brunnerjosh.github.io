@@ -19,7 +19,8 @@ export default class MasonryCell extends React.Component {
     return this.fibonacci(number - 1) + this.fibonacci(number - 2);
   }
 
-  determineCellBackground (index) {
+
+  determineCellMultiplier (index) {
     let multiplier;
     const itemsLength = this.props.items.length;
     const levels = 5;
@@ -72,15 +73,19 @@ export default class MasonryCell extends React.Component {
       multiplier = multiplierMap[4]
     }
 
-    const { r, g, b } = Theme.quaternary;
-    return `rgba(${r}, ${g}, ${b}, ${multiplier})`;
+    return multiplier;
+  }
+
+  determineInsetShadow (cellBgMultiplier) {
+    return cellBgMultiplier > .69 ? .5 : cellBgMultiplier - .15
   }
 
   render () {
     const { index } = this.props;
     const cellWidth = (100 / 3) + '%';
-    const cellBg = this.determineCellBackground(index+1);
-
+    const { r, g, b } = Theme.quaternary;
+    const cellMultiplier = this.determineCellMultiplier(index+1);
+    const cellInsetShadow = this.determineInsetShadow(cellMultiplier);
     const cellClasses = classNames('masonry__cell', {
       'is-active': this.props.activeCell === this.props.items[index].label
     })
@@ -97,7 +102,8 @@ export default class MasonryCell extends React.Component {
         onMouseLeave={() => { this.setState({ isHovered: false }) }}
         style={{
           flexBasis: cellWidth,
-          backgroundColor: cellBg
+          backgroundColor: `rgba(${r}, ${g}, ${b}, ${cellMultiplier})`,
+          boxShadow: `inset 0.35em 0.35em 0.6em 0em rgba(0, 0, 0, ${cellInsetShadow})`
         }}
         >
         <div className={'masonry__cell-container'} title={this.props.items[index].label}>
