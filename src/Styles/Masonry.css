@@ -17,6 +17,22 @@
   align-items: center;
   cursor: pointer;
   overflow: hidden;
+  position: relative;
+}
+
+.masonry__cell::after {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  position: absolute;
+  background: rgba(0,0,0,0);
+  transition: background 300ms ease;
+}
+
+.masonry__cell:hover::after {
+  background: rgba(0,0,0,.1);
 }
 
 .masonry__cell:first-of-type {
