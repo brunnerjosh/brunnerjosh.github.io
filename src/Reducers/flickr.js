@@ -16,7 +16,13 @@ export default function (state = defaultState, action) {
       break;
     case 'FETCH_FLICKR_SUCCESS':
       newState.isLoading = false;
-      newState.photos = action.photos;
+      newState.photos = {
+        page: action.photos.page,
+        pages: action.photos.pages,
+        perpage: action.photos.perpage,
+        photo: ! (newState.photos && newState.photos.photo) ? action.photos.photo : newState.photos.photo.concat(action.photos.photo),
+        total: action.photos.total
+      }
       break;
     default:
       return state;
