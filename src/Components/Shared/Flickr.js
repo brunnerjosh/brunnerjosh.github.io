@@ -20,10 +20,6 @@ export default class Flickr extends React.Component {
     }
   }
 
-  componentWillReceiveProps( nextProps) {
-    console.log('nextProps');
-  }
-
   componentDidMount () {
     window.addEventListener('scroll', this.checkIfUserIsNearBottom);
   }
@@ -49,8 +45,7 @@ export default class Flickr extends React.Component {
     const scrollTop = window.scrollY;
     const windowHeight = window.innerHeight;
     const documentHeight = this.getDocumentHeight();
-    if ( (scrollTop + windowHeight > documentHeight - (windowHeight / 4) )  && ! this.props.isLoading) {
-      console.log('nearing bottom!', scrollTop, windowHeight, documentHeight);
+    if ( (scrollTop + windowHeight > documentHeight - (windowHeight / 3) )  && ! this.props.isLoading) {
       this.props.fetchFlickrPhotos({
         user_id: Constants.flickrHandle,
         per_page: this.props.photos.perpage,
@@ -63,37 +58,39 @@ export default class Flickr extends React.Component {
     const { innerWidth } = window;
     // Flickr photo size mapping:
     // https://www.flickr.com/services/api/misc.urls.html
-    if (innerWidth <= 960) {
+    if (innerWidth <= 640) {
       return 'z';
-    } else if (innerWidth > 960 && innerWidth <= 1280) {
+    } else if (innerWidth <= 800) {
       return 'c';
-    } else if (innerWidth > 1280 && innerWidth <= 1920) {
-      return 'b'
+    } else if (innerWidth <= 1024) {
+      return 'b';
     } else {
       return 'h'
     }
   }
 
   renderFlickrImages () {
-    const images = this.props.photos && this.props.photos.photo.map( (photo, index) => {
+    const images = this.props.photos.photo.map( (photo, index) => {
       return (
-        <img
-          key={index}
-          alt={photo.title}
-          src={ `https://farm${photo.farm}.staticflickr.com/`
-              + `${photo.server}/${photo.id}_${photo.secret}`
-              + `_${this.determineImageSize()}.jpg` }
-          />
+        <div className='photos__photo'>
+          <img
+            key={index}
+            alt={photo.title}
+            src={ `https://farm${photo.farm}.staticflickr.com/`
+                + `${photo.server}/${photo.id}_${photo.secret}`
+                + `_${this.determineImageSize()}.jpg` }
+            />
+          </div>
         )
     })
     return <div className='photos'>{images}</div>
   }
 
   render () {
-    return this.props.isLoading ? <Loading /> : this.renderFlickrImages()
+    return !this.props.photos ? <Loading /> : this.renderFlickrImages()
   }
 }
 
 Flickr.defaultProps = {
-  perPage: 20
+  perPage: 5
 }

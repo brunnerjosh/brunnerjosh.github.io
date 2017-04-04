@@ -1,25 +1,21 @@
-/* Taken from: https://css-tricks.com/seamless-responsive-photo-grid/ */
 .photos {
-  left: 0;
+  display: flex;
+  flex-wrap: wrap;
   margin: 2em 0em;
-  position: absolute;
-  /* Prevent vertical gaps */
-  line-height: 0;
-  column-count: 1;
-  column-gap: 0em;
-  padding: .5em;
-  min-height: 100%;
-  width: 100%;
+  position: relative;
   background: black;
 }
 
-.photos img {
-  /* Just in case there are inline attributes */
-  width: 100% !important;
-  height: auto !important;
+.photos .photos__photo {
+  width: 100%;
   border: .5em solid transparent;
+  border-top: none;
 }
 
-@media (min-width: 33.33333em) {
-  .photos { column-count: 2; }
+.photos .photos__photo:first-of-type {
+  border-top: .5em solid transparent;
+}
+
+.photos__photo img {
+  width: 100%;
 }
