@@ -6,11 +6,7 @@ import '../../Styles/Photos.css';
 export default class Flickr extends React.Component {
 
   constructor (props) {
-    super (props);
-    this.state = {
-      page: 1,
-
-    }
+    super(props);
     this.checkIfUserIsNearBottom = this.checkIfUserIsNearBottom.bind(this);
   }
 
@@ -19,7 +15,7 @@ export default class Flickr extends React.Component {
       this.props.fetchFlickrPhotos({
         user_id: Constants.flickrHandle,
         per_page: this.props.perPage,
-        page: this.state.page
+        page: 1
       });
     }
   }
@@ -55,14 +51,10 @@ export default class Flickr extends React.Component {
     const documentHeight = this.getDocumentHeight();
     if ( (scrollTop + windowHeight > documentHeight - (windowHeight / 4) )  && ! this.props.isLoading) {
       console.log('nearing bottom!', scrollTop, windowHeight, documentHeight);
-
-      this.setState({
-        page: this.state.page + 1
-      })
       this.props.fetchFlickrPhotos({
         user_id: Constants.flickrHandle,
-        per_page: this.props.perPage,
-        page: this.state.page
+        per_page: this.props.photos.perpage,
+        page: this.props.photos.page + 1
       });
     }
   }
