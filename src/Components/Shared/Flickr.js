@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Constants from '../../Constants';
 import Loading from '../Shared/Loading';
 import '../../Styles/Photos.css';
@@ -45,7 +46,7 @@ export default class Flickr extends React.Component {
     const scrollTop = window.scrollY;
     const windowHeight = window.innerHeight;
     const documentHeight = this.getDocumentHeight();
-    if ( (scrollTop + windowHeight > documentHeight - (windowHeight / 3) )  && ! this.props.isLoading) {
+    if ( (scrollTop + windowHeight > documentHeight - (windowHeight / 2) )  && ! this.props.isLoading) {
       this.props.fetchFlickrPhotos({
         user_id: Constants.flickrHandle,
         per_page: this.props.photos.perpage,
@@ -70,9 +71,8 @@ export default class Flickr extends React.Component {
   renderFlickrImages () {
     const images = this.props.photos.photo.map( (photo, index) => {
       return (
-        <div className='photos__photo'>
+        <div key={index} className='photos__photo'>
           <img
-            key={index}
             alt={photo.title}
             src={ `https://farm${photo.farm}.staticflickr.com/`
                 + `${photo.server}/${photo.id}_${photo.secret}`
@@ -81,7 +81,16 @@ export default class Flickr extends React.Component {
           </div>
         )
     })
-    return <div className='photos'>{images}</div>
+    return (
+      <ReactCSSTransitionGroup
+        component='div'
+        className='photos'
+        transitionName='photos__animation'
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={500}>
+      {images}
+      </ReactCSSTransitionGroup>
+    )
   }
 
   render () {
