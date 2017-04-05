@@ -62,10 +62,8 @@ export default class Flickr extends React.Component {
       return 'z';
     } else if (innerWidth <= 800) {
       return 'c';
-    } else if (innerWidth <= 1024) {
-      return 'b';
     } else {
-      return 'h'
+      return 'b';
     }
   }
 
