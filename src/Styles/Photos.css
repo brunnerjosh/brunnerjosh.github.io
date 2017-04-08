@@ -12,6 +12,9 @@
 
 .photos__photo {
   padding: .5em;
+  width: 100vw;
+  text-align: center;
+  /* position: relative; // Causes a white flicker when loading more images */
 }
 
 .photos__photo img {
