@@ -34,11 +34,16 @@ The site is currently hosted through Google Cloud Platform (GCP). The main reaso
 ### Pre-deployment checklist:
 - Update `sitemap.txt` file with any new routes
 - Make sure to lock `package.json` versions by removing `^` from the version number
+- Create a version release in GitHub
 
 ### Google Cloud Platform
 In order to deploy the app to GCP, either set up the SDK locally, or push the code up to the repo's `master` branch in GitHub (which is mirrored to GCP) and log in through Google Cloud Shell and run
 
 `npm run deploy`
+
+To view server logs, make sure you're connected into a Google Cloud Shell instance and run
+
+`gcloud app logs tail -s default`
 
 ---
 BEGINE CREATE REACT APP README

@@ -5,13 +5,6 @@ import Theme from '../Theme';
 
 export default class MasonryCell extends React.Component {
 
-  constructor (props) {
-    super(props);
-    this.state = {
-      isHovered: false
-    }
-  }
-
   fibonacci (number) {
     if (number <= 1) {
       return 1;
@@ -19,7 +12,8 @@ export default class MasonryCell extends React.Component {
     return this.fibonacci(number - 1) + this.fibonacci(number - 2);
   }
 
-  determineCellBackground (index) {
+
+  determineCellMultiplier (index) {
     let multiplier;
     const itemsLength = this.props.items.length;
     const levels = 5;
@@ -72,36 +66,31 @@ export default class MasonryCell extends React.Component {
       multiplier = multiplierMap[4]
     }
 
-    const { r, g, b } = Theme.quaternary;
-    return `rgba(${r}, ${g}, ${b}, ${multiplier})`;
+    return multiplier;
   }
 
   render () {
     const { index } = this.props;
     const cellWidth = (100 / 3) + '%';
-    const cellBg = this.determineCellBackground(index+1);
-
+    const { r, g, b } = Theme.quaternary;
+    const cellMultiplier = this.determineCellMultiplier(index+1);
     const cellClasses = classNames('masonry__cell', {
       'is-active': this.props.activeCell === this.props.items[index].label
-    })
-
-    const cellContentClasses = classNames('masonry__cell-content', {
-      'is-hovered': this.state.isHovered
     })
 
     return (
       <div
         className={cellClasses}
         onClick={this.props.items[index].onClick}
-        onMouseEnter={() => { this.setState({ isHovered: true }) }}
-        onMouseLeave={() => { this.setState({ isHovered: false }) }}
         style={{
           flexBasis: cellWidth,
-          backgroundColor: cellBg
+          backgroundColor: `rgba(${r}, ${g}, ${b}, ${cellMultiplier})`,
+          // TODO: the rgba here: 64, 170, 119 is a 25% shade of the Theme.quaternary.hex value. This needs refactor
+          boxShadow: `inset 0.4em 0.4em 0.6em 0em rgba(64, 170, 119, ${cellMultiplier})`
         }}
         >
         <div className={'masonry__cell-container'} title={this.props.items[index].label}>
-          <div className={cellContentClasses}>
+          <div className={'masonry__cell-content'}>
             <div className={'masonry__cell-icon'}>
               <Icon color={Theme.primary.hex} icon={this.props.items[index].img} />
             </div>
