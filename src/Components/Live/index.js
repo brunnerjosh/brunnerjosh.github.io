@@ -9,6 +9,10 @@ const friends = [
 
 export default class Live extends React.Component {
 
+  componentDidMount () {
+    this.props.initWebRTC();
+  }
+
   renderFriends (friends) {
     if (friends) {
       return friends.map( (person, index) => {
