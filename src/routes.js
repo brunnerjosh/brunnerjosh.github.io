@@ -5,6 +5,7 @@ import App from './Containers/App';
 import Landing from './Containers/Landing';
 import Pages from './Containers/Pages';
 import Typography from './Components/Typography';
+import Live from './Containers/Live';
 import NotFound from './Components/NotFound';
 
 export default (
@@ -26,6 +27,7 @@ export default (
 
     {/* HIDDEN ROUTES */}
     <Route path='typography' component={Typography} />
+    <Route path='live' component={Live} />
 
     {/* EXTERNAL REDIRECTS */}
     <Route path='flickr' onEnter={() => window.location = 'https://www.flickr.com/photos/77226941@N04/' } />
