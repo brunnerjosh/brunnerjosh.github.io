@@ -1,4 +1,5 @@
 import React from 'react';
+import PeerFeed from './PeerFeed';
 import './Live.css';
 
 const friends = [
@@ -14,21 +15,39 @@ export default class Live extends React.Component {
   }
 
   renderFriends (friends) {
-    if (friends) {
-      return friends.map( (person, index) => {
-        return (
-          <div className='live__friend-feed' key={index}>
-            <img style={{ height: '100%', width: '100%'}} src={person.feed} alt={person.name}/>
-          </div>
-        )
-      })
+    const { streams } = this.props.webrtc;
+    console.log('streams', streams);
+
+    const friendStreams = [];
+
+    for (let key in streams) {
+      console.log('stream', key);
+      friendStreams.push(
+        <PeerFeed key={key} stream={streams[key]}/>
+      )
     }
+
+    return friendStreams;
+    // if (friends) {
+    //   return friends.map( (person, index) => {
+    //     return (
+    //       <PeerFeed key={index} stream=/>
+    //     )
+    //   })
+    // }
   }
 
   renderSelfVideoFeed () {
+    if (this.selfFeed) {
+      this.selfFeed.srcObject = this.props.webrtc.localStream;
+      this.selfFeed.muted = true;
+    }
     return (
       <div className='live__self-feed'>
-        <img style={{ height: '100%', width: '100%'}} src="http://footage.framepool.com/shotimg/qf/272322714-video-chat-agency-style-online.jpg" alt="self-feed" />
+        <video
+          autoPlay
+          ref={c => this.selfFeed = c }
+          style={{ height: '100%', width: '100%'}} />
       </div>
     )
   }
