@@ -8,20 +8,29 @@ const friends = [
   { name: 'Tommy', feed: 'https://cdn.shutterstock.com/shutterstock/videos/5092514/thumb/1.jpg' }
 ]
 
+
 export default class Live extends React.Component {
 
   componentDidMount () {
     this.props.initWebRTC();
+    window.addEventListener('beforeunload', this.onUnload);
+  }
+
+  componentWillUnmount() {
+    this.props.closeWebRTC();
+    window.removeEventListener('beforeunload', this.onUnload);
+  }
+
+  onUnload(event) {
+    this.props.closeWebRTC();
   }
 
   renderFriends (friends) {
     const { streams } = this.props.webrtc;
-    console.log('streams', streams);
 
     const friendStreams = [];
 
     for (let key in streams) {
-      console.log('stream', key);
       friendStreams.push(
         <PeerFeed key={key} stream={streams[key]}/>
       )

@@ -1,10 +1,12 @@
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
+const app = express();
+const server = require('http').createServer(app);;
 const bodyParser = require('body-parser');
 const routes = require('./routes/api-router');
+const createSignalServer = require('./routes/socket');
 
-const app = express();
 const port = process.env.PORT || 8080;
 const config = {
   root: 'build/',
@@ -18,7 +20,9 @@ app.use(express.static(__dirname + `/${config.root}`));
 
 app.get('*', (req, res) => res.sendFile( path.resolve(__dirname, config.root, config.home)) );
 
-app.listen(port, function (err) {
+createSignalServer(server);
+
+server.listen(port, function (err) {
   if (err) {
     console.error(err);
     return;

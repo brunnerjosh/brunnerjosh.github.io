@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { initWebRTC } from '../Services/WebRTC';
+import { initWebRTC, closeWebRTC } from '../Services/WebRTC';
 import Live from '../Components/Live';
 
 function mapStateToProps (state) {
@@ -9,7 +9,8 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
-    initWebRTC
+    initWebRTC,
+    closeWebRTC
   }, dispatch);
 }
 

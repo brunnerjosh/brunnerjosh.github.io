@@ -5,7 +5,6 @@ export default class PeerFeed extends React.Component {
   componentDidMount () {
     if (this.stream) {
       this.stream.srcObject = this.props.stream;
-      console.log('this.selfFeed.muted', this.stream.muted);
     }
   }
 
