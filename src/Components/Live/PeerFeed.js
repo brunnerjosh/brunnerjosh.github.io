@@ -10,7 +10,7 @@ export default class PeerFeed extends React.Component {
 
   render () {
     return (
-      <div className='live__friend-feed'>
+      <div className='live__friend-feed' onClick={this.props.onClick}>
         <video
           autoPlay
           ref={c => this.stream = c}

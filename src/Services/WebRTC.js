@@ -27,6 +27,8 @@ export function initWebRTC () {
 export function closeWebRTC () {
   return dispatch => {
     socket.close();
+    localStream.getVideoTracks()[0].stop();
+    localStream = null;
     dispatch({ type: 'WEBRTC_CLOSED' });
   }
 }
@@ -58,15 +60,25 @@ function onLeave (socketId) {
   }
 }
 
-function onConnect (userData) {
+export function loadLocalStream (success) {
   return dispatch => {
-
     getLocalStream({ 'audio': true, 'video': true }, stream => {
       localStream = stream;
       dispatch({ type: 'WEBRTC_LOCAL_MEDIA_STREAM', stream });
-      joinRoom()(dispatch);
+      if (typeof success === 'function') success();
     });
+  }
+}
 
+function onConnect (userData) {
+  return dispatch => {
+    if ( ! localStream ) {
+      loadLocalStream(() => {
+        joinRoom()(dispatch);
+      })(dispatch);
+    } else {
+      joinRoom()(dispatch);
+    }
   }
 }
 

@@ -1,7 +1,8 @@
 const defaultState = {
   localStream: null,
   connections: {},
-  streams: {}
+  streams: {},
+  socketId: null
 }
 
 export default function (state = defaultState, action) {
@@ -10,6 +11,13 @@ export default function (state = defaultState, action) {
   switch (action.type) {
     case 'WEBRTC_LOCAL_MEDIA_STREAM':
       newState.localStream = action.stream;
+      break;
+    case 'WEBRTC_JOIN_SUCCESS':
+      newState.socketId = action.socketId;
+      break;
+    case 'WEBRTC_CLOSED':
+      newState.socketId = defaultState.socketId;
+      newState.localStream = defaultState.localStream;
       break;
     case 'WEBRTC_NEW_PEER_CONNECTION':
       newState.connections[action.socketId] = action.pc;

@@ -1,3 +1,5 @@
+// Credit to: https://github.com/oney/react-native-webrtc-server
+
 module.exports = (server) => {
 
   const io = require('socket.io').listen(server);
