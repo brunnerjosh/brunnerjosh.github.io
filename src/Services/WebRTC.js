@@ -15,11 +15,10 @@ let peers = new PeerConnections();
 var configuration = {"iceServers": [{"urls": "stun:stun.l.google.com:19302"}]};
 var localStream;
 
-
 export function initWebRTC () {
   return dispatch => {
     dispatch({ type: 'WEBRTC_INITIALIZING' });
-    initSocketListeners({}, 'http://localhost:3000/')(dispatch);
+    initSocketListeners({}, '/')(dispatch);
     dispatch({ type: 'WEBRTC_INITIALED' });
   }
 }

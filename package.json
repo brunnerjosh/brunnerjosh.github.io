@@ -9,7 +9,7 @@
   "engines": {
     "node": ">=4.3.2"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "https://localhost:3001",
   "devDependencies": {
     "react-scripts": "0.9.5"
   },
@@ -20,6 +20,7 @@
     "dotenv": "4.0.0",
     "express": "4.15.2",
     "flickrapi": "0.6.0",
+    "fs": "0.0.1-security",
     "install": "^0.8.8",
     "json-loader": "0.5.4",
     "lodash": "^4.17.4",
@@ -42,6 +43,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:proxy": "PORT=3001 NODE_ENV=development node server.js",
     "start:production": "NODE_ENV=production node server.js",
     "build": "react-scripts build",
     "deploy": "npm run build; gcloud app deploy",
