@@ -46,7 +46,7 @@
     "start:proxy": "PORT=3001 NODE_ENV=development node server.js",
     "start:production": "NODE_ENV=production node server.js",
     "build": "react-scripts build",
-    "deploy": "npm run build; git push heroku master",
+    "deploy:current": "npm run build; git push heroku $(git rev-parse --symbolic-full-name --abbrev-ref HEAD):master",
     "remote:logs": "heroku logs --tail",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
