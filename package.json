@@ -47,7 +47,7 @@
     "start:production": "NODE_ENV=production node server.js",
     "build": "react-scripts build",
     "deploy": "npm run build; git push heroku master",
-    "remote:log": "heroku logs --tail",
+    "remote:logs": "heroku logs --tail",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

@@ -16,7 +16,6 @@ var options = process.env.NODE_ENV === 'development' ? {
 } : {};
 
 const secureMode = process.env.HTTPS === 'true' && process.env.NODE_ENV === 'development';
-console.log('secureMode', secureMode);
 const server = secureMode ? https.createServer(options, app) : http.createServer(app);
 socket.listen(server);
 
