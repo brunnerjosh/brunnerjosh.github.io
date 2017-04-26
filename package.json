@@ -7,7 +7,7 @@
     "url": "https://github.com/brunnerjosh/brunnerjosh.github.io/issues"
   },
   "engines": {
-    "node": ">=4.3.2"
+    "node": ">=6.x"
   },
   "proxy": "https://localhost:3001",
   "devDependencies": {
@@ -46,7 +46,8 @@
     "start:proxy": "PORT=3001 NODE_ENV=development node server.js",
     "start:production": "NODE_ENV=production node server.js",
     "build": "react-scripts build",
-    "deploy": "npm run build; gcloud app deploy",
+    "deploy": "npm run build; git push heroku master",
+    "remote:log": "heroku logs --tail",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
