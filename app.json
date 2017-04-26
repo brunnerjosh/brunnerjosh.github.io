@@ -1,0 +1,17 @@
+{
+  "name": "brunnerjosh.github.io",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/node"
+    }
+  ]
+}
