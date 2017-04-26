@@ -9,10 +9,10 @@ const bodyParser = require('body-parser');
 const routes = require('./routes/api-router');
 const socket = require('./routes/socket');
 
-var options = {
+var options = process.env.NODE_ENV === 'development' ? {
   key: fs.readFileSync('../.localhost-ssl/key.pem'),
   cert: fs.readFileSync('../.localhost-ssl/cert.pem')
-};
+} : {};
 
 const secureMode = process.env.HTTPS === 'true' && process.env.NODE_ENV === 'development';
 console.log('secureMode', secureMode);
