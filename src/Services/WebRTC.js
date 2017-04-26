@@ -26,6 +26,7 @@ export function initWebRTC () {
 export function closeWebRTC () {
   return dispatch => {
     socket.close();
+    localStream.getAudioTracks()[0].stop();
     localStream.getVideoTracks()[0].stop();
     localStream = null;
     dispatch({ type: 'WEBRTC_CLOSED' });
