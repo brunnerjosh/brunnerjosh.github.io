@@ -15,12 +15,26 @@ var options = process.env.NODE_ENV === 'development' ? {
   cert: fs.readFileSync('../.localhost-ssl/cert.pem')
 } : {};
 
+ var forceSsl = function (req, res, next) {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+        return res.redirect(['https://', req.get('Host'), req.url].join(''));
+    }
+    return next();
+ };
+
 const secureMode = process.env.HTTPS === 'true' && process.env.NODE_ENV === 'development';
 const server = secureMode ? https.createServer(options, app) : http.createServer(app);
 socket.listen(server);
 
 const port = process.env.PORT || 8080;
+ app.configure(function () {
 
+    if (process.env.NODE_ENV === 'production') {
+      console.log('forcing ssl!');
+        app.use(forceSsl);
+    }
+    // other configurations etc for express go here...
+}
 app.use(bodyParser.json());                         // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use('/api', routes);
