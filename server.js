@@ -27,14 +27,11 @@ const server = secureMode ? https.createServer(options, app) : http.createServer
 socket.listen(server);
 
 const port = process.env.PORT || 8080;
-app.configure(function () {
 
-  if (process.env.NODE_ENV === 'production') {
-    console.log('forcing ssl!');
-      app.use(forceSsl);
-  }
-  // other configurations etc for express go here...
-});
+if (process.env.NODE_ENV === 'production') {
+  console.log('forcing ssl!');
+  app.use(forceSsl);
+}
 app.use(bodyParser.json());                         // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use('/api', routes);
