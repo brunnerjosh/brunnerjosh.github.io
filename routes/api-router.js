@@ -14,7 +14,8 @@ router.get('/', function(req, res) {
 });
 
 router.get('/room', (req, res) => {
-  res.json({ roomId: findRoom() });
+  const roomId = findRoom().roomId;
+  res.json({ roomId: roomId });
 })
 
 Flickr.tokenOnly(flickrOptions, function(error, flickr) {

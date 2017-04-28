@@ -1,4 +1,5 @@
-var rooms = {};
+const rooms = [];
+const OPEN_ROOM_DURATION = 2; // mins
 
 function addDashes (num)
 {
@@ -6,11 +7,29 @@ function addDashes (num)
 }
 
 function generateRoomId () {
-  return addDashes(Math.floor(100000000 + Math.random() * 900000000).toString());
+  rooms.push({
+    createdAt: (new Date()).getTime(),
+    roomId: addDashes(Math.floor(100000000 + Math.random() * 900000000).toString())
+  })
+  return rooms[rooms.length - 1];
 }
 
 function findRoom () {
-  return generateRoomId();
+  const lastRoom = rooms[rooms.length - 1] || null;
+  if (lastRoom) {
+    const timeNow = (new Date()).getTime();
+    const fiveMinsBefore = timeNow - OPEN_ROOM_DURATION * 60 * 1000;
+    if (lastRoom.createdAt > fiveMinsBefore) {
+      console.log('Returning previously created room', lastRoom);
+      return lastRoom;
+    } else {
+      const newRoom = generateRoomId();
+      console.log("Creating new chat room: ", newRoom)
+      return newRoom;
+    }
+  } else {
+    return generateRoomId();
+  }
 }
 
 module.exports = findRoom;

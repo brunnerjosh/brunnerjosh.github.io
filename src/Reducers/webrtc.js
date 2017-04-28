@@ -1,4 +1,5 @@
 const defaultState = {
+  roomId: null,
   localStream: null,
   connections: {},
   streams: {},
@@ -9,6 +10,9 @@ export default function (state = defaultState, action) {
   const newState = Object.assign({}, state);
 
   switch (action.type) {
+    case 'WEBRTC_SET_ROOM_ID':
+      newState.roomId = action.id
+      break;
     case 'WEBRTC_LOCAL_MEDIA_STREAM':
       newState.localStream = action.stream;
       break;

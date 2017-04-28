@@ -8,7 +8,6 @@ export default class Live extends React.Component {
   constructor (props) {
     super(props);
     this.onUnload = this.onUnload.bind(this);
-    this.enterChatRoom = this.enterChatRoom.bind(this);
   }
 
   componentDidMount () {
@@ -32,10 +31,6 @@ export default class Live extends React.Component {
         this.selfFeed.srcObject = nextProps.webrtc.localStream;
       }
     }
-  }
-
-  enterChatRoom () {
-    this.props.initWebRTC();
   }
 
   renderSelfVideoFeed () {
@@ -65,7 +60,7 @@ export default class Live extends React.Component {
     const ctaBtn = this.props.webrtc.socketId ? (
       <button onClick={this.onUnload} className='is-danger'>Leave Room</button>
     ) : (
-      <button onClick={this.enterChatRoom} className='live__enter-room-btn'>Enter Room</button>
+      <button onClick={this.props.findOpenChatRoom} className='live__enter-room-btn'>Enter Room</button>
     );
     return (
       <div>

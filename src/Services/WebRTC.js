@@ -15,10 +15,13 @@ let peers = new PeerConnections();
 var configuration = {"iceServers": [{"urls": "stun:stun.l.google.com:19302"}]};
 var localStream;
 
-export function initWebRTC () {
+export function initWebRTC (roomId) {
   return dispatch => {
     dispatch({ type: 'WEBRTC_INITIALIZING' });
-    initSocketListeners({}, '/')(dispatch);
+    initSocketListeners({
+      roomId,
+      name: 'uuid_' + uuid.v4()
+    }, '/')(dispatch);
     dispatch({ type: 'WEBRTC_INITIALED' });
   }
 }
@@ -74,7 +77,7 @@ function onConnect (userData) {
   return dispatch => {
     if ( ! localStream ) {
       loadLocalStream(() => {
-        joinRoom()(dispatch);
+        joinRoom(userData)(dispatch);
       })(dispatch);
     } else {
       joinRoom()(dispatch);
@@ -82,12 +85,9 @@ function onConnect (userData) {
   }
 }
 
-function joinRoom () {
+function joinRoom (userData) {
   return dispatch => {
-    socket.emit('join', {
-      roomId: 'DEFAULT',
-      name: 'uuid_' + uuid.v4()
-    }, friends => {
+    socket.emit('join', userData, friends => {
       dispatch({ type: 'WEBRTC_JOIN_SUCCESS', socketId: socket.id })
       friends.forEach( friend => {
         createPeerConnection(friend.socketId, false)(dispatch)
