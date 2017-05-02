@@ -65,7 +65,13 @@ function onLeave (socketId) {
 
 export function loadLocalStream (success) {
   return dispatch => {
-    getLocalStream({ 'audio': true, 'video': true }, stream => {
+    getLocalStream({
+      audio: true,
+      video: {
+        width: { ideal: 1280 },
+        height: { ideal: 720 }
+      }
+    }, stream => {
       localStream = stream;
       dispatch({ type: 'WEBRTC_LOCAL_MEDIA_STREAM', stream });
       if (typeof success === 'function') success();
@@ -164,11 +170,10 @@ function createPeerConnection (socketId, isOffer) {
 }
 
 function getLocalStream (config, success) {
-  navigator.getUserMedia(
-    config,
-    stream => success(stream),
-    logError
-  );
+  navigator.mediaDevices
+    .getUserMedia( config )
+    .then( success )
+    .catch ( logError )
 }
 
 function logError (errorMsg) {
