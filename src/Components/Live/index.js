@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Peers from './Peers';
-import PageContainer from '../Pages/PageContainer';
+import Icon from '../Icon/Icon';
 import './Live.css';
 
 export default class Live extends React.Component {
@@ -9,6 +9,7 @@ export default class Live extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      fullscreen: false,
       viewedDisclaimer: false
     }
     this.onUnload = this.onUnload.bind(this);
@@ -83,11 +84,26 @@ export default class Live extends React.Component {
     );
   }
 
+  renderEnterFullScreenIcons () {
+    const icon = this.state.fullscreen ? 'screenNormal' : 'screenFull';
+    return (
+      <div
+        className='live__fullscreen-btn'
+        onClick={() => this.setState({ fullscreen: ! this.state.fullscreen })}>
+        <Icon icon={icon} color={'#fafafa'}/>
+      </div>
+    )
+  }
+
   render () {
     const { streams } = this.props.webrtc;
+    const liveClasses = classNames('live', {
+      'is-fullscreen': this.state.fullscreen
+    });
     return (
-      <div className='live'>
+      <div className={liveClasses}>
         <div className='live__container'>
+          {this.renderEnterFullScreenIcons()}
           {this.renderRequestLocalStream()}
           {this.renderRoomActionButton()}
           <Peers streams={streams} />
