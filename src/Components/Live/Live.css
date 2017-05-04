@@ -16,6 +16,21 @@
   box-shadow: 0 0.2em 0.9em 0.1em rgba(0, 0, 0, 0.4)
 }
 
+.live__disclaimer {
+  z-index: 1;
+  opacity: 1;
+  padding: 9em;
+  height: 100%;
+  position: absolute;
+  background: #fafafa;
+  transition: opacity 500ms ease;
+}
+
+.live__disclaimer.is-viewed{
+  opacity: 0;
+  pointer-events: none;
+}
+
 .live__enter-room-btn {
   z-index: 1;
   position: absolute;
