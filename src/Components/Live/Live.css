@@ -1,18 +1,33 @@
 .live {
   width: 100%;
-  background: lightgray;
+  display: flex;
+  justify-content: center;
+  margin-top: 4em;
 }
 
 .live__container {
   background: black;
-  width: 100%;
+  width: 90%;
   height: 100%;
   position: relative;
-  box-shadow: 0 0.2em 0.4em 0.1em rgba(0, 0, 0, 0.3)
+  box-shadow: 0 0.2em 0.9em 0.1em rgba(0, 0, 0, 0.4)
 }
 
-.live__enter-leave-btn {
-  margin: 1em 0em 1.5em 0em;
+.live__room-cta {
+  text-align: center;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.live__enter-room-btn {
+  top: 45%;
+  position: relative;
+}
+
+.live__leave-room-btn {
+
 }
 
 .live__self-feed {
@@ -26,24 +41,36 @@
 }
 
 .live__local-stream {
-  background: black;
-  position: relative;
+  /*background: black;*/
+  /*position: relative;*/
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 16em;
+  z-index: 1;
 }
 
 .live__friend-selected {
-  background: black;
-  margin: 2em 0em;
+  /*background: black;*/
+  /*margin: 2em 0em;*/
+  /*background: blue;*/
 }
 
 .live__friend-tray {
-  display: flex;
+  /*background: red;*/
+  height: 10em;
+  bottom: 0;
+  width: 100%;
+  display: inline-flex;
+  position: absolute;
+  /*display: flex;
   flex-flow: row wrap;
   max-height: 12em;
   justify-content: center;
   background: #ccc;
   padding: 1em;
   position: relative;
-  box-shadow: inset 0 0 .3em 0em rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 .3em 0em rgba(0, 0, 0, 0.3);*/
 }
 
 .live__friend-tray::before {
@@ -63,7 +90,7 @@
   flex-basis: 25%;
   cursor: pointer;
   background: black;
-  box-shadow: 0 0 .3em 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 .3em 0em rgba(0, 0, 0, 0.3);
 }
 
 .live__preview {
