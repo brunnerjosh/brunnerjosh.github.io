@@ -86,7 +86,7 @@ function onConnect (userData) {
         joinRoom(userData)(dispatch);
       })(dispatch);
     } else {
-      joinRoom()(dispatch);
+      joinRoom(userData)(dispatch);
     }
   }
 }
