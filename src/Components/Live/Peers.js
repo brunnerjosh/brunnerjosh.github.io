@@ -50,7 +50,7 @@ export default class Peers extends React.Component {
     const { streams } = this.props;
     const { selectedPeer } = this.state;
     return (
-      <div>
+      <div className='live__friend'>
         <div className='live__friend-selected'>
           <PeerFeed
             key={selectedPeer}

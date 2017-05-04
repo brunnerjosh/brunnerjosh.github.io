@@ -75,12 +75,11 @@ export default class Live extends React.Component {
   }
 
   renderRoomActionButton () {
-    const cta = this.props.webrtc.socketId ? (
+    return this.props.webrtc.socketId ? (
       <button onClick={this.onUnload} className='live__leave-room-btn is-danger'>Leave Room</button>
     ) : (
       <button onClick={this.props.findOpenChatRoom} className='live__enter-room-btn'>Enter Room</button>
     );
-    return <div className='live__room-cta'>{cta}</div>
   }
 
   render () {
