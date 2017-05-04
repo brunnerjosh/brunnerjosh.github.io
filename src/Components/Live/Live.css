@@ -6,7 +6,7 @@
 }
 
 .live__container {
-  /*background: black;*/
+  background: black;
   width: 90%;
   height: 100%;
   display: flex;
@@ -38,76 +38,46 @@
 }
 
 .live__local-stream {
-  /*background: black;*/
-  /*position: relative;*/
-  position: absolute;
   top: 0;
   right: 0;
-  width: 16em;
   z-index: 1;
+  width: 16em;
+  position: absolute;
 }
 
 .live__friend {
   width: 100%;
 }
 
-.live__friend-selected {
-  /*background: black;*/
-  /*margin: 2em 0em;*/
-  /*background: blue;*/
-}
-
 .live__friend-tray {
-  /*background: red;*/
-  height: 10em;
   bottom: 0;
   width: 100%;
+  height: 10em;
   display: flex;
-  justify-content: space-between;
+  position: absolute;
   flex-direction: row-reverse;
-  position: absolute;
-  /*display: flex;
-  flex-flow: row wrap;
-  max-height: 12em;
-  justify-content: center;
-  background: #ccc;
-  padding: 1em;
-  position: relative;
-  box-shadow: inset 0 0 .3em 0em rgba(0, 0, 0, 0.3);*/
+  justify-content: space-between;
 }
-
-/*.live__friend-tray::before {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  content: 'The Friend Zone';
-}*/
 
 .live__friend-tray .live__friend-feed {
   z-index: 1;
-  flex-basis: 25%;
   cursor: pointer;
-  /*background: red;*/
+  flex-basis: 25%;
   box-shadow: 0 0 .3em 0em rgba(0, 0, 0, 0.3);
 }
 
 .live__preview {
-  height: 100%;
-  width: 100%;
-  position: absolute;
   top: 0;
   left: 0;
-  cursor: pointer;
+  width: 100%;
+  height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  cursor: pointer;
   color: #2B2D34;
-  background: #fafafa;
+  position: absolute;
   padding: .5em 1.5em;
+  align-items: center;
+  background: #fafafa;
+  justify-content: center;
   border: .5em dashed #2B2D34;
 }
