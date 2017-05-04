@@ -77,16 +77,21 @@ export default class Live extends React.Component {
   render () {
     const { streams } = this.props.webrtc;
     return (
-      <PageContainer
-        leftSide={{
-          classes: 'col-xs-4',
-          content: this.renderInfoSection()
-        }}
-        rightSide={{
-          classes: 'col-xs-offset-1 col-xs-7',
-          content: <Peers streams={streams} />
-        }}
-        />
+      <div className={'live'}>
+        <Peers streams={streams} />
+      </div>
     )
+    // return (
+    //   <PageContainer
+    //     leftSide={{
+    //       classes: 'col-xs-4',
+    //       content: this.renderInfoSection()
+    //     }}
+    //     rightSide={{
+    //       classes: 'col-xs-offset-1 col-xs-7',
+    //       content: <Peers streams={streams} />
+    //     }}
+    //     />
+    // )
   }
 }
