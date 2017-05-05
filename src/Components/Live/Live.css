@@ -26,6 +26,7 @@
 
 .live__fullscreen-btn {
   left: 0;
+  z-index: 1;
   padding: 1em;
   cursor: pointer;
   position: absolute;
