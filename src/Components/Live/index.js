@@ -39,6 +39,7 @@ export default class Live extends React.Component {
   }
 
   renderSelfVideoFeed () {
+    if ( ! this.state.viewedDisclaimer ) return;
     return (
       <div className='live__self-feed'>
         <video ref={c => this.selfFeed = c } autoPlay muted />
@@ -47,6 +48,7 @@ export default class Live extends React.Component {
   }
 
   renderRequestLocalStream () {
+    if ( ! this.state.viewedDisclaimer ) return;
     const showPreview = ! this.selfFeed || (this.selfFeed && ! this.selfFeed.srcObject);
     const previewScreen = showPreview ? (
       <div className='live__preview' onClick={this.props.loadLocalStream}>
@@ -62,6 +64,7 @@ export default class Live extends React.Component {
   }
 
   renderRoomActionButton () {
+    if ( ! this.state.viewedDisclaimer ) return;
     return this.props.webrtc.socketId ? (
       <button onClick={this.onUnload} className='live__leave-room-btn is-danger'>Leave Room</button>
     ) : (
@@ -86,6 +89,7 @@ export default class Live extends React.Component {
   }
 
   renderEnterFullScreenIcons () {
+    if ( ! this.state.viewedDisclaimer ) return;
     const icon = this.state.fullscreen ? 'screenNormal' : 'screenFull';
     return (
       <div
