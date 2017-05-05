@@ -36,8 +36,9 @@
 .live__disclaimer {
   z-index: 1;
   opacity: 1;
-  padding: 6em;
+  padding: 2em;
   height: 100%;
+  overflow: scroll;
   position: absolute;
   background: #fafafa;
   transition: opacity 500ms ease;
