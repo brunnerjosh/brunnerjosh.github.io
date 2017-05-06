@@ -83,6 +83,7 @@ export default class Live extends React.Component {
   renderRequestLocalStream () {
     if ( ! this.state.viewedDisclaimer ) return;
     const showPreview = ! this.selfFeed || (this.selfFeed && ! this.selfFeed.srcObject);
+    const numOfConnections = Object.keys(this.props.webrtc.connections).length;
     const previewScreen = showPreview ? (
       <div className='live__preview' onClick={this.props.loadLocalStream}>
         Preview
@@ -90,6 +91,7 @@ export default class Live extends React.Component {
     ) : null;
     return (
       <div className='live__local-stream' onClick={this.attemptToggleLocalStream}>
+        <span className='live__local-conn-count'>Connections: {numOfConnections}</span>
         {this.renderSelfVideoFeed()}
         {previewScreen}
       </div>

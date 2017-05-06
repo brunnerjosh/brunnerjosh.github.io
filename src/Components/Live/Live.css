@@ -108,11 +108,19 @@
   width: 100%;
 }
 
+.live__local-conn-count {
+  right: 0;
+  color: #ccc;
+  font-size: .8em;
+  position: absolute;
+}
+
 .live__local-stream {
   top: 0;
   right: 0;
   z-index: 1;
-  width: 16em;
+  width: 14em;
+  margin: 1em;
   position: absolute;
 }
 
