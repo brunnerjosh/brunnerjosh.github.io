@@ -24,6 +24,20 @@
   box-shadow: 0 0.2em 0.9em 0.1em rgba(0, 0, 0, 0.4)
 }
 
+/* THESE GET ENABLED WHEN THE USER IS HOVERING THE LIVE_CONTAINER */
+.live__container:hover .live__local-stream,
+.live__container:hover .live__fullscreen-btn,
+.live__container:hover .live__leave-room-btn {
+  opacity: 1;
+}
+
+.live__local-stream,
+.live__fullscreen-btn,
+.live__leave-room-btn {
+  opacity: .3;
+  transition: opacity 1000ms ease;
+}
+
 .live__fullscreen-btn {
   left: 0;
   z-index: 1;
@@ -72,12 +86,13 @@
 .live__leave-room-btn {
   z-index: 1;
   position: absolute;
+  text-align: center;
   align-self: flex-start;
 }
 
 .live__leave-room-btn .live__leave-room-alt {
   margin: 0;
-  padding: 1em;
+  padding: 1em 0em;
   letter-spacing: .3em;
   color: #fafafa;
   text-align: center;
