@@ -11,17 +11,13 @@ export default function (state = defaultState, action) {
 
   switch (action.type) {
     case 'WEBRTC_SET_ROOM_ID':
-      newState.roomId = action.id
+      newState.roomId = action.roomId
       break;
     case 'WEBRTC_LOCAL_MEDIA_STREAM':
       newState.localStream = action.stream;
       break;
     case 'WEBRTC_JOIN_SUCCESS':
       newState.socketId = action.socketId;
-      break;
-    case 'WEBRTC_CLOSED':
-      newState.socketId = defaultState.socketId;
-      newState.localStream = defaultState.localStream;
       break;
     case 'WEBRTC_NEW_PEER_CONNECTION':
       newState.connections[action.socketId] = action.pc;
@@ -33,6 +29,8 @@ export default function (state = defaultState, action) {
       delete newState.streams[action.socketId];
       delete newState.connections[action.socketId];
       break;
+    case 'WEBRTC_CLOSED':
+      return defaultState;
     default:
       return state;
   }

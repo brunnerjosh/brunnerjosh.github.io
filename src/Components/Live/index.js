@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import InputMask from 'react-input-mask';
 import Peers from './Peers';
 import Icon from '../Icon/Icon';
 import './Live.css';
@@ -9,10 +10,14 @@ export default class Live extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      joinById: false,
       fullscreen: false,
-      viewedDisclaimer: false
+      desiredRoomId: "",
+      viewedDisclaimer: true
     }
     this.onUnload = this.onUnload.bind(this);
+    this.toggleJoinById = this.toggleJoinById.bind(this);
+    this.handleRoomIdSubmit = this.handleRoomIdSubmit.bind(this);
   }
 
   componentDidMount () {
@@ -27,6 +32,10 @@ export default class Live extends React.Component {
   onUnload () {
     if (this.props.webrtc.socketId) {
       this.props.closeWebRTC();
+      this.setState({
+        joinById: false,
+        fullscreen: false
+      })
     }
   }
 
@@ -35,6 +44,21 @@ export default class Live extends React.Component {
       if (this.props.webrtc.localStream !== nextProps.webrtc.localStream) {
         this.selfFeed.srcObject = nextProps.webrtc.localStream;
       }
+    }
+  }
+
+  toggleJoinById () {
+    this.setState({
+      joinById: ! this.state.joinById
+    })
+  }
+
+  handleRoomIdSubmit ( event ) {
+    event.preventDefault();
+    if (this.state.desiredRoomId.replace(/[^0-9]/g,"").length === 9) {
+      this.props.initWebRTC(this.state.desiredRoomId);
+    } else {
+      alert('Please enter a valid nine-digit room ID. Example: 123-456-789 ');
     }
   }
 
@@ -65,11 +89,34 @@ export default class Live extends React.Component {
 
   renderRoomActionButton () {
     if ( ! this.state.viewedDisclaimer ) return;
-    return this.props.webrtc.socketId ? (
-      <button onClick={this.onUnload} className='live__leave-room-btn is-danger'>Leave Room</button>
-    ) : (
-      <button onClick={this.props.findOpenChatRoom} className='live__enter-room-btn'>Enter Room</button>
-    );
+    if (this.props.webrtc.socketId) {
+      return (
+        <div className='live__leave-room-btn'>
+          <button onClick={this.onUnload} className='is-danger'>Leave Room</button>
+          <p className='live__leave-room-alt'>{this.props.webrtc.roomId}</p>
+        </div>
+      )
+    } else if ( ! this.state.joinById ) {
+      return (
+        <div className='live__enter-room-btn'>
+          <button onClick={this.props.findOpenChatRoom}>Enter Room</button>
+          <p className='live__enter-room-alt' onClick={this.toggleJoinById}>join by id</p>
+        </div>
+      )
+    } else if (this.state.joinById) {
+      return (
+        <div className='live__enter-room-btn'>
+          <form onSubmit={this.handleRoomIdSubmit}>
+            <InputMask
+              mask='999-999-999'
+              placeholder='123-456-789'
+              value={this.state.desiredRoomId}
+              onChange={ event => this.setState({ desiredRoomId: event.target.value }) } />
+          </form>
+          <p className='live__enter-room-alt' onClick={this.toggleJoinById}>cancel</p>
+        </div>
+      )
+    }
   }
 
   renderDisclaimer () {

@@ -8,6 +8,7 @@ import Theme from '../Components/Theme';
 import '../Styles/Reset.css';
 import '../Styles/index.css';
 import '../Styles/Button.css';
+import '../Styles/Input.css';
 import '../Styles/App.css';
 import '../Styles/Content.css';
 

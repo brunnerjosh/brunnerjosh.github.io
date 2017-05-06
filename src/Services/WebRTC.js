@@ -17,7 +17,7 @@ var localStream;
 
 export function initWebRTC (roomId) {
   return dispatch => {
-    dispatch({ type: 'WEBRTC_INITIALIZING' });
+    dispatch({ type: 'WEBRTC_SET_ROOM_ID', roomId });
     initSocketListeners({
       roomId,
       name: 'uuid_' + uuid.v4()

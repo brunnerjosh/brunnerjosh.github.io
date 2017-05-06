@@ -50,13 +50,37 @@
 
 .live__enter-room-btn {
   z-index: 1;
+  display: flex;
   position: absolute;
+  flex-direction: column;
+}
+
+.live__enter-room-btn .live__enter-room-alt {
+  margin: 0;
+  padding: 1em;
+  font-size: .8em;
+  cursor: pointer;
+  color: #47BA83;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.live__enter-room-btn input {
+  text-align: center;
 }
 
 .live__leave-room-btn {
   z-index: 1;
   position: absolute;
   align-self: flex-start;
+}
+
+.live__leave-room-btn .live__leave-room-alt {
+  margin: 0;
+  padding: 1em;
+  letter-spacing: .3em;
+  color: #fafafa;
+  text-align: center;
 }
 
 .live__self-feed {
