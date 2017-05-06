@@ -13,7 +13,7 @@ export default class Live extends React.Component {
       joinById: false,
       fullscreen: false,
       desiredRoomId: "",
-      viewedDisclaimer: true
+      viewedDisclaimer: false
     }
     this.onUnload = this.onUnload.bind(this);
     this.toggleJoinById = this.toggleJoinById.bind(this);
