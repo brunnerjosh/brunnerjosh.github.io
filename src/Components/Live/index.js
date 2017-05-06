@@ -18,6 +18,7 @@ export default class Live extends React.Component {
     this.onUnload = this.onUnload.bind(this);
     this.toggleJoinById = this.toggleJoinById.bind(this);
     this.handleRoomIdSubmit = this.handleRoomIdSubmit.bind(this);
+    this.attemptToggleLocalStream = this.attemptToggleLocalStream.bind(this);
   }
 
   componentDidMount () {
@@ -62,6 +63,14 @@ export default class Live extends React.Component {
     }
   }
 
+  attemptToggleLocalStream () {
+    // Make sure that we aren't currently in a chat
+    if ( ! this.props.webrtc.socketId ) {
+      // Closes socket, video, and audio streams
+      this.props.closeWebRTC();
+    }
+  }
+
   renderSelfVideoFeed () {
     if ( ! this.state.viewedDisclaimer ) return;
     return (
@@ -80,7 +89,7 @@ export default class Live extends React.Component {
       </div>
     ) : null;
     return (
-      <div className='live__local-stream'>
+      <div className='live__local-stream' onClick={this.attemptToggleLocalStream}>
         {this.renderSelfVideoFeed()}
         {previewScreen}
       </div>
