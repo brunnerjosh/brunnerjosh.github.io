@@ -127,7 +127,7 @@ export default class Live extends React.Component {
       <div className={classes}>
         <h1>Live: A Video Chat Client</h1>
         <p>I was interested in learning and applying my knowledge of <a href='https://webrtc.org/' target='_blank'>WebRTC</a> and <a href='https://socket.io/' target='_blank'>Socket.IO</a> to build a video chat client. This project is very experimental and will likely have bugs and other issues. If you come across something and want to report it, please <a href='https://github.com/brunnerjosh/brunnerjosh.github.io/issues' target='_blank'>do so here.</a></p>
-        <p>Note: In order to join the same chat room as your peers, everyone must join the chat within 2 minutes of the first person who joined the room.</p>
+        <p>Note: Once you enter that chat room, you can share the room ID for others to join. Otherwise, everyone must join the chat within 2 minutes of the first person who joined the room.</p>
         <h4>Disclaimer</h4>
         <p>Before proceeding, please understand that this section of the website will only run properly in the Google Chrome web browser on a desktop computer.</p>
         <button onClick={() => this.setState({ viewedDisclaimer: true })}>I Understand</button>
