@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import InputMask from 'react-input-mask';
 import Peers from './Peers';
+import RecordingTime from './RecordingTime';
 import Icon from '../Icon/Icon';
 import './Live.css';
 
@@ -167,6 +168,7 @@ export default class Live extends React.Component {
       <div className={liveClasses}>
         <div className='live__container'>
           {this.renderEnterFullScreenIcons()}
+          <RecordingTime startTime={new Date()}/>
           {this.renderRequestLocalStream()}
           {this.renderRoomActionButton()}
           <Peers streams={streams} />
