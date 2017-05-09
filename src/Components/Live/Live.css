@@ -96,6 +96,7 @@
   letter-spacing: .3em;
   color: #fafafa;
   text-align: center;
+  text-shadow: 0em 0em 0.5em black;
 }
 
 .live__self-feed {
@@ -113,6 +114,7 @@
   color: #ccc;
   font-size: .8em;
   position: absolute;
+  text-shadow: 0em 0em 0.5em black;
 }
 
 .live__local-stream {
