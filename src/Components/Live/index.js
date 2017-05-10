@@ -95,7 +95,7 @@ export default class Live extends React.Component {
         <span className='live__local-conn-count'>
           Connections: {numOfConnections}
           <br />
-          <RecordingTime startTime={new Date()}/>
+          { this.props.webrtc.socketId ? <RecordingTime /> : null }
         </span>
         {this.renderSelfVideoFeed()}
         {previewScreen}

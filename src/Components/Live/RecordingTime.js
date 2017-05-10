@@ -5,14 +5,13 @@ export default class RecordingTime extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      startTime: moment(props.startTime),
+      startTime: moment(),
       endTime: moment()
     }
   }
 
   componentDidMount () {
     this.timer = setInterval( () => {
-      console.log('interval ran');
       this.setState({
         endTime: moment()
       })
