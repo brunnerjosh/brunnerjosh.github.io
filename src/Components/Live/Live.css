@@ -107,6 +107,7 @@
 .live__self-feed video {
   height: 100%;
   width: 100%;
+  transform: scaleX(-1);
 }
 
 .live__local-conn-count {
