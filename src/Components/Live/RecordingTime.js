@@ -25,15 +25,17 @@ export default class RecordingTime extends React.Component {
 
   determineDisplayTime () {
     const { startTime, endTime } = this.state;
-    const hours = endTime.diff(startTime, 'hours');
-    const mins = endTime.diff(startTime, 'minutes') % 60;
-    const secs = endTime.diff(startTime, 'seconds') % 60;
-    const colon = (secs % 2 === 0) ? ':' : ' ';
-    return `${hours}:${mins}${colon}${secs}`;
+    let hours = endTime.diff(startTime, 'hours');
+    hours = hours % 10 === hours ? `0${hours}` : hours;
+    let mins = endTime.diff(startTime, 'minutes') % 60;
+    mins = mins % 10 === mins ? `0${mins}` : mins;
+    let secs = endTime.diff(startTime, 'seconds') % 60;
+    secs = secs % 10 === secs ? `0${secs}` : secs;
+    return `${hours}:${mins}:${secs}`;
   }
 
   render () {
-    return <div>{this.determineDisplayTime().toString()}</div>
+    return <span>{this.determineDisplayTime().toString()}</span>
   }
 
 }

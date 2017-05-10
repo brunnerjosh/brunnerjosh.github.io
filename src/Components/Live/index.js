@@ -92,7 +92,11 @@ export default class Live extends React.Component {
     ) : null;
     return (
       <div className='live__local-stream' onClick={this.attemptToggleLocalStream}>
-        <span className='live__local-conn-count'>Connections: {numOfConnections}</span>
+        <span className='live__local-conn-count'>
+          Connections: {numOfConnections}
+          <br />
+          <RecordingTime startTime={new Date()}/>
+        </span>
         {this.renderSelfVideoFeed()}
         {previewScreen}
       </div>
@@ -168,7 +172,6 @@ export default class Live extends React.Component {
       <div className={liveClasses}>
         <div className='live__container'>
           {this.renderEnterFullScreenIcons()}
-          <RecordingTime startTime={new Date()}/>
           {this.renderRequestLocalStream()}
           {this.renderRoomActionButton()}
           <Peers streams={streams} />
