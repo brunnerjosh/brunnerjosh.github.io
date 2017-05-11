@@ -16,13 +16,15 @@ export default class Live extends React.Component {
       desiredRoomId: "",
       viewedDisclaimer: false
     }
-
-    this.props.checkForWebRTCSupport();
-
     this.onUnload = this.onUnload.bind(this);
     this.toggleJoinById = this.toggleJoinById.bind(this);
     this.handleRoomIdSubmit = this.handleRoomIdSubmit.bind(this);
+    this.markDisclaimerAsViewed = this.markDisclaimerAsViewed.bind(this);
     this.attemptToggleLocalStream = this.attemptToggleLocalStream.bind(this);
+  }
+
+  componentWillMount () {
+    this.props.checkForWebRTCSupport();
   }
 
   componentDidMount () {
@@ -73,6 +75,12 @@ export default class Live extends React.Component {
       // Closes socket, video, and audio streams
       this.props.closeWebRTC();
     }
+  }
+
+  markDisclaimerAsViewed () {
+    this.setState({
+      viewedDisclaimer: true
+    });
   }
 
   renderSelfVideoFeed () {
@@ -142,17 +150,21 @@ export default class Live extends React.Component {
     const classes = classNames('live__disclaimer', {
       'is-viewed': this.state.viewedDisclaimer
     })
-    console.log('this.props.webrtc.isSupported', this.props.webrtc.isSupported);
     const cta = this.props.webrtc.isSupported ? (
       <div>
         <p>Note: Once you enter that chat room, you can share the room ID for others to join. Otherwise, everyone must join the chat within 2 minutes of the first person who joined the room.</p>
-        <h4>Disclaimer</h4>
-        <p>Before proceeding, please understand that this section of the website will only run properly in the Google Chrome web browser on a desktop computer.</p>
-        <button onClick={() => this.setState({ viewedDisclaimer: true })}>I Understand</button>
+        <button onClick={this.markDisclaimerAsViewed}>Let me in</button>
       </div>
     ) : (
       <div>
-      NOT SUPPORTED
+      <div className='row'>
+        <div className='col-xs-1'>
+          <Icon icon='Alert' color='red'/>
+        </div>
+        <div className='col-xs-11'>
+          <p>Download <a href='https://www.google.com/chrome/browser/desktop/' target='_blank'>Chrome</a> or <a href='https://www.mozilla.org/en-US/firefox/new/' target='_blank'>Firefox</a> in order to test out this video chat client as it was designed to work. If you think your browser can handle WebRTC and Socket.IO anyway, <a onClick={this.markDisclaimerAsViewed}>click here to proceed</a>.</p>
+        </div>
+      </div>
       </div>
     );
     return (
