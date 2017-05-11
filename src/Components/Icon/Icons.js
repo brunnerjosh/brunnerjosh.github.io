@@ -464,10 +464,19 @@ export function screenNormal () {
   )
 }
 
+export function Alert() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+      <path fillRule="evenodd" d="M8.865 1.51999998c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.51999998zM8.995 13h-2v-2h2v2zm0-3.00000002h-2v-4h2v4z"/>
+    </svg>
+  )
+}
+
 export default {
   screenFull,
   screenNormal,
   W,
+  Alert,
   UWBSTEM,
   FilePDF,
   Repo,
