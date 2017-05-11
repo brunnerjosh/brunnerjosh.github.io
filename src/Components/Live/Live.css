@@ -48,6 +48,7 @@
 }
 
 .live__disclaimer {
+  left: 0;
   z-index: 1;
   opacity: 1;
   padding: 2em;
@@ -113,6 +114,7 @@
 .live__local-conn-count {
   top: 0;
   right: 0;
+  z-index: 1;
   color: #ccc;
   padding: 0.3em;
   font-size: .8em;
@@ -155,6 +157,7 @@
 .live__preview {
   top: 0;
   left: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
   display: flex;

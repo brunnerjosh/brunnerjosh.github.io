@@ -1,4 +1,5 @@
 const defaultState = {
+  isSupported: false,
   roomId: null,
   localStream: null,
   connections: {},
@@ -10,6 +11,9 @@ export default function (state = defaultState, action) {
   const newState = Object.assign({}, state);
 
   switch (action.type) {
+    case 'WEBRTC_SUPPORT':
+      newState.isSupported = action.isSupported;
+      break;
     case 'WEBRTC_SET_ROOM_ID':
       newState.roomId = action.roomId
       break;

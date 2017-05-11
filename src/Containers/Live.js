@@ -1,7 +1,12 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { findOpenChatRoom } from '../Actions/WebRTC';
-import { initWebRTC, closeWebRTC, loadLocalStream } from '../Services/WebRTC';
+import {
+  initWebRTC,
+  closeWebRTC,
+  loadLocalStream,
+  checkForWebRTCSupport
+} from '../Services/WebRTC';
 import Live from '../Components/Live';
 
 function mapStateToProps (state) {
@@ -13,7 +18,8 @@ function mapDispatchToProps (dispatch) {
     initWebRTC,
     closeWebRTC,
     loadLocalStream,
-    findOpenChatRoom
+    findOpenChatRoom,
+    checkForWebRTCSupport
   }, dispatch);
 }
 

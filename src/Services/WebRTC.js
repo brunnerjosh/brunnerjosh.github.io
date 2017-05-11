@@ -2,6 +2,10 @@ import uuid from 'uuid';
 import io from 'socket.io-client';
 import WebRTCAdapter from 'webrtc-adapter';
 import PeerConnections from './PeerConnections';
+const supportedBrowsers = {
+  'chrome': 49,
+  'firefox': 52
+}
 
 /* INITIALIZE BROWSER SHIMS */
 for (var key in WebRTCAdapter.browserShim) {
@@ -14,6 +18,14 @@ let socket;
 let peers = new PeerConnections();
 var configuration = {"iceServers": [{"urls": "stun:stun.l.google.com:19302"}]};
 var localStream;
+
+export function checkForWebRTCSupport () {
+  return dispatch => {
+    const browser =  WebRTCAdapter.browserDetails.browser
+    const isSupported = supportedBrowsers[browser];
+    dispatch({ type: 'WEBRTC_SUPPORT', isSupported });
+  };
+}
 
 export function initWebRTC (roomId) {
   return dispatch => {
