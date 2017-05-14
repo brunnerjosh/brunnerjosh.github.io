@@ -1,0 +1,171 @@
+.live {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 4em;
+}
+
+.live.is-fullscreen {
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+}
+
+.live.is-fullscreen .live__friend-selected video {
+  width: 100vw;
+  height: 100vh;
+}
+
+.live__container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  background: #101113;
+  box-shadow: 0 0.2em 0.9em 0.1em rgba(0, 0, 0, 0.4)
+}
+
+/* THESE GET ENABLED WHEN THE USER IS HOVERING THE LIVE_CONTAINER */
+.live__container:hover .live__local-stream,
+.live__container:hover .live__fullscreen-btn,
+.live__container:hover .live__leave-room-btn {
+  opacity: 1;
+}
+
+.live__local-stream,
+.live__fullscreen-btn,
+.live__leave-room-btn {
+  opacity: .1;
+  transition: opacity 1000ms ease;
+}
+.live__fullscreen-btn,
+.live__enter-room-btn,
+.live__leave-room-btn,
+.live__local-stream {
+  flex-basis: 25%;
+}
+
+.live__fullscreen-btn {
+  z-index: 1;
+  padding: 1em;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.live__enter-room-btn {
+  z-index: 1;
+  text-align: center;
+  flex-direction: column;
+}
+
+.live__enter-room-btn .live__enter-room-alt {
+  margin: 0;
+  padding: 1em;
+  font-size: .8em;
+  cursor: pointer;
+  color: #47BA83;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.live__enter-room-btn input {
+  font-size: 2em;
+  text-align: center;
+}
+
+.live__leave-room-btn {
+  z-index: 1;
+  padding: 1em;
+  text-align: center;
+  align-self: flex-start;
+}
+
+.live__leave-room-btn .live__leave-room-alt {
+  margin: 0;
+  padding: 1em 0em;
+  letter-spacing: .3em;
+  color: #fafafa;
+  text-align: center;
+  text-shadow: 0em 0em 0.5em black;
+}
+
+.live__self-feed {
+  height: 100%;
+  position: relative;
+  box-shadow: inset 0 0 .3em 0em rgba(0, 0, 0, 0.3);
+}
+
+.live__self-feed video {
+  height: 100%;
+  width: 100%;
+  transform: scaleX(-1);
+}
+
+.live__local-conn-count {
+  top: 0;
+  right: 0;
+  z-index: 1;
+  color: rgba(255,255,255,0.5);
+  padding: 0.3em;
+  font-size: .8em;
+  line-height: 1.2;
+  text-align: right;
+  position: absolute;
+  text-shadow: 0em 0em 0.5em black;
+}
+
+.live__local-stream {
+  z-index: 1;
+  padding: 1em;
+  position: relative;
+  align-self: flex-start;
+}
+
+.live__friend {
+  width: 100%;
+  position: absolute;
+}
+
+.live__friend-feed video {
+  width: 100%;
+  height: 100%;
+  transform: scaleX(-1);
+}
+
+.live__friend-tray {
+  bottom: 0;
+  width: 100%;
+  height: 10em;
+  display: flex;
+  position: absolute;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.live__friend-tray .live__friend-feed {
+  z-index: 1;
+  cursor: pointer;
+  flex-basis: 25%;
+}
+
+.live__preview {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  cursor: pointer;
+  color: #2B2D34;
+  position: absolute;
+  padding: .5em 1.5em;
+  align-items: center;
+  background: #fafafa;
+  justify-content: center;
+  border: .5em dashed #2B2D34;
+}

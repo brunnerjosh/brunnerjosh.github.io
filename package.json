@@ -1,14 +1,15 @@
 {
   "name": "portfolio-site",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "private": true,
   "homepage": "http://brunnerjosh.github.io",
   "bugs": {
     "url": "https://github.com/brunnerjosh/brunnerjosh.github.io/issues"
   },
   "engines": {
-    "node": ">=4.3.2"
+    "node": ">=6.x"
   },
+  "proxy": "https://localhost:3001",
   "devDependencies": {
     "react-scripts": "0.9.5"
   },
@@ -19,25 +20,36 @@
     "dotenv": "4.0.0",
     "express": "4.15.2",
     "flickrapi": "0.6.0",
+    "fs": "0.0.1-security",
+    "install": "0.8.8",
     "json-loader": "0.5.4",
+    "lodash": "4.17.4",
     "moment": "2.17.1",
+    "npm": "4.5.0",
     "path": "0.12.7",
+    "portals": "^1.0.9",
     "react": "15.4.2",
     "react-addons-css-transition-group": "15.4.2",
     "react-dom": "15.4.2",
     "react-ga": "2.1.2",
+    "react-input-mask": "^0.8.0",
     "react-redux": "5.0.2",
     "react-router": "3.0.2",
     "react-router-redux": "4.0.7",
     "redux": "3.6.0",
     "redux-logger": "2.7.4",
-    "redux-thunk": "2.2.0"
+    "redux-thunk": "2.2.0",
+    "socket.io": "^1.7.3",
+    "uuid": "3.0.1",
+    "webrtc-adapter": "3.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:production": "NODE_ENV=production node server.js",
+    "start:proxy": "PORT=3001 NODE_ENV=development node server.js",
+    "start:proxy-prod": "PORT=3001 NODE_ENV=production node server.js",
     "build": "react-scripts build",
-    "deploy": "npm run build; gcloud app deploy",
+    "deploy:current": "npm run build; git push heroku $(git rev-parse --symbolic-full-name --abbrev-ref HEAD):master",
+    "remote:logs": "heroku logs --tail",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

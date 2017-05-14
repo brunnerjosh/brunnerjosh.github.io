@@ -1,0 +1,23 @@
+button {
+  border: none;
+  color: #fafafa;
+  font-size: 1em;
+  padding: 1em 2em;
+  background: #47BA83;
+  text-transform: uppercase;
+  transition: background 250ms ease;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #79CCA4;
+}
+
+button.is-danger {
+  background: #B02E0C;
+  color: #fafafa;
+}
+
+button.is-danger:hover {
+  background: #B74122;
+}
