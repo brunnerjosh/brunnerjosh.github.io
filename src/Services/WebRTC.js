@@ -1,14 +1,15 @@
 import uuid from 'uuid';
 import io from 'socket.io-client';
-import publicIp from 'public-ip';
 import WebRTCAdapter from 'webrtc-adapter';
+import Api from './Api';
 import PeerConnections from './PeerConnections';
 const supportedBrowsers = {
   'chrome': 49
 }
-// Store the IP address of the current user
-let ipAddress;
-publicIp.v4().then( ip => ipAddress = ip );
+
+// Store the IP info of the current user
+let ipInfo;
+Api.get('https://ipinfo.io/').then( data => ipInfo = data.body )
 
 /* INITIALIZE BROWSER SHIMS */
 for (var key in WebRTCAdapter.browserShim) {
@@ -35,7 +36,7 @@ export function initWebRTC (roomId) {
     dispatch({ type: 'WEBRTC_SET_ROOM_ID', roomId });
     initSocketListeners({
       roomId,
-      ipAddress,
+      ipInfo,
       name: 'uuid_' + uuid.v4()
     }, '/')(dispatch);
     dispatch({ type: 'WEBRTC_INITIALED' });
