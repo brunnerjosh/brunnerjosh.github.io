@@ -4,8 +4,7 @@ import publicIp from 'public-ip';
 import WebRTCAdapter from 'webrtc-adapter';
 import PeerConnections from './PeerConnections';
 const supportedBrowsers = {
-  'chrome': 49,
-  'firefox': 52
+  'chrome': 49
 }
 // Store the IP address of the current user
 let ipAddress;
