@@ -13,12 +13,13 @@ export default class Live extends React.Component {
     this.state = {
       joinById: false,
       fullscreen: false,
-      desiredRoomId: "",
+      desiredRoomId: '',
       viewedDisclaimer: false
     }
     this.onUnload = this.onUnload.bind(this);
     this.toggleJoinById = this.toggleJoinById.bind(this);
     this.handleRoomIdSubmit = this.handleRoomIdSubmit.bind(this);
+    this.updateDesiredRoomId = this.updateDesiredRoomId.bind(this);
     this.markDisclaimerAsViewed = this.markDisclaimerAsViewed.bind(this);
     this.attemptToggleLocalStream = this.attemptToggleLocalStream.bind(this);
   }
@@ -41,6 +42,7 @@ export default class Live extends React.Component {
       this.props.closeWebRTC();
       this.setState({
         joinById: false,
+        desiredRoomId: '',
         fullscreen: false
       })
     }
@@ -60,10 +62,19 @@ export default class Live extends React.Component {
     })
   }
 
-  handleRoomIdSubmit ( event ) {
+  updateDesiredRoomId (event) {
+    this.setState({ desiredRoomId: event.target.value });
+    if (event.target.value.replace(/[^0-9]/g,"").length === 9) {
+      this.props.initWebRTC(event.target.value);
+    }
+  }
+
+  handleRoomIdSubmit (event) {
     event.preventDefault();
     if (this.state.desiredRoomId.replace(/[^0-9]/g,"").length === 9) {
-      this.props.initWebRTC(this.state.desiredRoomId);
+      setTimeout(() => {
+        this.props.initWebRTC(this.state.desiredRoomId);
+      }, 1000);
     } else {
       alert('Please enter a valid nine-digit room ID. Example: 123-456-789 ');
     }
@@ -85,8 +96,14 @@ export default class Live extends React.Component {
 
   renderSelfVideoFeed () {
     if ( ! this.state.viewedDisclaimer ) return;
+    const numOfConnections = Object.keys(this.props.webrtc.connections).length;
     return (
       <div className='live__self-feed'>
+        <span className='live__local-conn-count'>
+          Connections: {numOfConnections}
+          <br />
+          { this.props.webrtc.socketId ? <RecordingTime /> : null }
+        </span>
         <video ref={c => this.selfFeed = c } autoPlay muted />
       </div>
     )
@@ -95,7 +112,6 @@ export default class Live extends React.Component {
   renderRequestLocalStream () {
     if ( ! this.state.viewedDisclaimer ) return;
     const showPreview = ! this.selfFeed || (this.selfFeed && ! this.selfFeed.srcObject);
-    const numOfConnections = Object.keys(this.props.webrtc.connections).length;
     const previewScreen = showPreview ? (
       <div className='live__preview' onClick={this.props.loadLocalStream}>
         Preview
@@ -103,11 +119,6 @@ export default class Live extends React.Component {
     ) : null;
     return (
       <div className='live__local-stream' onClick={this.attemptToggleLocalStream}>
-        <span className='live__local-conn-count'>
-          Connections: {numOfConnections}
-          <br />
-          { this.props.webrtc.socketId ? <RecordingTime /> : null }
-        </span>
         {this.renderSelfVideoFeed()}
         {previewScreen}
       </div>
@@ -138,7 +149,7 @@ export default class Live extends React.Component {
               mask='999-999-999'
               placeholder='123-456-789'
               value={this.state.desiredRoomId}
-              onChange={ event => this.setState({ desiredRoomId: event.target.value }) } />
+              onChange={this.updateDesiredRoomId} />
           </form>
           <p className='live__enter-room-alt' onClick={this.toggleJoinById}>cancel</p>
         </div>
@@ -159,7 +170,7 @@ export default class Live extends React.Component {
           <Icon icon='Alert' color='red'/>
         </div>
         <div className='col-xs-11'>
-          <p>Download <a href='https://www.google.com/chrome/browser/desktop/' target='_blank'>Chrome</a> or <a href='https://www.mozilla.org/en-US/firefox/new/' target='_blank'>Firefox</a> in order to test out this video chat client as it was designed to work. If you think your browser can handle WebRTC and Socket.IO anyway, <a onClick={this.markDisclaimerAsViewed}>click here to proceed</a>.</p>
+          <p>Download <a href='https://www.google.com/chrome/browser/desktop/' target='_blank'>Chrome</a> in order to test out this video chat client as it was designed to work. If you think your browser can handle WebRTC and Socket.IO anyway, <a onClick={this.markDisclaimerAsViewed}>click here to proceed</a>.</p>
         </div>
       </div>
       </div>
@@ -199,8 +210,8 @@ export default class Live extends React.Component {
         <div className={liveClasses}>
           <div className='live__container'>
             {this.renderEnterFullScreenIcons()}
-            {this.renderRequestLocalStream()}
             {this.renderRoomActionButton()}
+            {this.renderRequestLocalStream()}
             <Peers streams={streams} />
           </div>
         </div>
