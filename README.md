@@ -36,14 +36,16 @@ The site is currently hosted through Google Cloud Platform (GCP). The main reaso
 - Make sure to lock `package.json` versions by removing `^` from the version number
 - Create a version release in GitHub
 
-### Google Cloud Platform
-In order to deploy the app to GCP, either set up the SDK locally, or push the code up to the repo's `master` branch in GitHub (which is mirrored to GCP) and log in through Google Cloud Shell and run
+### Heroku
+In order to deploy the app to Heroku's staging server, run:
 
-`npm run deploy`
+`npm run deploy:current`
 
-To view server logs, make sure you're connected into a Google Cloud Shell instance and run
+When you're ready to promote the staging app to production, use the Pipeline in the Heroku Dashboard.
 
-`gcloud app logs tail -s default`
+To view server logs, make sure you're connected into either the staging or production Heroku app and run:
+
+`heroku logs --tail` or `npm run remote:logs`
 
 ---
 BEGINE CREATE REACT APP README

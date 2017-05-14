@@ -56,16 +56,10 @@ export default class Flickr extends React.Component {
   }
 
   determineImageSize () {
-    const { innerWidth } = window;
     // Flickr photo size mapping:
     // https://www.flickr.com/services/api/misc.urls.html
-    if (innerWidth <= 640) {
-      return 'z';
-    } else if (innerWidth <= 800) {
-      return 'c';
-    } else {
-      return 'b';
-    }
+    const { innerWidth } = window;
+    return innerWidth <= 640 ? 'z' : (innerWidth <= 800 ? 'c' : 'b');
   }
 
   renderFlickrImages () {

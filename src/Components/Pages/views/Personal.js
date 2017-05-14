@@ -10,6 +10,11 @@ export default class Personal extends React.Component {
       <div>
         <h1>Personal Projects</h1>
         <p>When I'm not hiking in the mountains, I'm probably behind a computer screen learning new technologies or practicing something I may need to learn for work. Here are a few of the projects that have actually seen the light of day.</p>
+        <div className='content__section-spacer'>May, 2017</div>
+        <Card
+          header={'Live: A Video Chat Client'}
+          onClick={this.props.router.push.bind(null, '/live')}
+          description={'I was interested in learning and applying my knowledge of WebRTC and Socket.IO to build a video chat client...'}/>
         <div className='content__section-spacer'>March, 2017</div>
         <Card
           header={'Introduction to WebAssembly'}
@@ -27,11 +32,6 @@ export default class Personal extends React.Component {
           onClick={this.props.router.push.bind(null, '/articles/js_slideshow')}
           description={'After reading an article written by Chris Zacharias, a former YouTube employee, I was inspired to begin practicing various JavaScript problems. The goal I have since set for myself is...'}/>
         <div className='content__section-spacer'>Coming soon</div>
-        <Card
-          header={'Video Chat'}
-          onClick={null}
-          disabled={true}
-          description={'Coming soon...'}/>
         <Card
           header={'Dashboard'}
           onClick={null}
