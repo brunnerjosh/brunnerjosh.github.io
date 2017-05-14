@@ -147,9 +147,6 @@ export default class Live extends React.Component {
   }
 
   renderDisclaimer () {
-    const classes = classNames('live__disclaimer', {
-      'is-viewed': this.state.viewedDisclaimer
-    })
     const cta = this.props.webrtc.isSupported ? (
       <div>
         <p>Note: Once you enter that chat room, you can share the room ID for others to join. Otherwise, everyone must join the chat within 2 minutes of the first person who joined the room.</p>
@@ -168,10 +165,12 @@ export default class Live extends React.Component {
       </div>
     );
     return (
-      <div className={classes}>
-        <h1>Live: A Video Chat Client</h1>
-        <p>I was interested in learning and applying my knowledge of <a href='https://webrtc.org/' target='_blank'>WebRTC</a> and <a href='https://socket.io/' target='_blank'>Socket.IO</a> to build a video chat client. This project is very experimental and will likely have bugs and other issues. If you come across something and want to report it, please <a href='https://github.com/brunnerjosh/brunnerjosh.github.io/issues' target='_blank'>do so here.</a></p>
-        {cta}
+      <div className='row'>
+        <div className='col-xs-offset-1 col-xs-10'>
+          <h1>Live: A Video Chat Client</h1>
+          <p>I was interested in learning and applying my knowledge of <a href='https://webrtc.org/' target='_blank'>WebRTC</a> and <a href='https://socket.io/' target='_blank'>Socket.IO</a> to build a video chat client. This project is very experimental and will likely have bugs and other issues. If you come across something and want to report it, please <a href='https://github.com/brunnerjosh/brunnerjosh.github.io/issues' target='_blank'>do so here.</a></p>
+          {cta}
+        </div>
       </div>
     );
   }
@@ -193,16 +192,19 @@ export default class Live extends React.Component {
     const liveClasses = classNames('live', {
       'is-fullscreen': this.state.fullscreen
     });
-    return (
-      <div className={liveClasses}>
-        <div className='live__container'>
-          {this.renderEnterFullScreenIcons()}
-          {this.renderRequestLocalStream()}
-          {this.renderRoomActionButton()}
-          <Peers streams={streams} />
-          {this.renderDisclaimer()}
+    if (! this.state.viewedDisclaimer ) {
+      return this.renderDisclaimer();
+    } else {
+      return (
+        <div className={liveClasses}>
+          <div className='live__container'>
+            {this.renderEnterFullScreenIcons()}
+            {this.renderRequestLocalStream()}
+            {this.renderRoomActionButton()}
+            <Peers streams={streams} />
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
 }

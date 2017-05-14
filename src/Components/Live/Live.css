@@ -47,22 +47,6 @@
   align-self: flex-start;
 }
 
-.live__disclaimer {
-  left: 0;
-  z-index: 1;
-  opacity: 1;
-  padding: 2em;
-  overflow: scroll;
-  position: absolute;
-  background: #fafafa;
-  transition: opacity 500ms ease;
-}
-
-.live__disclaimer.is-viewed{
-  opacity: 0;
-  pointer-events: none;
-}
-
 .live__enter-room-btn {
   z-index: 1;
   display: flex;
