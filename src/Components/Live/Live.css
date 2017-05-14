@@ -132,6 +132,8 @@
 }
 
 .live__friend-feed video {
+  width: 100%;
+  height: 100%;
   transform: scaleX(-1);
 }
 
@@ -149,7 +151,6 @@
   z-index: 1;
   cursor: pointer;
   flex-basis: 25%;
-  box-shadow: 0 0 .3em 0em rgba(0, 0, 0, 0.3);
 }
 
 .live__preview {
