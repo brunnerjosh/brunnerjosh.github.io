@@ -1,13 +1,13 @@
 {
   "name": "portfolio-site",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": true,
   "homepage": "http://brunnerjosh.github.io",
   "bugs": {
     "url": "https://github.com/brunnerjosh/brunnerjosh.github.io/issues"
   },
   "engines": {
-    "node": ">=6.x"
+    "node": "8.1.4"
   },
   "proxy": "https://localhost:3001",
   "devDependencies": {
