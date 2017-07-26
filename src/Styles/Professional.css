@@ -1,0 +1,12 @@
+.logo-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.logo-list .logo-item {
+  cursor: pointer;
+  display: flex;
+  padding: 2em;
+  margin: 1em;
+}
