@@ -11,6 +11,7 @@
   },
   "proxy": "https://localhost:3001",
   "devDependencies": {
+    "npm-run-all": "^4.0.2",
     "react-scripts": "0.9.5"
   },
   "dependencies": {
@@ -44,7 +45,8 @@
     "webrtc-adapter": "3.3.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "run-p start:proxy start:dev",
+    "start:dev": "react-scripts start",
     "start:proxy": "PORT=3001 NODE_ENV=development node server.js",
     "start:proxy-prod": "PORT=3001 NODE_ENV=production node server.js",
     "build": "react-scripts build",
