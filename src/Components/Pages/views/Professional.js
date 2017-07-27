@@ -2,6 +2,7 @@ import React from 'react';
 import Icon from '../../Icon/Icon';
 import PageContent from '../PageContainer';
 import Accordion from '../../Shared/Accordion/Accordion';
+import '../../../Styles/Professional.css';
 
 const logos = [
   { label: 'React', logo: 'ReactIcon' , link: 'https://facebook.github.io/react/' },
@@ -90,30 +91,17 @@ export default class Professional extends React.Component {
   }
 
   renderLogoList () {
-    const logoListStyles = {
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'space-around'
-    };
-
-    const logoItemStyles = {
-      flex: 1,
-      cursor: 'pointer',
-      display: 'flex',
-      padding: '2em',
-      margin: '1em'
-    }
 
     const logoItems = logos.map( (logo, index) => {
       return (
-        <div key={index} style={logoItemStyles} title={logo.label} onClick={ () => window.open(logo.link, '_blank')}>
+        <div key={index} className='logo-item' title={logo.label} onClick={ () => window.open(logo.link, '_blank')}>
           <Icon icon={logo.logo} />
         </div>
       )
     })
 
     return (
-      <div style={logoListStyles}>{logoItems}</div>
+      <div className='logo-list'>{logoItems}</div>
     )
   }
 
