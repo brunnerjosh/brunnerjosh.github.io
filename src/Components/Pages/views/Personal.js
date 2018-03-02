@@ -23,7 +23,7 @@ export default class Personal extends React.Component {
           description={'I gave a presentation at work (helpfulhuman.com) on an introduction to WebAssembly as it pertains to modern web development...'}/>
         <Card
           header={'Helpful React Scripts'}
-          imgUrl={'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg'}
+          imgUrl={'https://cdn.iconscout.com/public/images/icon/free/png-256/react-native-logo-3b38fe0f8005ff45-256x256.png'}
           onClick={ () => window.location = 'https://github.com/HelpfulHuman/helpful-react-scripts' }
           description={'In my spare time I collaborate with @Canfie1d to work on maintaining Helpful React Scripts which is a fork of Create React App. It serves as the base React boilerplate project at Helpful Human.'}/>
         <div className='content__section-spacer'>April, 2015</div>
