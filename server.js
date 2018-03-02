@@ -15,18 +15,10 @@ const options = process.env.NODE_ENV === 'development' ? {
   cert: fs.readFileSync('../.localhost-ssl/cert.pem')
 } : {};
 
-// http://stackoverflow.com/questions/7185074/heroku-nodejs-http-to-https-ssl-forced-redirect
-const forceSSL = (req, res, next) => {
-  return req.headers['x-forwarded-proto'] !== 'https'
-    ? res.redirect(['https://', req.get('Host'), req.url].join(''))
-    : next();
-};
-
 const secureMode = process.env.HTTPS === 'true' && process.env.NODE_ENV === 'development';
 const server = secureMode ? https.createServer(options, app) : http.createServer(app);
 socket.listen(server);
 
-if (process.env.NODE_ENV === 'production') app.use(forceSSL);
 app.use(bodyParser.json());                         // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use('/api', routes);
@@ -40,4 +32,3 @@ server.listen(port, function (err) {
   }
   console.log( (secureMode ? 'HTTPS' : 'HTTP') + ' Express server listening on %d, in %s mode', port, app.get('env'));
 });
-
