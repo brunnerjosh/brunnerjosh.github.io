@@ -6,6 +6,7 @@ import Landing from './Containers/Landing';
 import Pages from './Containers/Pages';
 import Typography from './Components/Typography';
 import Live from './Containers/Live';
+import DigitalScreen from './Components/DigitalScreen';
 import NotFound from './Components/NotFound';
 
 export default (
@@ -22,7 +23,7 @@ export default (
     <Route path='personal' component={Pages} />
     <Route path='thoughts' component={Pages} />
     <Route path='photography' component={Pages} />
-
+    <Route path='projects/screen' component={DigitalScreen} />
     <Route path='articles/:articleId' component={Pages} />
 
     {/* HIDDEN ROUTES */}
