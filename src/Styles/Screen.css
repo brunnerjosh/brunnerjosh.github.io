@@ -1,3 +1,16 @@
 .screen {
   background: red;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen__row {
+  background: grey;
+  margin: 1px;
+  display: flex;
+}
+
+.screen__row-pixel {
+  margin: 1px;
+  background: blue;
 }
