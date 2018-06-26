@@ -9,27 +9,45 @@ export default class Screen extends React.Component {
     this.state = {
       screen: [
         ['', '', '', ''],
-        ['', '', '', ''],
-        ['', '', '', ''],
-        ['', '', '', '']
+        ['', '', 'X', ''],
+        ['', 'X', '', 'X'],
+        ['X', '', '', '']
       ]
     };
 
     this.renderRow = this.renderRow.bind(this)
     this.renderPixel = this.renderPixel.bind(this)
+    this.shiftPixels = this.shiftPixels.bind(this)
   }
 
-  renderPixel (data) {
+  componentDidMount () {
+    this.timer = setInterval(this.shiftPixels, 300);
+  }
+
+  componentWillUnmount () {
+    clearInterval(this.timer);
+  }
+
+  shiftPixels () {
+    const newScreen = this.state.screen.map(prevRow => {
+      const copiedRow = prevRow.concat()
+      copiedRow.push(copiedRow.splice(0, 1)[0])
+      return copiedRow
+    })
+    this.setState({ screen: newScreen })
+  }
+
+  renderPixel (data, index) {
     return (
-      <div className='screen__row-pixel'>
+      <div key={index} className='screen__row-pixel'>
       {data || '__'}
       </div>
     )
   }
 
-  renderRow (row) {
+  renderRow (row, index) {
     return (
-      <div className='screen__row'>
+      <div key={index} className='screen__row'>
       {row.map(this.renderPixel)}
       </div>
     )

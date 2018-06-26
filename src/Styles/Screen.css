@@ -1,5 +1,6 @@
 .screen {
   background: red;
+  font-size: 6em;
   display: flex;
   flex-direction: column;
 }
