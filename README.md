@@ -48,7 +48,7 @@ To view server logs, make sure you're connected into either the staging or produ
 `heroku logs --tail` or `npm run remote:logs`
 
 ---
-BEGINE CREATE REACT APP README
+BEGIN CREATE REACT APP README
 ---
 ---
 
