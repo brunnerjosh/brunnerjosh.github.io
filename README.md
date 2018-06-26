@@ -14,7 +14,7 @@ to get up and running.
 
 
 ## Production
-Creact React App (CRA) does all of the production compression and optimizations necessary leaving you with only needing to run
+Create React App (CRA) does all of the production compression and optimizations necessary leaving you with only needing to run
 
 `npm run build`
 
@@ -29,23 +29,30 @@ In order to test how the app runs when served up by `server.js` run
 which will start up a server running the app from the `build` folder.
 
 ## Deployment
-The site is currently hosted through Google Cloud Platform (GCP). The main reason for this is to provide a proxy API to load the Flickr photos on the `/photography` page. However, this is a strategy moving forward to allow for future server side development needs listed out on the `/personal` page.
+The site is currently hosted through DigitalOcean. The main reason for this is to provide a proxy API to load the Flickr photos on the `/photography` page in addition to the live video chat located at `/live`. However, this is a strategy moving forward to allow for future server-side development needs listed out on the `/personal` page.
 
 ### Pre-deployment checklist:
-- Update `sitemap.txt` file with any new routes
-- Make sure to lock `package.json` versions by removing `^` from the version number
-- Create a version release in GitHub
+✓ Update `sitemap.txt` file with any new routes
 
-### Heroku
-In order to deploy the app to Heroku's staging server, run:
+✓ Make sure to lock `package.json` versions by removing `^` from the version number
 
-`npm run deploy:current`
+✓ Create a version release on GitHub
 
-When you're ready to promote the staging app to production, use the Pipeline in the Heroku Dashboard.
+### DigitalOcean
+In order to deploy the app to DigitalOcean (DO), do the following:
 
-To view server logs, make sure you're connected into either the staging or production Heroku app and run:
+1. `ssh` into the DO server
+2. `cd` into the local directory
+3. `pull` the latest from the GitHub repo
+4. `npm install` to install any dependencies that have been modified
+5. `npm run build` to create a clean build of the website
+6. `pm2 restart 0` to restart the `pm2` process (assuming it's `id` is `0`)
 
-`heroku logs --tail` or `npm run remote:logs`
+ヽ(⌐■_■)ノ♪♬
+
+To view tailed server logs, make sure you're in the app's directory and run:
+
+`npm run remote:logs`
 
 ---
 BEGIN CREATE REACT APP README
