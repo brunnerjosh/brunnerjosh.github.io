@@ -1,13 +1,34 @@
 import React from 'react';
 import '../Styles/Screen.css';
 
+function getCoordinates (letter) {
+  switch (letter) {
+    case 'h':
+      return [[1, 0, 0], [1, 0, 0], [1, 1, 1], [1, 0, 1], [1, 0, 1]]
+    // case 'h':
+    //   return [[1, 0, 0], [1, 0, 0], [1, 0, 0], [1, 1, 1], [1, 0, 1]]
+    // case 'h':
+    //   return [[1, 0, 0], [1, 0, 0], [1, 0, 0], [1, 1, 1], [1, 0, 1]]
+    // case 'h':
+    //   return [[1, 0, 0], [1, 0, 0], [1, 0, 0], [1, 1, 1], [1, 0, 1]]
+    default:
+      return ''
+  }
+}
+
 export default class Screen extends React.Component {
 
   constructor (props) {
     super(props);
 
+    const width = 16
+    const height = 10
+
     this.state = {
-      screen: [
+      width,
+      height,
+      screen: initializeScreen(width, height, 'h'),
+      screen1: [
         ['', '', '', ''],
         ['', '', 'X', ''],
         ['', 'X', '', 'X'],
@@ -21,7 +42,10 @@ export default class Screen extends React.Component {
   }
 
   componentDidMount () {
-    this.timer = setInterval(this.shiftPixels, 300);
+    this.setState({
+      screen: this.state.screen
+    })
+    // this.timer = setInterval(this.shiftPixels, 300);
   }
 
   componentWillUnmount () {
@@ -60,4 +84,29 @@ export default class Screen extends React.Component {
       </div>
     )
   }
+}
+
+function initializeScreen (width = 16, height = 10, msg) {
+  const rows = []
+  for (let i = 0; i < height; i++) {
+    const row = []
+    for (let j = 0; j < width; j++) {
+      row.push('')
+    }
+    rows.push(row)
+  }
+
+  const wordCoordinates = msg.split('').map(getCoordinates)
+  let letterOffset = 0
+  wordCoordinates.forEach(coordinates => {
+    console.log(coordinates)
+    coordinates.forEach((cRow, cIdx) => {
+      cRow.forEach((bit, bitIdx) => {
+        rows[cIdx + Math.floor(coordinates.length - 1 / 2)][bitIdx + letterOffset] = bit ? 'X' : ''
+      })
+    })
+    letterOffset += coordinates[0].length + 1
+  })
+
+  return rows
 }
