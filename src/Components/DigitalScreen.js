@@ -22,7 +22,7 @@ export default class Screen extends React.Component {
     super(props);
 
     const width = 32
-    const height = 16
+    const height = 9
 
     this.state = {
       width,
@@ -102,7 +102,7 @@ function initializeScreen (width = 16, height = 10, msg) {
     console.log(coordinates)
     coordinates.forEach((cRow, cIdx) => {
       cRow.forEach((bit, bitIdx) => {
-        rows[cIdx + Math.floor(height / 2)][bitIdx + letterOffset] = bit ? 'X' : ''
+        rows[cIdx + (Math.ceil(height / 2) - coordinates[0].length)][bitIdx + letterOffset] = bit ? 'X' : ''
       })
     })
     letterOffset += coordinates[0].length + 1
