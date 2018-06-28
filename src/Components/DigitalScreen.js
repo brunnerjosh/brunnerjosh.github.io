@@ -11,6 +11,14 @@ function getCoordinates (letter) {
       return [[1, 0, 0], [1, 0, 0], [1, 0, 0], [1, 0, 0], [1, 1, 1]]
     case 'o':
       return [[1, 1, 1], [1, 0, 1], [1, 0, 1], [1, 0, 1], [1, 1, 1]]
+    case 'w':
+      return [[1, 0, 1], [1, 0, 1], [1, 0, 1], [1, 1, 1], [1, 0, 1]]
+    case 'r':
+      return [[1, 1, 0], [1, 0, 1], [1, 1, 0], [1, 0, 1], [1, 0, 1]]
+    case 'd':
+      return [[1, 1, 0], [1, 0, 1], [1, 0, 1], [1, 0, 1], [1, 1, 0]]
+    case ' ':
+      return [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
     default:
       return [[],[],[],[],[]]
   }
@@ -21,19 +29,15 @@ export default class Screen extends React.Component {
   constructor (props) {
     super(props);
 
-    const width = 32
+    const msg = '  hello world'
+
+    const width = msg.length * 4
     const height = 9
 
     this.state = {
       width,
       height,
-      screen: initializeScreen(width, height, 'hello'),
-      screen1: [
-        ['', '', '', ''],
-        ['', '', 'X', ''],
-        ['', 'X', '', 'X'],
-        ['X', '', '', '']
-      ]
+      screen: initializeScreen(width, height, msg),
     };
 
     this.renderRow = this.renderRow.bind(this)
@@ -45,7 +49,7 @@ export default class Screen extends React.Component {
     this.setState({
       screen: this.state.screen
     })
-    this.timer = setInterval(this.shiftPixels, 300);
+    this.timer = setInterval(this.shiftPixels, 75);
   }
 
   componentWillUnmount () {
@@ -63,9 +67,10 @@ export default class Screen extends React.Component {
 
   renderPixel (data, index) {
     return (
-      <div key={index} className='screen__row-pixel'>
-      {data || '__'}
-      </div>
+      <div
+        key={index}
+        className={`screen__row-pixel ${data ? 'isOn' : ''}`}
+        />
     )
   }
 
@@ -99,7 +104,6 @@ function initializeScreen (width = 16, height = 10, msg) {
   const wordCoordinates = msg.split('').map(getCoordinates)
   let letterOffset = 0
   wordCoordinates.forEach(coordinates => {
-    console.log(coordinates)
     coordinates.forEach((cRow, cIdx) => {
       cRow.forEach((bit, bitIdx) => {
         rows[cIdx + (Math.ceil(height / 2) - coordinates[0].length)][bitIdx + letterOffset] = bit ? 'X' : ''

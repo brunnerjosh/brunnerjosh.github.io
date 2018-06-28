@@ -1,19 +1,23 @@
 .screen {
-  background: red;
   font-size: 6vw;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .screen__row {
-  background: grey;
-  margin: 1px;
   display: flex;
+  background: black;
 }
 
 .screen__row-pixel {
-  margin: 1px;
-  background: blue;
+  background: #2B2D34;
   height: 3vw;
-  width: 3vw
+  width: 3vw;
+  margin: 1px;
+  /* transition: background 75ms ease */
+}
+
+.screen__row-pixel.isOn{
+  background: #5DA2D1;
 }

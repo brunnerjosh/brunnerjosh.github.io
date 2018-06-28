@@ -10,6 +10,11 @@ export default class Personal extends React.Component {
       <div>
         <h1>Personal Projects</h1>
         <p>When I'm not hiking in the mountains, I'm probably behind a computer screen learning new technologies or practicing something I may need to learn for work. Here are a few of the projects that have actually seen the light of day.</p>
+        <div className='content__section-spacer'>June, 2018</div>
+        <Card
+          header={'Digital Screen'}
+          onClick={this.props.router.push.bind(null, '/projects/screen')}
+          description={'As a brain teaser, I created a virtual scrolling screen that displays text via "rendering" pixels.'}/>
         <div className='content__section-spacer'>May, 2017</div>
         <Card
           header={'Live: A Video Chat Client'}
