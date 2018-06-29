@@ -2,7 +2,7 @@ import React from 'react';
 import '../Styles/Screen.css';
 
 function getCoordinates (letter) {
-  switch (letter) {
+  switch (letter.toLowerCase()) {
     case 'h':
       return [[1, 0, 1], [1, 0, 1], [1, 1, 1], [1, 0, 1], [1, 0, 1]]
     case 'e':
@@ -29,31 +29,33 @@ export default class Screen extends React.Component {
   constructor (props) {
     super(props);
 
-    const msg = '  hello world'
-
-    const width = msg.length * 4
-    const height = 9
-
     this.state = {
-      width,
-      height,
-      screen: initializeScreen(width, height, msg),
+      height: 9,
+      screen: [],
+      screenText: 'hello world',
     };
 
     this.renderRow = this.renderRow.bind(this)
     this.renderPixel = this.renderPixel.bind(this)
     this.shiftPixels = this.shiftPixels.bind(this)
+    this.updateScreenText = this.updateScreenText.bind(this)
   }
 
   componentDidMount () {
-    this.setState({
-      screen: this.state.screen
-    })
+    this.updateScreenText({ target: { value: 'hello world' }})
     this.timer = setInterval(this.shiftPixels, 75);
   }
 
   componentWillUnmount () {
     clearInterval(this.timer);
+  }
+
+  updateScreenText (event) {
+    const { height } = this.state
+    this.setState({
+      screenText: event.target.value,
+      screen: initializeScreen(height, event.target.value)
+    })
   }
 
   shiftPixels () {
@@ -85,13 +87,21 @@ export default class Screen extends React.Component {
   render () {
     return (
       <div className={'screen'}>
+        <div className='screen__input'>
+          <input
+            placeholder='hello world'
+            value={this.state.screenText}
+            onChange={this.updateScreenText} />
+        </div>
         {this.state.screen.map(this.renderRow)}
       </div>
     )
   }
 }
 
-function initializeScreen (width = 16, height = 10, msg) {
+function initializeScreen (height, msg) {
+  msg += '   '
+  const width = msg.length * 4
   const rows = []
   for (let i = 0; i < height; i++) {
     const row = []

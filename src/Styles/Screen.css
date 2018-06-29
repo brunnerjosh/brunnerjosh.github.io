@@ -1,8 +1,6 @@
 .screen {
-  font-size: 6vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .screen__row {
@@ -12,12 +10,18 @@
 
 .screen__row-pixel {
   background: #2B2D34;
-  height: 3vw;
-  width: 3vw;
+  height: 1vw;
+  width: 1vw;
   margin: 1px;
   border-radius: 50%;
 }
 
 .screen__row-pixel.isOn{
   background: #5DA2D1;
+}
+
+.screen__input {
+  text-align: center;
+  margin: 4em;
+  font-size: 2em;
 }
