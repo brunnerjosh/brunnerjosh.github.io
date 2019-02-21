@@ -21,7 +21,12 @@
 }
 
 .screen__input {
-  text-align: center;
+  display: none;
   margin: 4em;
   font-size: 2em;
+}
+
+.screen__input,
+.screen__input input {
+  text-align: center;
 }

@@ -18,9 +18,9 @@ function getCoordinates (letter) {
     case 'd':
       return [[1, 1, 0], [1, 0, 1], [1, 0, 1], [1, 0, 1], [1, 1, 0]]
     case ' ':
-      return [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+      return [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]
     default:
-      return [[],[],[],[],[]]
+      return [[1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1]]
   }
 }
 
@@ -42,8 +42,8 @@ export default class Screen extends React.Component {
   }
 
   componentDidMount () {
-    this.updateScreenText({ target: { value: 'hello world' }})
-    this.timer = setInterval(this.shiftPixels, 75);
+    this.updateScreenText({ target: { value: 'hello world zzz' }})
+    // this.timer = setInterval(this.shiftPixels, 1000);
   }
 
   componentWillUnmount () {
@@ -68,18 +68,32 @@ export default class Screen extends React.Component {
   }
 
   renderPixel (data, index) {
-    return (
-      <div
-        key={index}
-        className={`screen__row-pixel ${data ? 'isOn' : ''}`}
-        />
-    )
+    // if (index < 10) {
+    //   return <div style={{height: '1em', width: '1em'}}>hello</div>
+    // }
+    // return null
+    // console.log(index)
+    // if (index < 10) {
+      return (
+        <div
+          key={index}
+          className={`screen__row-pixel ${data ? 'isOn' : ''}`}
+          />
+      )
+    // }
+    // return null
   }
 
   renderRow (row, index) {
+    // console.log('row', row.map((p,i) => {
+    //   // console.log(p, i)
+    //   if (!p) return ''
+    //   return i < 10 && p
+    // }))
+    const rowBak = row.concat()
     return (
       <div key={index} className='screen__row'>
-      {row.map(this.renderPixel)}
+      {rowBak.splice(0, 10).map(this.renderPixel)}
       </div>
     )
   }
@@ -101,7 +115,7 @@ export default class Screen extends React.Component {
 
 function initializeScreen (height, msg) {
   msg += '   '
-  const width = msg.length * 4
+  const width = 10 //msg.length * 4
   const rows = []
   for (let i = 0; i < height; i++) {
     const row = []
@@ -113,10 +127,13 @@ function initializeScreen (height, msg) {
 
   const wordCoordinates = msg.split('').map(getCoordinates)
   let letterOffset = 0
-  wordCoordinates.forEach(coordinates => {
+  wordCoordinates.forEach((coordinates, idx) => {
     coordinates.forEach((cRow, cIdx) => {
       cRow.forEach((bit, bitIdx) => {
-        rows[cIdx + (Math.ceil(height / 2) - coordinates[0].length)][bitIdx + letterOffset] = bit ? 'X' : ''
+        if (idx < 10) {
+          console.log('idx', idx)
+          rows[cIdx + (Math.ceil(height / 2) - coordinates[0].length)][bitIdx + letterOffset] = bit ? 'X' : ''
+        }
       })
     })
     letterOffset += coordinates[0].length + 1
